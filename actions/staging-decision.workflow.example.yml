@@ -1,0 +1,43 @@
+# Optional: add as .github/workflows/staging-decision.yml in the GitHub UI
+# (needs workflow scope — gh OAuth from Grok Bot cannot create workflow files)
+# Same content as planned automation: on [STAGING-APPROVE]/[STAGING-REJECT]
+# issues, update drafts/manifest.json status to approved/rejected immediately.
+name: Staging decision (Approve/Reject)
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+jobs:
+  record-decision:
+    if: startsWith(github.event.issue.title, '[STAGING-APPROVE]') || startsWith(github.event.issue.title, '[STAGING-REJECT]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const title = context.payload.issue.title || '';
+            const body = context.payload.issue.body || '';
+            const isApprove = title.startsWith('[STAGING-APPROVE]');
+            const idMatch = title.match(/\[STAGING-(?:APPROVE|REJECT)\]\s+([^\s→]+)/);
+            let draftId = idMatch ? idMatch[1].trim() : null;
+            const path = 'drafts/manifest.json';
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const now = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' ET';
+            for (const d of data.drafts || []) {
+              if (d.id !== draftId) continue;
+              if (d.status === 'promoted' && isApprove) { d.decision = 'approved'; break; }
+              d.decision = isApprove ? 'approved' : 'rejected';
+              d.status = isApprove ? 'approved' : 'rejected';
+              d.decidedAt = now;
+            }
+            data.updated = new Date().toISOString();
+            fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n');
+      - run: |
+          git config user.name "staging-bot"
+          git config user.email "staging-bot@users.noreply.github.com"
+          git add drafts/manifest.json
+          git diff --staged --quiet || (git commit -m "staging: record decision from issue" && git push)

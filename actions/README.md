@@ -1,11 +1,12 @@
-# Staging action queue
+# Staging status model
 
-Approve / Reject on the staging site open a GitHub issue:
+| Field | Who sets it | Meaning |
+|---|---|---|
+| Awaiting / Approved / Rejected | **Jim** (Approve/Reject click + GitHub Action on issue) | His decision |
+| Live (`status: promoted`) | **SecurityMedic Content** after publish | On the target blog |
 
-- Title prefix `[STAGING-APPROVE]` → promote to production blog
-- Title prefix `[STAGING-REJECT]` → revise using the reason body, then resubmit
-
-SecurityMedic Content watches these issues (routine + chat) and:
-1. Writes `approvals/APPROVALS.md`
-2. Publishes or revises
-3. Updates `drafts/manifest.json`
+Flow:
+1. Draft staged → `status: review` (Awaiting)
+2. Jim Approve → instant UI + `[STAGING-APPROVE]` issue → Action sets `status: approved`
+3. Agent publishes → `status: promoted` (Live)
+4. Jim Reject → `status: rejected` + reason → agent revises → back to `review`
