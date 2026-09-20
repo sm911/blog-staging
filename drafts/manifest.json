@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T12:32:00-04:00",
+  "updated": "2026-09-20T12:35:00-04:00",
   "drafts": [
     {
       "id": "cyber-insurance-renewal-banks-cpa-sep-2026",
@@ -7,11 +7,11 @@
       "path": "blogs/compliance-blog/us-state/cyber-insurance-renewal-banks-cpa-sep-2026.html",
       "targetBlog": "compliance-blog",
       "category": "us-state",
-      "status": "review",
+      "status": "promoted",
       "stagedAt": "2026-09-20",
-      "decidedAt": null,
-      "decision": null,
-      "summary": "Byline fix: remove \u201cUS State\u201d category from byline. Approve on staging to push to live compliance-blog.",
+      "decidedAt": "2026-09-20 12:35 America/New_York",
+      "decision": "approved",
+      "summary": "Byline fix approved via staging; live synced (no US State in byline).",
       "productionUrl": "https://sm911.github.io/compliance-blog/us-state/cyber-insurance-renewal-banks-cpa-sep-2026.html",
       "rejectReason": null
     },
@@ -21,11 +21,11 @@
       "path": "blogs/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
       "targetBlog": "compliance-blog",
       "category": "us-state",
-      "status": "review",
+      "status": "promoted",
       "stagedAt": "2026-09-20",
-      "decidedAt": null,
-      "decision": null,
-      "summary": "Byline fix: remove \u201cUS State\u201d from byline. Approve to sync live.",
+      "decidedAt": "2026-09-20 12:35 America/New_York",
+      "decision": "approved",
+      "summary": "Byline fix approved via staging; live synced (no US State in byline).",
       "productionUrl": "https://sm911.github.io/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
       "rejectReason": null
     }
