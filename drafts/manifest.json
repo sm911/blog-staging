@@ -1,6 +1,20 @@
 {
-  "updated": "2026-09-20T11:00:00-04:00",
+  "updated": "2026-09-20T11:40:00-04:00",
   "drafts": [
+    {
+      "id": "cyber-insurance-renewal-banks-cpa-sep-2026",
+      "title": "Cyber Insurance Renewal in 2026: What Banks, CUs & CPA Firms Get Asked",
+      "path": "blogs/compliance-blog/us-state/cyber-insurance-renewal-banks-cpa-sep-2026.html",
+      "targetBlog": "compliance-blog",
+      "category": "us-state",
+      "status": "review",
+      "stagedAt": "2026-09-20",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "Sibling for LinkedIn Topic 2. Promote so LinkedIn can use the live compliance-blog URL.",
+      "productionUrl": "https://sm911.github.io/compliance-blog/us-state/cyber-insurance-renewal-banks-cpa-sep-2026.html",
+      "rejectReason": null
+    },
     {
       "id": "nydfs-risk-assessment-guidance-sep-2026",
       "title": "NYDFS Risk Assessment Guidance (Sep 2026)",
