@@ -1,4 +1,19 @@
 {
-  "updated": "2026-09-20T10:58:00-04:00",
-  "drafts": []
+  "updated": "2026-09-20T11:00:00-04:00",
+  "drafts": [
+    {
+      "id": "nydfs-risk-assessment-guidance-sep-2026",
+      "title": "NYDFS Risk Assessment Guidance (Sep 2026)",
+      "path": "blogs/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
+      "targetBlog": "compliance-blog",
+      "category": "us-state",
+      "status": "promoted",
+      "stagedAt": "2026-09-20",
+      "decidedAt": "2026-09-20 (America/New_York)",
+      "decision": "approved",
+      "summary": "Already approved and published to compliance-blog.",
+      "productionUrl": "https://sm911.github.io/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
+      "rejectReason": null
+    }
+  ]
 }

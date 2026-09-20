@@ -14,19 +14,41 @@
     .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
     .hero p { opacity: 0.95; max-width: 640px; margin: 0 auto; }
     .wrap { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
-    .help { background: #edf2f7; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0 2rem; font-size: 0.95em; color: #4a5568; }
+    .help { background: #edf2f7; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0 1.5rem; font-size: 0.95em; color: #4a5568; }
     .help a { color: #667eea; }
-    .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+    .summary .pill {
+      background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.9rem 1rem; text-align: center;
+    }
+    .summary .pill .n { font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
+    .summary .pill .l { font-size: 0.8em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; color: #718096; margin-top: 0.25rem; }
+    .summary .pill.awaiting .n { color: #b45309; }
+    .summary .pill.approved .n { color: #047857; }
+    .summary .pill.rejected .n { color: #b91c1c; }
+    .summary .pill.live .n { color: #1d4ed8; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; }
+    .card .status-bar {
+      padding: 0.55rem 1.25rem; font-weight: 700; font-size: 0.85em; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .card.status-review .status-bar { background: #fef3c7; color: #92400e; }
+    .card.status-approved .status-bar { background: #d1fae5; color: #065f46; }
+    .card.status-rejected .status-bar { background: #fee2e2; color: #991b1b; }
+    .card.status-promoted .status-bar { background: #dbeafe; color: #1e40af; }
+    .card.status-queued .status-bar { background: #e0e7ff; color: #3730a3; }
+    .card .body { padding: 1.1rem 1.5rem 1.25rem; }
     .card h3 { font-size: 1.15rem; margin-bottom: 0.35rem; color: #1a202c; }
     .card h3 a { color: #667eea; text-decoration: none; }
     .card h3 a:hover { text-decoration: underline; }
-    .meta { font-size: 0.9em; color: #718096; margin-bottom: 1rem; }
+    .meta { font-size: 0.9em; color: #718096; margin-bottom: 0.75rem; }
     .meta code { background: #edf2f7; padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.9em; }
-    .status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
-    .status.review { background: #fef3c7; color: #92400e; }
-    .status.approved { background: #d1fae5; color: #065f46; }
-    .status.rejected { background: #fee2e2; color: #991b1b; }
-    .status.promoted { background: #dbeafe; color: #1e40af; }
+    .decision-box {
+      margin: 0.75rem 0; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.95em;
+    }
+    .decision-box.approved { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+    .decision-box.rejected { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+    .decision-box.promoted { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+    .decision-box.queued { background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3; }
+    .decision-box strong { display: block; margin-bottom: 0.25rem; }
     .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-start; margin-top: 0.75rem; }
     button {
       border: none; border-radius: 8px; padding: 0.65rem 1.1rem; font-weight: 600; font-size: 0.95em; cursor: pointer;
@@ -45,8 +67,9 @@
     .reject-box .hint { font-size: 0.85em; color: #718096; margin-top: 0.35rem; }
     .toast { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 8px; background: #ebf8ff; color: #2c5282; font-size: 0.9em; }
     .toast.show { display: block; }
-    .empty { text-align: center; padding: 2.5rem 1rem; color: #718096; }
+    .empty { text-align: center; padding: 2rem 1rem; color: #718096; background: white; border: 1px dashed #cbd5e0; border-radius: 12px; }
     h2 { color: #667eea; font-size: 1.25rem; margin: 2rem 0 0.75rem; border-bottom: 2px solid #667eea; padding-bottom: 0.25rem; }
+    h2 .count { color: #a0aec0; font-weight: 500; font-size: 0.9em; }
     footer { margin: 3rem 0 2rem; font-size: 0.85em; color: #718096; text-align: center; }
   </style>
 </head>
@@ -54,45 +77,116 @@
   <div class="banner"><strong>STAGING / REVIEW ONLY</strong> — not linked from public sites · noindex</div>
   <div class="hero">
     <h1>Blog Staging</h1>
-    <p>Approve publishes to the target blog’s main. Reject with notes — I’ll revise and resubmit.</p>
+    <p>Each draft shows whether you’ve already approved, rejected, or still need to decide.</p>
   </div>
   <div class="wrap">
     <div class="help">
-      <strong>How buttons work:</strong> Approve / Reject open a pre-filled GitHub issue on
-      <a href="https://github.com/sm911/blog-staging/issues" target="_blank" rel="noopener">sm911/blog-staging</a>.
-      Click <em>Submit new issue</em> once — that queues SecurityMedic Content to publish (approve) or revise (reject).
-      For instant action you can also paste the same decision in this chat.
-      Approval times are logged in <a href="approvals/APPROVALS.md">approvals/APPROVALS.md</a>.
+      <strong>Status meanings:</strong>
+      <em>Awaiting your decision</em> — not decided yet (Approve / Reject below).
+      <em>Approved</em> — you approved; publishing to the target blog.
+      <em>Rejected</em> — you rejected with notes; I’m revising and will resubmit.
+      <em>Live</em> — approved and published (production link shown).
+      Decisions are also logged in <a href="approvals/APPROVALS.md">approvals/APPROVALS.md</a>.
     </div>
 
-    <h2>Awaiting review</h2>
-    <div id="review-list"><div class="empty">Loading drafts…</div></div>
+    <div class="summary" id="summary">
+      <div class="pill awaiting"><div class="n" id="n-awaiting">—</div><div class="l">Awaiting</div></div>
+      <div class="pill approved"><div class="n" id="n-approved">—</div><div class="l">Approved</div></div>
+      <div class="pill rejected"><div class="n" id="n-rejected">—</div><div class="l">Rejected</div></div>
+      <div class="pill live"><div class="n" id="n-live">—</div><div class="l">Live</div></div>
+    </div>
 
-    <h2>Recently decided</h2>
-    <div id="decided-list"><div class="empty">None yet.</div></div>
+    <h2>Awaiting your decision <span class="count" id="h-awaiting"></span></h2>
+    <div id="review-list"><div class="empty">Loading…</div></div>
+
+    <h2>You approved <span class="count" id="h-approved"></span></h2>
+    <div id="approved-list"><div class="empty">Loading…</div></div>
+
+    <h2>You rejected <span class="count" id="h-rejected"></span></h2>
+    <div id="rejected-list"><div class="empty">Loading…</div></div>
+
+    <h2>Live (promoted) <span class="count" id="h-live"></span></h2>
+    <div id="live-list"><div class="empty">Loading…</div></div>
 
     <footer>Bookmark this page. Staging URLs are intentionally unlisted.</footer>
   </div>
 
   <script>
   const REPO_ISSUES = 'https://github.com/sm911/blog-staging/issues/new';
+  const QUEUE_KEY = 'sm-staging-queue-v1';
 
   function esc(s) {
     return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  function statusBadge(status) {
-    const s = status || 'review';
-    return '<span class="status ' + esc(s) + '">' + esc(s) + '</span>';
+  function readQueue() {
+    try { return JSON.parse(localStorage.getItem(QUEUE_KEY) || '{}'); } catch (e) { return {}; }
+  }
+  function writeQueue(q) {
+    localStorage.setItem(QUEUE_KEY, JSON.stringify(q));
   }
 
-  function cardHtml(d, interactive) {
+  function effectiveStatus(d) {
+    const q = readQueue()[d.id];
+    if (d.status === 'promoted') return 'promoted';
+    if (d.status === 'approved' || d.status === 'rejected') return d.status;
+    if (q && q.action === 'approve') return 'queued-approve';
+    if (q && q.action === 'reject') return 'queued-reject';
+    return d.status || 'review';
+  }
+
+  function statusBarLabel(st) {
+    if (st === 'review') return 'Awaiting your decision';
+    if (st === 'approved') return 'Approved — publishing';
+    if (st === 'rejected') return 'Rejected — revising';
+    if (st === 'promoted') return 'Live — published';
+    if (st === 'queued-approve') return 'Approve submitted — waiting to publish';
+    if (st === 'queued-reject') return 'Reject submitted — waiting to revise';
+    return st;
+  }
+
+  function cardClass(st) {
+    if (st === 'queued-approve' || st === 'queued-reject') return 'queued';
+    return st === 'review' ? 'review' : st;
+  }
+
+  function decisionBox(d, st) {
+    if (st === 'promoted') {
+      return '<div class="decision-box promoted"><strong>You approved — now live</strong>' +
+        'Decided: ' + esc(d.decidedAt || '—') +
+        (d.productionUrl ? '<br>Production: <a href="' + esc(d.productionUrl) + '" target="_blank" rel="noopener">' + esc(d.productionUrl) + '</a>' : '') +
+        '</div>';
+    }
+    if (st === 'approved') {
+      return '<div class="decision-box approved"><strong>You approved</strong>Decided: ' + esc(d.decidedAt || '—') +
+        '<br>Publishing to <code>' + esc(d.targetBlog) + '</code> / <code>' + esc(d.category) + '</code>.</div>';
+    }
+    if (st === 'rejected') {
+      return '<div class="decision-box rejected"><strong>You rejected</strong>Decided: ' + esc(d.decidedAt || '—') +
+        '<br><em>Reason / path to approval:</em> ' + esc(d.rejectReason || '(see approvals log)') + '</div>';
+    }
+    if (st === 'queued-approve') {
+      const q = readQueue()[d.id];
+      return '<div class="decision-box queued"><strong>Approve already submitted from this browser</strong>' +
+        'Queued: ' + esc(q && q.at) + ' — finish the GitHub “Submit new issue” if you haven’t, then I’ll publish.</div>';
+    }
+    if (st === 'queued-reject') {
+      const q = readQueue()[d.id];
+      return '<div class="decision-box queued"><strong>Reject already submitted from this browser</strong>' +
+        'Queued: ' + esc(q && q.at) +
+        (q && q.reason ? '<br><em>Your notes:</em> ' + esc(q.reason) : '') +
+        '</div>';
+    }
+    return '';
+  }
+
+  function cardHtml(d) {
+    const st = effectiveStatus(d);
+    const interactive = st === 'review';
     const path = d.path || '';
-    const title = d.title || path;
-    const href = path;
     let rejectUi = '';
     let buttons = '';
-    if (interactive && (d.status === 'review' || !d.status)) {
+    if (interactive) {
       rejectUi = `
         <div class="reject-box">
           <label for="reason-${esc(d.id)}">Reject reason / how to get to approval</label>
@@ -107,17 +201,20 @@
         <div class="toast" id="toast-${esc(d.id)}"></div>`;
     }
     return `
-      <div class="card" data-id="${esc(d.id)}">
-        <h3><a href="${esc(href)}" target="_blank" rel="noopener">${esc(title)}</a></h3>
-        <div class="meta">
-          ${statusBadge(d.status)}
-          · Target: <code>${esc(d.targetBlog)}</code>
-          · Category: <code>${esc(d.category)}</code>
-          · Staged: ${esc(d.stagedAt || '—')}
+      <div class="card status-${cardClass(st)}" data-id="${esc(d.id)}">
+        <div class="status-bar">${esc(statusBarLabel(st))}</div>
+        <div class="body">
+          <h3><a href="${esc(path)}" target="_blank" rel="noopener">${esc(d.title || path)}</a></h3>
+          <div class="meta">
+            Target: <code>${esc(d.targetBlog)}</code>
+            · Category: <code>${esc(d.category)}</code>
+            · Staged: ${esc(d.stagedAt || '—')}
+          </div>
+          ${d.summary ? '<p>' + esc(d.summary) + '</p>' : ''}
+          ${decisionBox(d, st)}
+          ${rejectUi}
+          ${buttons}
         </div>
-        ${d.summary ? '<p>' + esc(d.summary) + '</p>' : ''}
-        ${rejectUi}
-        ${buttons}
       </div>`;
   }
 
@@ -137,14 +234,12 @@
       '- **path:** ' + d.path,
       '- **promote_to_blog:** ' + d.targetBlog,
       '- **category:** ' + d.category,
-      '- **approved_at_hint:** (fill when processing — America/New_York)',
       '',
       '### Agent instructions',
-      '1. Log approval in approvals/APPROVALS.md with America/New_York timestamp.',
-      '2. Promote HTML to ' + d.targetBlog + ' main under category ' + d.category + '.',
-      '3. Update production index if that blog uses one.',
-      '4. Update drafts/manifest.json status to promoted; note production URL.',
-      '5. Tell Jim the live URL.',
+      '1. Set drafts/manifest.json status to approved then promoted; set decidedAt (America/New_York) and decision=approved.',
+      '2. Log approvals/APPROVALS.md.',
+      '3. Promote HTML to ' + d.targetBlog + ' main under ' + d.category + '; update production index.',
+      '4. Set productionUrl; close this issue; tell Jim the live URL.',
       '',
       '_Submitted from staging UI_'
     ].join('\n');
@@ -166,36 +261,56 @@
       reason,
       '',
       '### Agent instructions',
-      '1. Log rejection notes in approvals/APPROVALS.md (or a REJECTED section).',
-      '2. Improve the draft per the reason.',
-      '3. Resubmit on staging (update HTML + manifest status back to review).',
-      '4. Tell Jim the revised staging URL.',
+      '1. Set drafts/manifest.json status=rejected, decidedAt, decision=rejected, rejectReason=above.',
+      '2. Log approvals/APPROVALS.md.',
+      '3. Revise draft; resubmit on staging; set status back to review when ready.',
+      '4. Close this issue; tell Jim revised staging URL.',
       '',
       '_Submitted from staging UI_'
     ].join('\n');
   }
 
-  async function load() {
-    const res = await fetch('drafts/manifest.json?ts=' + Date.now());
-    const data = await res.json();
-    const drafts = data.drafts || [];
-    const review = drafts.filter(d => !d.status || d.status === 'review');
-    const decided = drafts.filter(d => d.status && d.status !== 'review');
+  function setEmpty(el, msg) {
+    el.innerHTML = '<div class="empty">' + msg + '</div>';
+  }
+
+  function render(drafts) {
+    const buckets = { review: [], approved: [], rejected: [], promoted: [] };
+    drafts.forEach(d => {
+      const st = effectiveStatus(d);
+      if (st === 'review' || st === 'queued-approve' || st === 'queued-reject') buckets.review.push(d);
+      else if (st === 'approved') buckets.approved.push(d);
+      else if (st === 'rejected') buckets.rejected.push(d);
+      else if (st === 'promoted') buckets.promoted.push(d);
+      else buckets.review.push(d);
+    });
+
+    // Count approved = approved + promoted for "you approved" at-a-glance
+    document.getElementById('n-awaiting').textContent = buckets.review.length;
+    document.getElementById('n-approved').textContent = buckets.approved.length;
+    document.getElementById('n-rejected').textContent = buckets.rejected.length;
+    document.getElementById('n-live').textContent = buckets.promoted.length;
+    document.getElementById('h-awaiting').textContent = '(' + buckets.review.length + ')';
+    document.getElementById('h-approved').textContent = '(' + buckets.approved.length + ')';
+    document.getElementById('h-rejected').textContent = '(' + buckets.rejected.length + ')';
+    document.getElementById('h-live').textContent = '(' + buckets.promoted.length + ')';
 
     const reviewEl = document.getElementById('review-list');
-    const decidedEl = document.getElementById('decided-list');
+    const approvedEl = document.getElementById('approved-list');
+    const rejectedEl = document.getElementById('rejected-list');
+    const liveEl = document.getElementById('live-list');
 
-    if (!review.length) {
-      reviewEl.innerHTML = '<div class="empty">No drafts awaiting review. New posts will show Approve / Reject here.</div>';
-    } else {
-      reviewEl.innerHTML = review.map(d => cardHtml(d, true)).join('');
-    }
+    if (!buckets.review.length) setEmpty(reviewEl, 'Nothing waiting on you.');
+    else reviewEl.innerHTML = buckets.review.map(cardHtml).join('');
 
-    if (!decided.length) {
-      decidedEl.innerHTML = '<div class="empty">None yet.</div>';
-    } else {
-      decidedEl.innerHTML = decided.map(d => cardHtml(d, false)).join('');
-    }
+    if (!buckets.approved.length) setEmpty(approvedEl, 'No drafts currently in “approved / publishing.”');
+    else approvedEl.innerHTML = buckets.approved.map(cardHtml).join('');
+
+    if (!buckets.rejected.length) setEmpty(rejectedEl, 'No rejected drafts right now.');
+    else rejectedEl.innerHTML = buckets.rejected.map(cardHtml).join('');
+
+    if (!buckets.promoted.length) setEmpty(liveEl, 'None promoted yet.');
+    else liveEl.innerHTML = buckets.promoted.map(cardHtml).join('');
 
     reviewEl.querySelectorAll('button[data-action]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -206,8 +321,12 @@
         const toast = document.getElementById('toast-' + id);
         if (action === 'approve') {
           openIssue('[STAGING-APPROVE] ' + d.id + ' → ' + d.targetBlog, buildApproveBody(d));
-          toast.textContent = 'GitHub issue form opened. Click “Submit new issue” to queue publish to ' + d.targetBlog + '.';
+          const q = readQueue();
+          q[id] = { action: 'approve', at: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' ET' };
+          writeQueue(q);
+          toast.textContent = 'GitHub issue opened. Click “Submit new issue” once — then this page will show Approved after I process it.';
           toast.classList.add('show');
+          render(drafts);
         } else {
           const reason = (document.getElementById('reason-' + id) || {}).value || '';
           if (!reason.trim()) {
@@ -216,11 +335,32 @@
             return;
           }
           openIssue('[STAGING-REJECT] ' + d.id, buildRejectBody(d, reason.trim()));
-          toast.textContent = 'GitHub issue form opened with your notes. Click “Submit new issue” — I’ll revise and resubmit.';
+          const q = readQueue();
+          q[id] = { action: 'reject', reason: reason.trim(), at: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' ET' };
+          writeQueue(q);
+          toast.textContent = 'GitHub issue opened with your notes. Click “Submit new issue” — status will show Rejected after I process it.';
           toast.classList.add('show');
+          render(drafts);
         }
       });
     });
+  }
+
+  async function load() {
+    const res = await fetch('drafts/manifest.json?ts=' + Date.now());
+    const data = await res.json();
+    const drafts = data.drafts || [];
+    // Clear local queue entries once server status supersedes
+    const q = readQueue();
+    let changed = false;
+    drafts.forEach(d => {
+      if (q[d.id] && (d.status === 'approved' || d.status === 'rejected' || d.status === 'promoted')) {
+        delete q[d.id];
+        changed = true;
+      }
+    });
+    if (changed) writeQueue(q);
+    render(drafts);
   }
 
   load().catch(err => {
