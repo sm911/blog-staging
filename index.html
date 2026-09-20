@@ -87,8 +87,11 @@
       <em>Rejected</em> — you rejected with notes; I’m revising and will resubmit.
       <em>Live</em> — approved and published (production link shown).
       Decisions are also logged in <a href="approvals/APPROVALS.md">approvals/APPROVALS.md</a>.
+      After you click Approve, this browser may briefly say “Approve submitted” until I process it —
+      once the draft is <em>promoted</em>, a refresh shows <strong>Live</strong> (server status wins).
     </div>
 
+    <p id="manifest-updated" style="font-size:0.85em;color:#718096;margin:0 0 0.75rem;"></p>
     <div class="summary" id="summary">
       <div class="pill awaiting"><div class="n" id="n-awaiting">—</div><div class="l">Awaiting</div></div>
       <div class="pill approved"><div class="n" id="n-approved">—</div><div class="l">Approved</div></div>
@@ -113,7 +116,7 @@
 
   <script>
   const REPO_ISSUES = 'https://github.com/sm911/blog-staging/issues/new';
-  const QUEUE_KEY = 'sm-staging-queue-v1';
+  const QUEUE_KEY = 'sm-staging-queue-v2';
 
   function esc(s) {
     return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -347,9 +350,11 @@
   }
 
   async function load() {
-    const res = await fetch('drafts/manifest.json?ts=' + Date.now());
+    const res = await fetch('drafts/manifest.json?ts=' + Date.now() + '&v=2', { cache: 'no-store' });
     const data = await res.json();
     const drafts = data.drafts || [];
+    const mu = document.getElementById('manifest-updated');
+    if (mu) mu.textContent = 'Status source updated: ' + (data.updated || '—') + ' · hard-refresh if this looks wrong';
     // Clear local queue entries once server status supersedes
     const q = readQueue();
     let changed = false;
