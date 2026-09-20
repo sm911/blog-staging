@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T12:31:00-04:00",
+  "updated": "2026-09-20T12:32:00-04:00",
   "drafts": [
     {
       "id": "cyber-insurance-renewal-banks-cpa-sep-2026",
@@ -21,11 +21,11 @@
       "path": "blogs/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
       "targetBlog": "compliance-blog",
       "category": "us-state",
-      "status": "promoted",
+      "status": "review",
       "stagedAt": "2026-09-20",
-      "decidedAt": "2026-09-20 (America/New_York)",
-      "decision": "approved",
-      "summary": "Already approved and published to compliance-blog.",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "Byline fix: remove \u201cUS State\u201d from byline. Approve to sync live.",
       "productionUrl": "https://sm911.github.io/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
       "rejectReason": null
     }
