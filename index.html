@@ -6,90 +6,227 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Security Medic — Blog Staging (Review Only)</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #2d3748; background-color: #f7fafc; }
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .hero h1 { font-size: 2.2em; max-width: 900px; margin: 0 auto 0.5rem; line-height: 1.3; }
-        .hero .subtitle { font-size: 1.1em; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-        .byline { max-width: 800px; margin: 1.5rem auto; padding: 0 2rem; color: #718096; font-size: 0.95em; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; }
-        .content { max-width: 800px; margin: 0 auto; padding: 2rem; }
-        h2 { color: #667eea; font-size: 1.6em; margin: 2.5em 0 1em; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; }
-        p { margin-bottom: 1.5em; }
-        .callout { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1.5em; margin: 2em 0; border-radius: 0 4px 4px 0; }
-        .meta-box { background: #edf2f7; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.5rem auto; max-width: 800px; font-size: 0.95em; color: #4a5568; }
-        .meta-box strong { color: #667eea; }
-        table { width: 100%; border-collapse: collapse; margin: 1.5em 0; }
-        th, td { border: 1px solid #ccc; padding: 0.7em; text-align: left; }
-        th { background: #D5E8F0; }
-        a { color: #667eea; }
-        .status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: 600; }
-        .status.review { background: #fef3c7; color: #92400e; }
-        .status.approved { background: #d1fae5; color: #065f46; }
-        .status.promoted { background: #dbeafe; color: #1e40af; }
-        .wrap { max-width: 960px; margin: 0 auto; padding: 2rem; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #2d3748; background: #f7fafc; }
     .banner { background: #1a202c; color: #f7fafc; padding: 0.75rem 1.5rem; font-size: 0.9em; text-align: center; }
     .banner strong { color: #f6e05e; }
-    .blog-section { margin: 2rem 0; }
-    .blog-section h2 { margin-top: 0; }
-    ul.posts { list-style: none; margin: 0; padding: 0; }
-    ul.posts li { padding: 0.85rem 0; border-bottom: 1px solid #e2e8f0; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: baseline; justify-content: space-between; }
+    .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2.5rem 1.5rem; text-align: center; }
+    .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .hero p { opacity: 0.95; max-width: 640px; margin: 0 auto; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+    .help { background: #edf2f7; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0 2rem; font-size: 0.95em; color: #4a5568; }
+    .help a { color: #667eea; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .card h3 { font-size: 1.15rem; margin-bottom: 0.35rem; color: #1a202c; }
+    .card h3 a { color: #667eea; text-decoration: none; }
+    .card h3 a:hover { text-decoration: underline; }
+    .meta { font-size: 0.9em; color: #718096; margin-bottom: 1rem; }
+    .meta code { background: #edf2f7; padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.9em; }
+    .status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
+    .status.review { background: #fef3c7; color: #92400e; }
+    .status.approved { background: #d1fae5; color: #065f46; }
+    .status.rejected { background: #fee2e2; color: #991b1b; }
+    .status.promoted { background: #dbeafe; color: #1e40af; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-start; margin-top: 0.75rem; }
+    button {
+      border: none; border-radius: 8px; padding: 0.65rem 1.1rem; font-weight: 600; font-size: 0.95em; cursor: pointer;
+    }
+    button.approve { background: #059669; color: white; }
+    button.approve:hover { background: #047857; }
+    button.reject { background: #dc2626; color: white; }
+    button.reject:hover { background: #b91c1c; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .reject-box { width: 100%; margin-top: 0.5rem; }
+    .reject-box label { display: block; font-size: 0.9em; font-weight: 600; margin-bottom: 0.35rem; color: #4a5568; }
+    .reject-box textarea {
+      width: 100%; min-height: 88px; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 8px;
+      font-family: inherit; font-size: 0.95em; resize: vertical;
+    }
+    .reject-box .hint { font-size: 0.85em; color: #718096; margin-top: 0.35rem; }
+    .toast { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 8px; background: #ebf8ff; color: #2c5282; font-size: 0.9em; }
+    .toast.show { display: block; }
+    .empty { text-align: center; padding: 2.5rem 1rem; color: #718096; }
+    h2 { color: #667eea; font-size: 1.25rem; margin: 2rem 0 0.75rem; border-bottom: 2px solid #667eea; padding-bottom: 0.25rem; }
+    footer { margin: 3rem 0 2rem; font-size: 0.85em; color: #718096; text-align: center; }
   </style>
 </head>
 <body>
   <div class="banner"><strong>STAGING / REVIEW ONLY</strong> — not linked from public sites · noindex</div>
   <div class="hero">
     <h1>Blog Staging</h1>
-    <p class="subtitle">Drafts for review. Approve → we log time + destination blog → promote to production.</p>
+    <p>Approve publishes to the target blog’s main. Reject with notes — I’ll revise and resubmit.</p>
   </div>
   <div class="wrap">
-    <div class="meta-box">
-      <strong>How this works:</strong> New posts appear below under the target blog and category.
-      Say <em>approve</em> or <em>promote</em> with any edits. We record approval time in
-      <a href="approvals/APPROVALS.md">approvals/APPROVALS.md</a>, then publish to the correct production blog.
+    <div class="help">
+      <strong>How buttons work:</strong> Approve / Reject open a pre-filled GitHub issue on
+      <a href="https://github.com/sm911/blog-staging/issues" target="_blank" rel="noopener">sm911/blog-staging</a>.
+      Click <em>Submit new issue</em> once — that queues SecurityMedic Content to publish (approve) or revise (reject).
+      For instant action you can also paste the same decision in this chat.
+      Approval times are logged in <a href="approvals/APPROVALS.md">approvals/APPROVALS.md</a>.
     </div>
 
-    <div class="blog-section">
-      <h2>Compliance Blog</h2>
-      <p>Production: <a href="https://sm911.github.io/compliance-blog/">sm911.github.io/compliance-blog</a></p>
-      <ul class="posts">
-        <li>
-          <span><a href="blogs/compliance-blog/us-state/README.html">us-state/</a> — category staging folder</span>
-          <span class="status review">ready for drafts</span>
-        </li>
-      </ul>
-    </div>
+    <h2>Awaiting review</h2>
+    <div id="review-list"><div class="empty">Loading drafts…</div></div>
 
-    <div class="blog-section">
-      <h2>Leadership Blog</h2>
-      <p>Production: <a href="https://sm911.github.io/leadership-blog/">sm911.github.io/leadership-blog</a></p>
-      <ul class="posts"><li><span>No drafts yet</span><span class="status review">empty</span></li></ul>
-    </div>
+    <h2>Recently decided</h2>
+    <div id="decided-list"><div class="empty">None yet.</div></div>
 
-    <div class="blog-section">
-      <h2>Data Security Blog</h2>
-      <p>Production: <a href="https://data-security.blog/">data-security.blog</a></p>
-      <ul class="posts"><li><span>No drafts yet</span><span class="status review">empty</span></li></ul>
-    </div>
-
-    <div class="blog-section">
-      <h2>Data Privacy Blog</h2>
-      <p>Production: <a href="https://sm911.github.io/data-privacy-blog/">sm911.github.io/data-privacy-blog</a></p>
-      <ul class="posts"><li><span>No drafts yet</span><span class="status review">empty</span></li></ul>
-    </div>
-
-    <div class="blog-section">
-      <h2>Cloud Architecture Blog</h2>
-      <p>Production: <a href="https://cloud-architecture.blog/">cloud-architecture.blog</a></p>
-      <ul class="posts"><li><span>No drafts yet</span><span class="status review">empty</span></li></ul>
-    </div>
-
-    <div class="blog-section">
-      <h2>NIST CSF 2.0 (CFS-2.0)</h2>
-      <p>Production: <a href="https://sm911.github.io/CFS-2.0/">sm911.github.io/CFS-2.0</a></p>
-      <ul class="posts"><li><span>No drafts yet</span><span class="status review">empty</span></li></ul>
-    </div>
-
-    <p style="margin-top:3rem;color:#718096;font-size:0.9em;">Bookmark this URL — it is intentionally unlinked from marketing sites and production blog nav.</p>
+    <footer>Bookmark this page. Staging URLs are intentionally unlisted.</footer>
   </div>
+
+  <script>
+  const REPO_ISSUES = 'https://github.com/sm911/blog-staging/issues/new';
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function statusBadge(status) {
+    const s = status || 'review';
+    return '<span class="status ' + esc(s) + '">' + esc(s) + '</span>';
+  }
+
+  function cardHtml(d, interactive) {
+    const path = d.path || '';
+    const title = d.title || path;
+    const href = path;
+    let rejectUi = '';
+    let buttons = '';
+    if (interactive && (d.status === 'review' || !d.status)) {
+      rejectUi = `
+        <div class="reject-box">
+          <label for="reason-${esc(d.id)}">Reject reason / how to get to approval</label>
+          <textarea id="reason-${esc(d.id)}" placeholder="What’s wrong, and what would make this approvable?"></textarea>
+          <div class="hint">Required for Reject. Be specific — I’ll revise and resubmit.</div>
+        </div>`;
+      buttons = `
+        <div class="actions">
+          <button type="button" class="approve" data-action="approve" data-id="${esc(d.id)}">Approve &amp; publish</button>
+          <button type="button" class="reject" data-action="reject" data-id="${esc(d.id)}">Reject</button>
+        </div>
+        <div class="toast" id="toast-${esc(d.id)}"></div>`;
+    }
+    return `
+      <div class="card" data-id="${esc(d.id)}">
+        <h3><a href="${esc(href)}" target="_blank" rel="noopener">${esc(title)}</a></h3>
+        <div class="meta">
+          ${statusBadge(d.status)}
+          · Target: <code>${esc(d.targetBlog)}</code>
+          · Category: <code>${esc(d.category)}</code>
+          · Staged: ${esc(d.stagedAt || '—')}
+        </div>
+        ${d.summary ? '<p>' + esc(d.summary) + '</p>' : ''}
+        ${rejectUi}
+        ${buttons}
+      </div>`;
+  }
+
+  function openIssue(title, body) {
+    const url = REPO_ISSUES + '?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+    window.open(url, '_blank', 'noopener');
+  }
+
+  function buildApproveBody(d) {
+    return [
+      '## STAGING APPROVE',
+      '',
+      'Please publish this draft to production.',
+      '',
+      '- **draft_id:** ' + d.id,
+      '- **title:** ' + d.title,
+      '- **path:** ' + d.path,
+      '- **promote_to_blog:** ' + d.targetBlog,
+      '- **category:** ' + d.category,
+      '- **approved_at_hint:** (fill when processing — America/New_York)',
+      '',
+      '### Agent instructions',
+      '1. Log approval in approvals/APPROVALS.md with America/New_York timestamp.',
+      '2. Promote HTML to ' + d.targetBlog + ' main under category ' + d.category + '.',
+      '3. Update production index if that blog uses one.',
+      '4. Update drafts/manifest.json status to promoted; note production URL.',
+      '5. Tell Jim the live URL.',
+      '',
+      '_Submitted from staging UI_'
+    ].join('\n');
+  }
+
+  function buildRejectBody(d, reason) {
+    return [
+      '## STAGING REJECT',
+      '',
+      'Please revise and resubmit — do not publish.',
+      '',
+      '- **draft_id:** ' + d.id,
+      '- **title:** ' + d.title,
+      '- **path:** ' + d.path,
+      '- **target_blog:** ' + d.targetBlog,
+      '- **category:** ' + d.category,
+      '',
+      '### Rejection reason / path to approval',
+      reason,
+      '',
+      '### Agent instructions',
+      '1. Log rejection notes in approvals/APPROVALS.md (or a REJECTED section).',
+      '2. Improve the draft per the reason.',
+      '3. Resubmit on staging (update HTML + manifest status back to review).',
+      '4. Tell Jim the revised staging URL.',
+      '',
+      '_Submitted from staging UI_'
+    ].join('\n');
+  }
+
+  async function load() {
+    const res = await fetch('drafts/manifest.json?ts=' + Date.now());
+    const data = await res.json();
+    const drafts = data.drafts || [];
+    const review = drafts.filter(d => !d.status || d.status === 'review');
+    const decided = drafts.filter(d => d.status && d.status !== 'review');
+
+    const reviewEl = document.getElementById('review-list');
+    const decidedEl = document.getElementById('decided-list');
+
+    if (!review.length) {
+      reviewEl.innerHTML = '<div class="empty">No drafts awaiting review. New posts will show Approve / Reject here.</div>';
+    } else {
+      reviewEl.innerHTML = review.map(d => cardHtml(d, true)).join('');
+    }
+
+    if (!decided.length) {
+      decidedEl.innerHTML = '<div class="empty">None yet.</div>';
+    } else {
+      decidedEl.innerHTML = decided.map(d => cardHtml(d, false)).join('');
+    }
+
+    reviewEl.querySelectorAll('button[data-action]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const d = drafts.find(x => x.id === id);
+        if (!d) return;
+        const action = btn.getAttribute('data-action');
+        const toast = document.getElementById('toast-' + id);
+        if (action === 'approve') {
+          openIssue('[STAGING-APPROVE] ' + d.id + ' → ' + d.targetBlog, buildApproveBody(d));
+          toast.textContent = 'GitHub issue form opened. Click “Submit new issue” to queue publish to ' + d.targetBlog + '.';
+          toast.classList.add('show');
+        } else {
+          const reason = (document.getElementById('reason-' + id) || {}).value || '';
+          if (!reason.trim()) {
+            toast.textContent = 'Add a reject reason (and what would drive approval) before rejecting.';
+            toast.classList.add('show');
+            return;
+          }
+          openIssue('[STAGING-REJECT] ' + d.id, buildRejectBody(d, reason.trim()));
+          toast.textContent = 'GitHub issue form opened with your notes. Click “Submit new issue” — I’ll revise and resubmit.';
+          toast.classList.add('show');
+        }
+      });
+    });
+  }
+
+  load().catch(err => {
+    document.getElementById('review-list').innerHTML =
+      '<div class="empty">Could not load drafts/manifest.json (' + esc(err.message) + ')</div>';
+  });
+  </script>
 </body>
 </html>

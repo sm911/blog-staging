@@ -1,13 +1,9 @@
 # Staging Approvals Log
 
-Record every approval before promoting to a production blog.
+| Event at (America/New_York) | Event | Draft id / path | Promote to blog | Category | Notes / reject reason | Promoted at | Production URL |
+|---|---|---|---|---|---|---|---|
+| — | — | — | — | — | Log starts empty | — | — |
 
-| Approved at (America/New_York) | Draft path | Promote to blog | Category | Notes | Promoted at | Production URL |
-|---|---|---|---|---|---|---|
-| — | — | — | — | Log starts empty; first promote after this staging site | — | — |
-
-## How to log
-When Jim says **approve** / **promote**:
-1. Add a row with approval timestamp.
-2. Promote the HTML to the named blog repo + category.
-3. Fill **Promoted at** and **Production URL**.
+## Convention
+- **approve** — from staging UI / `[STAGING-APPROVE]` issue / chat “approve”
+- **reject** — from staging UI with reason / `[STAGING-REJECT]` issue — agent revises and resubmits
