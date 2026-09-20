@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T12:25:00-04:00",
+  "updated": "2026-09-20T12:31:00-04:00",
   "drafts": [
     {
       "id": "cyber-insurance-renewal-banks-cpa-sep-2026",
@@ -7,11 +7,11 @@
       "path": "blogs/compliance-blog/us-state/cyber-insurance-renewal-banks-cpa-sep-2026.html",
       "targetBlog": "compliance-blog",
       "category": "us-state",
-      "status": "promoted",
+      "status": "review",
       "stagedAt": "2026-09-20",
-      "decidedAt": "2026-09-20 12:25 America/New_York",
-      "decision": "approved",
-      "summary": "Approved by Jim and promoted to compliance-blog main.",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "Byline fix: remove \u201cUS State\u201d category from byline. Approve on staging to push to live compliance-blog.",
       "productionUrl": "https://sm911.github.io/compliance-blog/us-state/cyber-insurance-renewal-banks-cpa-sep-2026.html",
       "rejectReason": null
     },
