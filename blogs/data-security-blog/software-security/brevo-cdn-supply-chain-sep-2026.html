@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Third-Party Scripts Broke ~100K Sites: What Brevo’s Sep 2026 CDN Attack Means for SMB Defenders</title>
+<meta name="description" content="On September 14, 2026, attackers used a compromised Cloudflare API key at Brevo to inject malicious edge Workers for ~5.5 hours. What SMB defenders should do about CDN, third-party scripts, and ICT SCRM."/>
+<meta name="author" content="Jim Venuto"/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="canonical" href="https://sm911.github.io/data-security-blog/software-security/brevo-cdn-supply-chain-sep-2026.html"/>
+<meta property="og:title" content="Third-Party Scripts Broke ~100K Sites: What Brevo’s Sep 2026 CDN Attack Means for SMB Defenders"/>
+<meta property="og:description" content="Brevo’s Sep 14, 2026 CDN/edge Worker injection and what SMB defenders should change about third-party scripts and vendor SCRM."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://sm911.github.io/data-security-blog/software-security/brevo-cdn-supply-chain-sep-2026.html"/>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f5f0e8;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 48px 52px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+/* Top nav */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-brand {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.site-brand:hover { color: #c0553a; }
+
+.back-link {
+  font-size: 0.85rem;
+  color: #6b7f6b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover { color: #c0553a; text-decoration: underline; }
+
+/* Header */
+header { margin-bottom: 32px; }
+
+.category-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c0553a;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2.2em;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  color: #1a1a2e;
+}
+
+.meta {
+  color: #64748b;
+  font-size: 0.9em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  align-items: center;
+}
+
+.meta strong { color: #1a1a2e; }
+
+/* Stat boxes */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 32px 0;
+}
+
+.stat-box {
+  background: #1a1a2e;
+  color: #f5f0e8;
+  border-radius: 8px;
+  padding: 18px 14px 16px;
+  text-align: center;
+}
+
+.stat-box .stat-num {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c0553a;
+  line-height: 1.1;
+  display: block;
+}
+
+.stat-box .stat-unit {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.stat-box .stat-label {
+  font-size: 0.72rem;
+  color: #d4cfc7;
+  line-height: 1.3;
+}
+
+/* Content */
+.content {
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #1a1a2e;
+}
+
+.content h2 {
+  font-family: 'Georgia', serif;
+  margin-top: 40px;
+  margin-bottom: 14px;
+  color: #1a1a2e;
+  font-size: 1.45em;
+  line-height: 1.3;
+  border-left: 4px solid #c0553a;
+  padding-left: 14px;
+}
+
+.content h3 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.content p { margin-bottom: 18px; }
+
+.content ul, .content ol {
+  margin-left: 28px;
+  margin-bottom: 18px;
+}
+
+.content li { margin-bottom: 8px; }
+
+.content a { color: #c0553a; text-decoration: underline; }
+.content a:hover { color: #a0442e; }
+
+.content code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.content strong { color: #1a1a2e; }
+
+/* Alert / callout boxes */
+.alert-box {
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+
+.alert-box.critical {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+}
+
+.alert-box.critical strong { color: #991b1b; }
+
+.alert-box.warning {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #d97706;
+}
+
+.alert-box.warning strong { color: #92400e; }
+
+.alert-box.info {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+}
+
+.alert-box.info strong { color: #14532d; }
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+}
+
+.checklist li {
+  padding: 8px 0 8px 32px;
+  position: relative;
+  border-bottom: 1px solid #f0ede8;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 4px;
+  color: #6b7f6b;
+  font-weight: 700;
+}
+
+/* Pull quote */
+.pull-quote {
+  border-left: 4px solid #c0553a;
+  padding: 16px 24px;
+  margin: 32px 0;
+  background: #fdf8f4;
+  font-family: 'Georgia', serif;
+  font-size: 1.15em;
+  color: #2c3e50;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* CTA box */
+.cta-box {
+  background: #1a1a2e;
+  color: #f5f0e8;
+  border-radius: 8px;
+  padding: 32px;
+  margin: 40px 0 28px;
+  text-align: center;
+}
+
+.cta-box h3 {
+  font-family: 'Georgia', serif;
+  font-size: 1.3em;
+  color: #f5f0e8;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.cta-box p {
+  color: #d4cfc7;
+  font-size: 0.95em;
+  margin-bottom: 20px;
+}
+
+.cta-box .cta-btn {
+  display: inline-block;
+  background: #c0553a;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+
+.cta-box .cta-btn:hover { background: #a0442e; color: #ffffff; }
+
+/* Sources */
+.sources {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.85em;
+  color: #64748b;
+}
+
+.sources h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.sources ol {
+  margin-left: 20px;
+}
+
+.sources li { margin-bottom: 6px; }
+
+.sources a { color: #6b7f6b; }
+.sources a:hover { color: #c0553a; }
+
+/* Footer */
+footer {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 2px solid #e0e0e0;
+  font-size: 0.85em;
+  color: #64748b;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+footer a { color: #6b7f6b; text-decoration: none; }
+footer a:hover { color: #c0553a; text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container { padding: 28px 22px; }
+  h1 { font-size: 1.7em; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+<style>
+.staging-note { background: #1a1a2e; color: #f6e05e; text-align: center; padding: 0.5rem; font-size: 0.85em; margin: -20px -20px 20px; }
+</style>
+</head>
+<body>
+<div class="staging-note">STAGING DRAFT — noindex; Approve before promoting to data-security-blog/software-security</div>
+<div class="container">
+
+  <nav class="top-nav">
+    <a class="site-brand" href="https://securitymedic.com">Security Medic Consulting</a>
+    <a class="back-link" href="https://sm911.github.io/data-security-blog/">&#8592; All Blogs</a>
+  </nav>
+
+  <header>
+    <div class="category-label">Software Security</div>
+    <h1>Third-Party Scripts Broke ~100K Sites: What Brevo’s Sep 2026 CDN Attack Means for SMB Defenders</h1>
+    <div class="meta">
+      <span>By <strong>Jim Venuto</strong></span>
+      <span>September 21, 2026</span>
+      <span>9 min read</span>
+    </div>
+  </header>
+
+  <div class="stat-grid">
+    <div class="stat-box">
+      <span class="stat-num">5.5h</span>
+      <span class="stat-unit">window</span>
+      <div class="stat-label">Impact window (UTC) on Sep 14, 2026 per Brevo post-mortem</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">~100K</span>
+      <span class="stat-unit">sites</span>
+      <div class="stat-label">Customer sites estimated affected via embedded widgets (trade coverage)</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">Edge</span>
+      <span class="stat-unit">not origin</span>
+      <div class="stat-label">Compromise lived in CDN/Worker config — origin apps stayed clean</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">API</span>
+      <span class="stat-unit">key</span>
+      <div class="stat-label">Long-lived Cloudflare API key in source code = root cause</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <p>On <strong>September 14, 2026</strong>, attackers used a compromised Cloudflare API key at marketing vendor <strong>Brevo</strong> (formerly Sendinblue) to deploy a malicious edge Worker. For roughly five and a half hours, that Worker injected a malicious script into Brevo-owned pages and into JavaScript files that customers embed on their own websites. Visitors saw ClickFix-style social-engineering pages. On WordPress sites with a logged-in administrator, the script also attempted silent plugin backdoor installs.</p>
+
+    <p>Here is the part that should change how Hudson Valley and regional SMBs think about “just a marketing form”: <strong>origin applications were clean</strong>. The compromise lived in CDN and edge configuration — and in a long-lived cloud API key that should never have sat in source code with full-account permissions.</p>
+
+    <p>I help owners and MSP partners inventory what actually loads on public sites. “We only embed a newsletter widget” is still a software supply-chain dependency. Brevo’s own post-mortem is unusually clear. Pair it with CISA’s ICT Supply Chain Risk Management (SCRM) resources for small and medium-sized businesses, and you have a practical follow-through list — not just another incident headline.</p>
+
+    <div class="alert-box critical">
+      <strong>Primary facts (Brevo post-mortem):</strong> Impact window approximately 15:01–20:30 UTC on 14 September 2026 (~5h29). Malicious Cloudflare Worker rewrote responses at the edge. ClickFix social engineering on selected visitors. WordPress admin plugin-install attempts where Brevo widgets loaded for logged-in admins. <code>app.brevo.com</code>, the Brevo API, email sending, and customer account data held in Brevo were <em>not</em> affected at origin.
+    </div>
+
+    <h2>What Actually Happened</h2>
+
+    <p>According to Brevo’s official write-up, an attacker obtained a long-lived Cloudflare API key with full account permissions that had been stored in application source code. With that key they could create Workers, routes, and DNS records on Brevo’s zones without triggering an alert. The Worker rewrote responses at the CDN edge and stripped security headers such as Content-Security-Policy, so integrity checks on origin files never saw a change.</p>
+
+    <p>Timeline highlights from the post-mortem (UTC, 14 September): attacker activity began mid-afternoon; broad impact on brevo.com from 15:01; embedded JavaScript files and sibforms.com joined the injection path later; the malicious Worker and routes were removed by 20:30; credentials were revoked; edge caches purged. Brevo states investigation found no customer-facing injection before that day, though the key may have been misused earlier without content injection.</p>
+
+    <p>Independent technical coverage (including BleepingComputer) described the ClickFix lure — fake “verify you are human” instructions that push victims to paste and run a clipboard command — and estimated on the order of ~100,000 customer sites loading affected embeds. Treat that figure as trade-press estimate; the control lesson does not depend on the exact count.</p>
+
+    <div class="pull-quote">
+      Your public site’s security is only as trustworthy as every third-party script, tag manager, and CDN path you load — including the ones “marketing owns.”
+    </div>
+
+    <h2>Why This Is an SMB Problem (Not Only an Enterprise CDN Problem)</h2>
+
+    <p>Most small firms do not run their own Cloudflare Workers estate. They <em>do</em> paste form widgets, chat SDKs, analytics tags, and email-capture scripts into WordPress, Squarespace, and marketing landing pages. Those scripts often load on pages where staff are logged into admin consoles. That is exactly the path Brevo described for silent WordPress plugin attempts.</p>
+
+    <p>Three structural lessons for defenders:</p>
+
+    <ul>
+      <li><strong>Edge ≠ origin.</strong> Clean application servers do not mean clean browser experiences. Integrity monitoring that only watches git repos will miss Worker and route changes.</li>
+      <li><strong>Long-lived cloud API keys are crown jewels.</strong> Full-account tokens in source code are a design failure. Short-lived, narrowly scoped credentials with vault storage and audit alerts are the baseline — Brevo’s own remediation list says as much.</li>
+      <li><strong>“Marketing embed” is SCRM.</strong> Vendor questionnaires that stop at SOC 2 PDFs and never ask about CDN/API-key hygiene, change alerting, or customer-facing script integrity are incomplete.</li>
+    </ul>
+
+    <h2>Map It to CISA ICT SCRM for SMBs</h2>
+
+    <p>CISA’s <strong>ICT SCRM Small and Medium-Sized Businesses Resource Hub</strong> exists for this moment: practical vendor-vetting templates and supply-chain questions sized for organizations without a dedicated third-party risk team. You do not need an enterprise GRC platform to ask:</p>
+
+    <ul class="checklist">
+      <li>Where do customer-facing scripts and widgets load from (origin vs CDN vs third-party domains)?</li>
+      <li>How does the vendor protect cloud/CDN API keys — rotation, scope, vaulting, no secrets in source?</li>
+      <li>What alerts fire when Workers, routes, DNS, or edge config change?</li>
+      <li>How will they notify you if embedded assets are poisoned — and within what clock?</li>
+      <li>Can we apply Subresource Integrity (SRI) or a strict Content-Security-Policy for scripts we control?</li>
+    </ul>
+
+    <p>Keep CISA’s Known Exploited Vulnerabilities (KEV) catalog in the same operational rhythm for <em>your</em> internet-facing stack. SCRM does not replace patch prioritization; it sits alongside it. A poisoned third-party script can bypass a fully patched origin.</p>
+
+    <div class="alert-box warning">
+      <strong>This week’s action:</strong> Inventory every third-party <code>&lt;script&gt;</code>, tag manager, and form widget on your public sites. Note which ones load on admin-authenticated pages. If any WordPress administrator browsed an affected Brevo embed on September 14 while logged in, check for unexpected plugins, remove anything installed that day, and rotate admin passwords. Add CDN/API-key hygiene and edge-change notification to your vendor questionnaire. Apply CSP / Subresource Integrity where feasible.
+    </div>
+
+    <h2>A Practical 90-Minute Drill for Owners and MSPs</h2>
+
+    <ol>
+      <li><strong>Export the script inventory</strong> from your CMS, Google Tag Manager (or equivalent), and homepage view-source. Name an owner for each embed.</li>
+      <li><strong>Split “public only” vs “loads when staff are logged in.”</strong> Admin-context scripts are higher risk — Brevo’s WordPress path is the proof.</li>
+      <li><strong>Confirm Brevo / similar marketing SDKs</strong> are current and that you followed vendor customer-action guidance if you were in scope on Sep 14.</li>
+      <li><strong>Ask your MSP or developer</strong> whether CSP and SRI are possible for first-party scripts — and what blocks them today.</li>
+      <li><strong>Update the vendor questionnaire</strong> with one page on edge/CDN key hygiene and incident notification for customer-facing scripts.</li>
+    </ol>
+
+    <div class="alert-box info">
+      <strong>MSP vs. CISO function:</strong> Your MSP can help enumerate tags and harden WordPress. Your CISO (or fractional CISO) function owns the SCRM questions, residual-risk acceptance when a marketing team insists on an unverified widget, and the board/owner narrative when a vendor incident hits the news. Mixing those roles is how “we only embed a form” becomes an unexplained breach of customer trust.
+    </div>
+
+    <h2>What Brevo Says They Are Changing — And What You Should Copy</h2>
+
+    <p>Brevo’s remediation list is a useful checklist for any SaaS or MSP that holds cloud edge credentials: vaulted secrets with rotation; alerts on Worker/route/DNS/account-access audit events; log streaming to security monitoring; integrity protection for versioned embeds; and regular external scanning for injected content. If your own product or agency publishes scripts that other sites load, treat that list as homework — not optional reading.</p>
+
+    <p>For schools and local governments with public sites full of calendar widgets, chat tools, and form builders, run the same inventory. A town homepage that loads five marketing tags is five supply-chain edges. The Brevo incident is one vendor’s day; the pattern is industry-wide.</p>
+
+    <div class="cta-box">
+      <h3>Need Help Turning This Into a Defensible SCRM Habit?</h3>
+      <p>CyberIntelPro and Security Medic help Hudson Valley and regional SMBs inventory third-party scripts, harden detection and response around vendor incidents, and build right-sized ICT SCRM questions — without pretending you have an enterprise third-party risk department.</p>
+      <a class="cta-btn" href="https://cyberintelpro.com">Talk with CyberIntelPro</a>
+    </div>
+
+    <div class="sources">
+      <h4>Sources and References</h4>
+      <ol>
+        <li>Brevo Status. <em>Post-mortem: malicious “ClickFix” script served via Brevo’s Cloudflare account</em> (incident write-up; impact 14 September 2026). <a href="https://status.brevo.com/incidents/01M2QBC4EZ24ZACW6SWQYVW8N3/write-up" target="_blank" rel="noopener noreferrer">status.brevo.com</a> (accessed September 21, 2026).</li>
+        <li>BleepingComputer. <em>Brevo supply chain attack injected ClickFix scripts on customer sites</em>. <a href="https://www.bleepingcomputer.com/news/security/brevo-supply-chain-attack-injected-clickfix-scripts-on-customer-sites/" target="_blank" rel="noopener noreferrer">bleepingcomputer.com</a> (accessed September 21, 2026).</li>
+        <li>Cybersecurity and Infrastructure Security Agency (CISA). <em>ICT SCRM for Small and Medium-Sized Businesses Resource Hub</em>. <a href="https://www.cisa.gov/ict-scrm-small-and-medium-sized-businesses-resource-hub" target="_blank" rel="noopener noreferrer">cisa.gov</a> (accessed September 21, 2026).</li>
+        <li>CISA. <em>Known Exploited Vulnerabilities Catalog</em>. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">cisa.gov</a> (accessed September 21, 2026).</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Security Medic Consulting LLC &middot; Poughkeepsie, NY</span>
+    <a href="https://sm911.github.io/data-security-blog/">&#8592; All Blogs</a>
+  </footer>
+
+</div>
+</body>
+</html>

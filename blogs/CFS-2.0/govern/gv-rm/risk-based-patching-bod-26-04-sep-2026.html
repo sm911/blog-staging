@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk-Based Patching the NIST CSF 2.0 Way: Lessons from CISA BOD 26-04 for SMBs</title>
+    <meta name="description" content="How SMBs can adapt CISA BOD 26-04’s risk-based security-update prioritization to NIST CSF 2.0 Govern (GV.RM), Identify, and Protect — without being a federal agency.">
+    <meta name="keywords" content="NIST CSF 2.0, CISA BOD 26-04, risk-based patching, GV.RM, vulnerability management, KEV, SMB cybersecurity, fractional CISO, Hudson Valley">
+    <meta name="author" content="Jim Venuto">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://sm911.github.io/CFS-2.0/govern/gv-rm/risk-based-patching-bod-26-04-sep-2026.html"/>
+    <meta property="og:title" content="Risk-Based Patching the NIST CSF 2.0 Way: Lessons from CISA BOD 26-04 for SMBs">
+    <meta property="og:description" content="Map CISA BOD 26-04’s public exposure × KEV × exploit automation × impact model to CSF 2.0 GV.RM, Identify, and Protect for Hudson Valley SMBs.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sm911.github.io/CFS-2.0/govern/gv-rm/risk-based-patching-bod-26-04-sep-2026.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.85;
+            color: #2d3436;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: white;
+            padding: 65px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+        }
+
+        /* Back Navigation */
+        .back-nav {
+            margin-bottom: 25px;
+        }
+
+        .back-nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .back-nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #1a1a2e;
+            font-size: 2.6em;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.35em;
+            color: #636e72;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .metadata {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .metadata .author {
+            font-weight: 600;
+            color: #0f3460;
+        }
+
+        .read-time {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        /* Key Takeaways Box */
+        .key-takeaways {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 30px 35px;
+            border-radius: 12px;
+            margin: 30px 0 40px 0;
+        }
+
+        .key-takeaways h3 {
+            color: #ffd700;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 18px 0;
+        }
+
+        .key-takeaways ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .key-takeaways li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .key-takeaways li:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-takeaways li::before {
+            content: "\2192";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .key-takeaways strong {
+            color: #ffd700;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: #f8f9fa;
+            padding: 30px 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #0f3460;
+            font-size: 1.15em;
+            margin: 0 0 18px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+            color: #0f3460;
+        }
+
+        h2 {
+            color: #0f3460;
+            font-size: 1.75em;
+            margin-top: 55px;
+            margin-bottom: 22px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e94560;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2d3436;
+            font-size: 1.35em;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 22px;
+            font-size: 1.1em;
+        }
+
+        .hook {
+            font-size: 1.35em;
+            color: #2d3436;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .hook-highlight {
+            background: linear-gradient(180deg, transparent 65%, #ffeaa7 65%);
+            padding: 0 3px;
+        }
+
+        strong {
+            color: #0f3460;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 14px;
+            line-height: 1.75;
+            font-size: 1.05em;
+        }
+
+        /* Hero Section */
+        .hero-scenario {
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 16px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scenario::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            border-radius: 0 0 0 100%;
+            opacity: 0.8;
+        }
+
+        .hero-scenario p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.15em;
+            margin-bottom: 18px;
+        }
+
+        .hero-scenario p:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-scenario strong {
+            color: #ffd700;
+        }
+
+        .hero-scenario .scenario-time {
+            font-family: 'Courier New', monospace;
+            color: #ffeaa7;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .stat-box .number {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #e94560;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            color: #636e72;
+            line-height: 1.4;
+        }
+
+        /* Insight Cards */
+        .insight-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            border-left: 5px solid #667eea;
+        }
+
+        .insight-card.danger {
+            border-left-color: #e94560;
+        }
+
+        .insight-card.warning {
+            border-left-color: #f39c12;
+        }
+
+        .insight-card.success {
+            border-left-color: #00b894;
+        }
+
+        .insight-card h4 {
+            font-size: 1.25em;
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .insight-card p {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .insight-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Quote Block */
+        .pullquote {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #0f3460;
+            text-align: center;
+            padding: 40px 50px;
+            margin: 45px 0;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .pullquote::before {
+            content: open-quote;
+            font-size: 4em;
+            color: #e94560;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        /* Then/Now Comparison */
+        .then-now {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .then-now .then, .then-now .now {
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .then-now .then {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+        }
+
+        .then-now .now {
+            background: linear-gradient(135deg, #ffe6e9 0%, #fff5f5 100%);
+            border: 2px solid #e94560;
+        }
+
+        .then-now h5 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .then-now .then h5 {
+            color: #636e72;
+        }
+
+        .then-now .now h5 {
+            color: #e94560;
+        }
+
+        .then-now p {
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        .then-now ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .then-now li {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .then-now li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Framework Grid */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .framework-item {
+            padding: 25px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .framework-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .framework-item .fw-icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+
+        .framework-item h4 {
+            color: #0f3460;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .framework-item p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+            color: #636e72;
+        }
+
+        /* OWASP / Data Table */
+        .owasp-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 35px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .owasp-table thead {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+        }
+
+        .owasp-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .owasp-table td {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1em;
+        }
+
+        .owasp-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .owasp-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .owasp-table .risk-name {
+            font-weight: 600;
+            color: #e94560;
+        }
+
+        /* CSF Badges */
+        .csf-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: white;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .csf-badge.gv { background: #667eea; }
+        .csf-badge.id { background: #0f3460; }
+        .csf-badge.pr { background: #16a085; }
+        .csf-badge.de { background: #e67e22; }
+        .csf-badge.rs { background: #e74c3c; }
+        .csf-badge.rc { background: #9b59b6; }
+
+        /* Self Assessment */
+        .assessment-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+        }
+
+        .assessment-box h3 {
+            margin-top: 0;
+            color: #0f3460;
+            margin-bottom: 25px;
+        }
+
+        .assessment-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .assessment-item:last-child {
+            border-bottom: none;
+        }
+
+        .assessment-item .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #0f3460;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .assessment-item p {
+            margin-bottom: 0;
+            font-size: 1.05em;
+        }
+
+        /* Series Navigation */
+        .series-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 50px 0 40px 0;
+            padding-top: 40px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .series-nav a {
+            display: block;
+            padding: 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .series-nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .series-nav .nav-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #636e72;
+            margin-bottom: 8px;
+        }
+
+        .series-nav .nav-title {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #0f3460;
+            line-height: 1.4;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 55px;
+            border-radius: 16px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.35);
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2em;
+            margin: 0 0 15px 0;
+            border: none;
+            padding: 0;
+        }
+
+        .cta-section .lead {
+            font-size: 1.25em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-offer {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            border: 2px solid rgba(255,255,255,0.25);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-offer .offer-badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #2d3436;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-offer h3 {
+            color: white;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .cta-offer p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            display: inline-block;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-buttons a.primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-buttons a.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-buttons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-tagline {
+            margin-top: 30px;
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 1.9em;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .then-now {
+                grid-template-columns: 1fr;
+            }
+
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .series-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .pullquote {
+                font-size: 1.2em;
+                padding: 30px 20px;
+            }
+
+            .cta-section {
+                padding: 35px 25px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Mobile table responsiveness */
+            .owasp-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .owasp-table th,
+            .owasp-table td {
+                padding: 15px 12px;
+                font-size: 0.95em;
+            }
+
+            .owasp-table th:first-child,
+            .owasp-table td:first-child {
+                min-width: 120px;
+            }
+
+            .owasp-table th:last-child,
+            .owasp-table td:last-child {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Back to Hub -->
+        <div class="back-nav">
+            <a href="../../index.html">&larr; Back to Blog Hub</a>
+        </div>
+
+        <h1>Risk-Based Patching the NIST CSF 2.0 Way: Lessons from CISA BOD 26-04 for SMBs</h1>
+        <p class="subtitle">How to turn endless vuln-scanner noise into a Govern-owned remediation SLA your MSP and board can live with</p>
+
+        <div class="metadata">
+            <span><span class="author">Jim Venuto</span></span>
+            <span>September 21, 2026</span>
+            <span class="read-time">~10 min read</span>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="key-takeaways">
+            <h3>Key Takeaways</h3>
+            <ul>
+                <li>CISA <strong>BOD 26-04</strong> (June 10, 2026) forces federal agencies to prioritize security updates by risk — SMBs are not bound by BODs, but the same four questions travel well</li>
+                <li>Map those questions to CSF 2.0 <strong>Govern (GV.RM)</strong>, <strong>Identify</strong> (exposure inventory), and <strong>Protect</strong> (vulnerability / platform security)</li>
+                <li>“Patch everything equally” collapses when exploit discovery accelerates — NYDFS’s May 2026 Frontier AI letter underscored that pressure for NY-regulated firms</li>
+                <li>A one-page SLA (KEV on exposed asset → remediate or mitigate in days, not months) beats a 40-page vuln policy nobody reads</li>
+                <li>Agree the SLA with your MSP and one business owner this week — Govern is ownership, not a tool setting</li>
+            </ul>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#scanner-noise">The scanner-noise problem</a></li>
+                <li><a href="#bod-2604">What BOD 26-04 actually requires</a></li>
+                <li><a href="#csf-map">Mapping to CSF 2.0: GV.RM, Identify, Protect</a></li>
+                <li><a href="#nydfs-ai">NY relevance: Frontier AI and faster exploitation</a></li>
+                <li><a href="#smb-sla">A right-sized SMB remediation SLA</a></li>
+                <li><a href="#this-week">Action this week</a></li>
+                <li><a href="#help">Where fractional help fits</a></li>
+            </ol>
+        </div>
+
+        <p class="hook">If your MSP’s weekly report is a wall of “Critical” CVEs and nobody agrees which ones matter by Friday, you do not have a tooling problem. You have a <span class="hook-highlight">risk-strategy</span> problem — and that lives in NIST CSF 2.0’s Govern function.</p>
+
+        <h2 id="scanner-noise">The scanner-noise problem</h2>
+
+        <p>Most SMBs I support in the Hudson Valley — professional services, healthcare practices, manufacturers, community institutions — already scan something. Vulnerability tools are cheap; attention is not. Without an agreed risk appetite for patching, every finding looks urgent, so nothing is. Boards ask “are we patched?” and get a percentage that hides internet-facing KEV exposures sitting past any reasonable SLA.</p>
+
+        <p>NIST’s Cybersecurity Framework 2.0 puts risk management strategy under <strong>Govern</strong> (GV.RM): determine risk appetite and risk tolerance, and use them to prioritize cybersecurity activities.<sup>3</sup> The CSF 2.0 Resource &amp; Overview Guide and SMB Quick Start material reinforce the same idea for smaller organizations: start with outcomes and ownership, not a shopping list of controls.<sup>4</sup></p>
+
+        <div class="insight-card warning">
+            <h4>SMB trigger</h4>
+            <p>Endless vuln-scanner noise, no written remediation SLA with your MSP, and a business owner who only hears about patching after a vendor incident headline — that is the moment to borrow BOD 26-04’s prioritization logic.</p>
+        </div>
+
+        <h2 id="bod-2604">What BOD 26-04 actually requires</h2>
+
+        <p>On June 10, 2026, CISA issued Binding Operational Directive 26-04: <em>Prioritizing Security Updates Based on Risk</em>. Federal civilian executive branch agencies must prioritize remediation using a risk model that weighs public exposure, Known Exploited Vulnerabilities (KEV) catalog status, exploit automation, and technical impact — with remediation timelines that can be as short as three days plus forensic triage in the worst cases.<sup>1</sup></p>
+
+        <p>CISA’s companion implementation guidance walks through how agencies should operationalize that model and when forensic triage is expected.<sup>2</sup> You are almost certainly not a federal agency. Treat the BOD as a free prioritization curriculum, not a compliance mandate.</p>
+
+        <div class="pullquote">Public exposure × KEV status × exploit automation × technical impact — four questions that beat “everything Critical is equal.”</div>
+
+        <p>Those four factors are the heart of the directive. Ask them in order:</p>
+
+        <ul>
+            <li><strong>Is the asset publicly exposed?</strong> Internet-facing beats internal every time for initial triage.</li>
+            <li><strong>Is the CVE on CISA’s KEV catalog?</strong> Known exploitation in the wild collapses “theoretical” into “operational.”</li>
+            <li><strong>Is exploit code automated or trivially weaponized?</strong> Mass scanning changes your calendar.</li>
+            <li><strong>What is the technical impact if exploited?</strong> Remote code execution on an identity provider is not the same as a low-impact info leak on a brochure site.</li>
+        </ul>
+
+        <h2 id="csf-map">Mapping to CSF 2.0: GV.RM, Identify, Protect</h2>
+
+        <p>Here is how I map BOD 26-04 into CSF 2.0 language for SMB programs:</p>
+
+        <div class="framework-grid">
+            <div class="framework-item">
+                <div class="fw-icon"><span class="csf-badge gv">GV</span></div>
+                <h4>Govern — GV.RM</h4>
+                <p>Write risk appetite for patching: which classes of findings get day-level attention vs. weekly ranking. BOD timelines become your SLA language, adjusted for SMB capacity.</p>
+            </div>
+            <div class="framework-item">
+                <div class="fw-icon"><span class="csf-badge id">ID</span></div>
+                <h4>Identify</h4>
+                <p>You cannot answer “public exposure” without an inventory of internet-facing assets and the services they run. Tag the top 20 exposures first; perfection is optional.</p>
+            </div>
+            <div class="framework-item">
+                <div class="fw-icon"><span class="csf-badge pr">PR</span></div>
+                <h4>Protect — PR.PS / vuln mgmt</h4>
+                <p>Platform security and vulnerability management execute the SLA: patch, configure, or mitigate (WAF virtual patch, remove exposure) within the agreed window.</p>
+            </div>
+            <div class="framework-item">
+                <div class="fw-icon"><span class="csf-badge de">DE</span></div>
+                <h4>Detect (supporting)</h4>
+                <p>KEV subscriptions and exploit-intel feeds are Detect inputs that keep Govern’s prioritization honest week to week.</p>
+            </div>
+        </div>
+
+        <p>Notice what this mapping does <em>not</em> do: it does not demand you adopt every federal reporting artifact. It demands that someone owns the risk questions and that Protect work follows that ownership. That is the Govern function CSF 2.0 added for a reason.<sup>3</sup></p>
+
+        <h2 id="nydfs-ai">NY relevance: Frontier AI and faster exploitation</h2>
+
+        <p>For New York–anchored firms — including those watching NYDFS expectations even when Part 500 does not formally apply — the Department’s May 21, 2026 industry letter on heightened cybersecurity risks associated with frontier AI models is useful supporting context.<sup>5</sup> The letter flags AI-accelerated vulnerability discovery and exploitation as a reason to treat patch velocity as a living risk issue, not an annual project.</p>
+
+        <p>I am intentionally <strong>not</strong> restating NYDFS’s separate September risk-assessment guidance here. The Frontier AI letter is the narrower, patching-relevant signal: assume adversaries find and weaponize flaws faster than your old “30-day for High” spreadsheet assumed.</p>
+
+        <h2 id="smb-sla">A right-sized SMB remediation SLA</h2>
+
+        <p>Federal three-day clocks with forensic triage are not always realistic for a 40-person firm. Right-size without watering down the logic:</p>
+
+        <table class="owasp-table">
+            <thead>
+                <tr>
+                    <th>Condition</th>
+                    <th>SMB target (example)</th>
+                    <th>CSF anchor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="risk-name">KEV + internet-facing</td>
+                    <td>Remediate or mitigate within <strong>7 calendar days</strong>; document compensating control if patch blocked</td>
+                    <td><span class="csf-badge gv">GV.RM</span> <span class="csf-badge pr">PR</span></td>
+                </tr>
+                <tr>
+                    <td class="risk-name">KEV + internal only</td>
+                    <td>Remediate within <strong>14–30 days</strong>; confirm no unexpected exposure</td>
+                    <td><span class="csf-badge id">ID</span> <span class="csf-badge pr">PR</span></td>
+                </tr>
+                <tr>
+                    <td class="risk-name">Critical CVE, not KEV, exposed</td>
+                    <td>Risk-rank within <strong>7 days</strong>; remediate per impact (often 14–30 days)</td>
+                    <td><span class="csf-badge gv">GV.RM</span></td>
+                </tr>
+                <tr>
+                    <td class="risk-name">Everything else</td>
+                    <td>Weekly ranked backlog; no silent infinite deferrals</td>
+                    <td><span class="csf-badge gv">GV.RM</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Put that table on one page. Add the CISA KEV catalog URL. Sign it with the business owner and the MSP lead. That signature is the Govern artifact.</p>
+
+        <h2 id="this-week">Action this week</h2>
+
+        <div class="assessment-box">
+            <h3>90-minute working session</h3>
+            <div class="assessment-item">
+                <div class="checkbox"></div>
+                <p>Tag your top 20 internet-facing assets as exposed / not (VPN portals, mail, web apps, remote-access gateways, cloud consoles).</p>
+            </div>
+            <div class="assessment-item">
+                <div class="checkbox"></div>
+                <p>Subscribe to CISA KEV email alerts (or confirm your MSP already does and forwards actionable items).</p>
+            </div>
+            <div class="assessment-item">
+                <div class="checkbox"></div>
+                <p>Write the one-page SLA above; share it with your MSP and one business owner before Friday.</p>
+            </div>
+        </div>
+
+        <h2 id="help">Where fractional help fits</h2>
+
+        <p>Risk-based patching fails when nobody owns GV.RM language and Protect execution drifts. If you need help facilitating that Govern conversation — or standing up a vulnerability program that maps cleanly to CSF 2.0 — CyberIntelPro focuses on the operational side, and Hudson Valley CISO can facilitate the Govern function without a full-time hire.</p>
+
+        <div class="cta-section">
+            <h2>Build a patching SLA your board can understand</h2>
+            <p class="lead">Risk-based updates are a Govern decision first — tools come second.</p>
+            <div class="cta-offer">
+                <span class="offer-badge">Soft next step</span>
+                <h3>Vulnerability program &amp; CSF adoption</h3>
+                <p>Start with CyberIntelPro for vulnerability program design and operational CSF adoption. For Govern facilitation — risk appetite workshops, board-ready GV.RM language — Hudson Valley CISO is the fractional option built for Hudson Valley and NY SMBs.</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://cyberintelpro.com" target="_blank" rel="noopener" class="primary">cyberintelpro.com</a>
+                <a href="https://hudsonvalleyciso.com" target="_blank" rel="noopener" class="secondary">hudsonvalleyciso.com</a>
+            </div>
+            <p class="cta-tagline">NIST CSF 2.0 · GV.RM · Risk-Based Patching · Fractional CISO</p>
+        </div>
+
+        <h2 id="references">References</h2>
+        <ol>
+            <li>Cybersecurity and Infrastructure Security Agency, “BOD 26-04: Prioritizing Security Updates Based on Risk,” June 10, 2026, accessed September 21, 2026, <a href="https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk">https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk</a></li>
+            <li>CISA, “BOD 26-04 Implementation Guidance: Prioritizing Security Updates Based on Risk,” accessed September 21, 2026, <a href="https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk">https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk</a></li>
+            <li>National Institute of Standards and Technology, <em>The NIST Cybersecurity Framework (CSF) 2.0</em>, NIST CSWP 29, <a href="https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf">https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf</a></li>
+            <li>NIST, <em>NIST CSF 2.0 Resource &amp; Overview Guide</em>, NIST SP 1299, <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1299.pdf">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1299.pdf</a></li>
+            <li>New York State Department of Financial Services, “Industry Letter: Heightened Cybersecurity Risks Associated with Frontier AI Models,” May 21, 2026, accessed September 21, 2026, <a href="https://www.dfs.ny.gov/industry-guidance/industry-letters/20260521-heightened-cybersecurity-risks-assoc-with-frontier-ai-models">https://www.dfs.ny.gov/industry-guidance/industry-letters/20260521-heightened-cybersecurity-risks-assoc-with-frontier-ai-models</a></li>
+        </ol>
+
+    </div>
+</body>
+</html>

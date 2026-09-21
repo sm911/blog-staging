@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIPAA Security Risk Assessment in 2026: What Changed in HHS’s Free SRA Tool 3.7 | Jim Venuto</title>
+<meta name="description" content="On September 18, 2026, HHS ONC and OCR shipped SRA Tool v3.7 with new scope, remote access/telework, asset inventory, and logging questions. What Hudson Valley dental, medical, and telehealth practices should do this week.">
+<meta name="author" content="Jim Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/compliance-blog/healthcare/hipaa-sra-tool-3-7-sep-2026.html"/>
+<meta property="og:title" content="HIPAA Security Risk Assessment in 2026: What Changed in HHS’s Free SRA Tool 3.7">
+<meta property="og:description" content="HHS ONC and OCR shipped SRA Tool v3.7 on Sep 18, 2026. New scope, telework, asset inventory, and logging questions — and what SMBs should do this week.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/compliance-blog/healthcare/hipaa-sra-tool-3-7-sep-2026.html">
+<meta property="og:site_name" content="Compliance & Cybersecurity Blog">
+<!-- blog-control-meta
+title: HIPAA Security Risk Assessment in 2026: What Changed in HHS’s Free SRA Tool 3.7
+author: Jim Venuto
+date: 2026-09-21
+category: Healthcare
+tags: HIPAA, SRA Tool, OCR, ONC, ePHI, dental, telehealth, SMB, Hudson Valley
+read_time: 10 min
+description: On September 18, 2026, HHS ONC and OCR shipped SRA Tool v3.7 with new scope, remote access/telework, asset inventory, and logging questions.
+priority: P1
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #2d3748; background-color: #f7fafc; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.2em; max-width: 800px; margin: 0 auto 0.5rem; line-height: 1.3; }
+        .hero .subtitle { font-size: 1.1em; opacity: 0.9; max-width: 640px; margin: 0 auto; }
+        .byline { max-width: 800px; margin: 1.5rem auto; padding: 0 2rem; color: #718096; font-size: 0.95em; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; }
+        .content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h2 { color: #667eea; font-size: 1.6em; margin: 2.5em 0 1em; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; }
+        h3 { color: #4a5568; font-size: 1.3em; margin: 2em 0 0.8em; }
+        p { margin-bottom: 1.5em; }
+        ol, ul { margin: 0 0 1.5em 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .callout { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1.5em; margin: 2em 0; border-radius: 0 4px 4px 0; }
+        .callout strong { color: #667eea; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; margin: 3em 0; border-radius: 8px; text-align: center; }
+        .cta a { color: white; text-decoration: underline; }
+        .back-link { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
+        .back-link a { color: #667eea; text-decoration: none; }
+        .references { max-width: 800px; margin: 0 auto 3rem; padding: 0 2rem; }
+        .references h2 { font-size: 1.3em; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; margin-bottom: 1em; }
+        .references a { color: #667eea; }
+        .staging-note { background: #1a202c; color: #f6e05e; text-align: center; padding: 0.5rem; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="staging-note">STAGING DRAFT — noindex; Approve before promoting to compliance-blog/healthcare</div>
+    <div class="hero">
+        <h1>HIPAA Security Risk Assessment in 2026: What Changed in HHS’s Free SRA Tool 3.7</h1>
+        <p class="subtitle">OCR still expects a living Security Risk Assessment — not a stale PDF. On September 18, 2026, HHS updated the free tool most small practices actually use.</p>
+    </div>
+    <div class="byline">By Jim Venuto | September 21, 2026</div>
+    <div class="content">
+
+        <p>If you run a dental, medical, behavioral-health, or telehealth practice — or you are a business associate that creates, receives, maintains, or transmits electronic protected health information (ePHI) — the HIPAA Security Rule still requires a security risk analysis. That is not new. What is new is how the free tool most small and mid-size practices use asks the question.</p>
+
+        <p>On <strong>September 18, 2026</strong>, the Office of the National Coordinator for Health IT (ONC), working with the HHS Office for Civil Rights (OCR), shipped <strong>Security Risk Assessment (SRA) Tool version 3.7</strong>. The Windows app and the Excel workbook both got content updates aimed at the cybersecurity environment practices actually live in today: every location that touches ePHI, remote access and telework, modern asset inventories, and system-activity logging that matches the systems you run — not the ones you ran in 2019.</p>
+
+        <p>I sit with Hudson Valley and regional practice owners when insurance renewals, an OCR inquiry, or a new EHR / telework stack forces the question: <em>does last year’s assessment still describe how we work?</em> Too often the honest answer is no. Version 3.7 makes that gap harder to ignore — and that is a good thing.</p>
+
+        <h2>What the Tool Is (and Is Not)</h2>
+
+        <p>The SRA Tool is a wizard-based desktop application (and a matching Excel workbook) designed for medium and small providers. It walks you through multiple-choice questions, threat and vulnerability assessments, and asset and vendor management, with references along the way. All answers stay on your computer; HHS does not collect what you enter.</p>
+
+        <p>ONC is clear on two points that matter for SMBs. First, the tool is meant to help you meet the Security Rule’s risk-analysis expectation — it is guidance and scaffolding, not a magic “compliant” stamp. Second, version 3.7 explicitly reminds users that completing the survey alone may not identify every risk in the organization. If you stop at the wizard and never look at your real floor plan, cloud tenants, or home-office laptops, you still have work to do.</p>
+
+        <div class="callout">
+            <strong>Regulatory baseline:</strong> The HIPAA Security Rule requires covered entities and business associates to conduct an accurate and thorough assessment of the potential risks and vulnerabilities to the confidentiality, integrity, and availability of ePHI. OCR’s cybersecurity newsletters keep reinforcing the same theme: risk analysis is ongoing program work, not a one-time PDF for the binder.
+        </div>
+
+        <h2>What Changed in Version 3.7</h2>
+
+        <p>According to ONC’s “What’s New in Version 3.7” notes, the update focuses on relevance and usability. The changes that I care about most for practices I advise:</p>
+
+        <div class="callout">
+            <strong>1. Assessment-scope transparency.</strong> A new question pushes you to account for <em>every location</em> that creates, receives, maintains, or transmits ePHI — not only the main clinic address on the lease.
+        </div>
+        <div class="callout">
+            <strong>2. Remote access and telework.</strong> A new question (with education) on remote access and telework — the persistent risk area that exploded during COVID and never went away for behavioral health, telehealth, and hybrid front-office work.
+        </div>
+        <div class="callout">
+            <strong>3. Modernized asset inventory.</strong> The inventory questions catch up with the technology practices actually use: cloud EHR, imaging, patient portals, messaging apps, and the laptops that never leave the car.
+        </div>
+        <div class="callout">
+            <strong>4. Modernized system-activity logging.</strong> Logging questions that match varied systems — EHR audit logs, Microsoft 365, VPN, backup consoles — instead of assuming a single on-prem server.
+        </div>
+        <div class="callout">
+            <strong>5. Review triggers and report hygiene.</strong> Guidance on when to update the assessment, plus report updates so comments and review data actually show up when you print evidence for an underwriter or examiner.
+        </div>
+
+        <p>None of that invents a new regulation. It makes the free tool ask the questions OCR already expected you to answer honestly.</p>
+
+        <h2>Why SMBs Should Care This Month</h2>
+
+        <p>Three triggers show up in my calendar every fall:</p>
+
+        <ul>
+            <li><strong>Cyber insurance renewal.</strong> Underwriters ask whether you have a current HIPAA security risk analysis — and whether it covers telework and vendors. A 2024 workbook that never mentions your 2025 telehealth platform is a soft “no.”</li>
+            <li><strong>OCR inquiry or complaint.</strong> When something goes wrong, investigators ask for the risk analysis that drives your policies. A stale PDF that ignores home offices and the patient-messaging app is hard to defend.</li>
+            <li><strong>Stack change.</strong> New EHR, new MSP, new imaging vendor, or a sudden shift to hybrid scheduling. Those are assessment triggers, not “we’ll catch it next accreditation cycle” events.</li>
+        </ul>
+
+        <p>ONC also hosted webinars aimed at small and medium practices on the tool. If your office manager has never walked the wizard end to end, the recording and slides are worth ninety minutes of calendar time.</p>
+
+        <h2>What I Want You to Do This Week</h2>
+
+        <div class="callout">
+            <strong>This week’s action:</strong> Download SRA Tool 3.7 (Windows MSI) or the Excel workbook from healthit.gov. Answer the new <strong>scope</strong> and <strong>remote access / telework</strong> questions honestly — including every location and every laptop that touches ePHI. Then schedule one <strong>90-minute working session</strong> before month-end to close any “unknown asset” gaps you discover.
+        </div>
+
+        <ol>
+            <li><strong>Download the current tool</strong> — v3.7 for Windows or the v3.7 workbook — from the official ONC Security Risk Assessment Tool page. Do not reuse an old installer.</li>
+            <li><strong>List every place ePHI lives</strong> — clinic workstations, imaging, EHR cloud tenant, email, patient portal, backup media, home offices, and business associates. If you cannot name it, you cannot assess it.</li>
+            <li><strong>Answer the telework questions with reality</strong> — who connects from home, how MFA is enforced, whether personal devices are in scope, and who owns exceptions.</li>
+            <li><strong>Name an owner</strong> for keeping the assessment current (practice owner, compliance lead, or fractional CISO function) — not “the MSP will update the PDF someday.”</li>
+            <li><strong>Save the report</strong> with comments filled in. Underwriters and OCR both care about evidence you can explain, not a blank score page.</li>
+        </ol>
+
+        <h2>MSP vs. CISO Function (Again)</h2>
+
+        <div class="callout">
+            <strong>Key distinction:</strong> Your managed service provider keeps systems running — patching, endpoints, backups. Your CISO (or fractional CISO) function owns the risk-analysis methodology, the scope decisions, documented exceptions, and the evidence pack behind the answers you give OCR or an underwriter. Treating those as the same role is how “we think so” answers get into the tool.
+        </div>
+
+        <h2>A Note for Schools and Local Government Health Clinics</h2>
+
+        <p>School-based health clinics and county health programs that handle ePHI sit in the same Security Rule lane as private practices when they are covered entities or business associates. The SRA Tool’s small-practice design is often a better fit than an enterprise GRC platform you will never finish. Use the same scope and telework discipline; pair it with whatever state or district privacy rules already apply.</p>
+
+        <h2>How Security Medic Helps</h2>
+
+        <p>If you want a calm second set of eyes on whether your current assessment would survive an OCR conversation — or you need help facilitating the 90-minute scope session so the new 3.7 questions get honest answers — we can walk the tool against your real environment and leave you with a prioritized gap list. Not a shelfware binder.</p>
+
+        <div class="cta">
+            <p><strong>Start with the download and the scope questions.</strong> If you want help turning SRA Tool 3.7 into a living HIPAA risk analysis you can defend, reach out via <a href="https://hudsonvalleyciso.com">Hudson Valley CISO</a>.</p>
+        </div>
+
+    </div>
+
+    <div class="references">
+        <h2>References</h2>
+        <ol>
+            <li>Office of the National Coordinator for Health IT (ONC) &amp; HHS Office for Civil Rights (OCR). <em>Security Risk Assessment Tool</em> (v3.7; updated September 18, 2026). <a href="https://healthit.gov/privacy-security/security-risk-assessment-tool/" target="_blank" rel="noopener">https://healthit.gov/privacy-security/security-risk-assessment-tool/</a> (accessed September 21, 2026).</li>
+            <li>U.S. Department of Health &amp; Human Services, Office for Civil Rights. <em>HIPAA Security Rule — Cybersecurity Newsletter (January 2026)</em>. <a href="https://www.hhs.gov/hipaa/for-professionals/security/guidance/cybersecurity-newsletter-january-2026/index.html" target="_blank" rel="noopener">https://www.hhs.gov/hipaa/for-professionals/security/guidance/cybersecurity-newsletter-january-2026/index.html</a> (accessed September 21, 2026).</li>
+            <li>U.S. Department of Health &amp; Human Services, Office for Civil Rights. <em>The Security Rule</em> (laws &amp; regulations overview). <a href="https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html" target="_blank" rel="noopener">https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html</a> (accessed September 21, 2026).</li>
+            <li>Office of the National Coordinator for Health IT. <em>The Security Risk Assessment Tool from ONC and OCR: An Overview for Small and Medium Practices</em> (webinar, September 16). <a href="https://healthit.gov/event/the-security-risk-assessment-tool-from-onc-and-ocr-an-overview-for-small-and-medium-practices-9-16/" target="_blank" rel="noopener">https://healthit.gov/event/the-security-risk-assessment-tool-from-onc-and-ocr-an-overview-for-small-and-medium-practices-9-16/</a> (accessed September 21, 2026).</li>
+        </ol>
+    </div>
+
+    <div class="back-link"><a href="../index.html">&larr; Back to Compliance Blog</a></div>
+
+</body>
+</html>
