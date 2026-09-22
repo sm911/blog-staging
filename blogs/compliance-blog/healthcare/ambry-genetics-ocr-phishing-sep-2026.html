@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR’s $700K Ambry Genetics Settlement: Phishing Lessons for SMB Healthcare | Jim Venuto</title>
+<meta name="description" content="On September 17, 2026, HHS OCR settled with Ambry Genetics for $700,000 after a phishing breach affecting 225,370 individuals. What dental, medical, and telehealth SMBs should fix this week: risk analysis, access termination, and unique user IDs.">
+<meta name="author" content="Jim Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/compliance-blog/healthcare/ambry-genetics-ocr-phishing-sep-2026.html"/>
+<meta property="og:title" content="OCR’s $700K Ambry Genetics Settlement: Phishing Lessons for SMB Healthcare">
+<meta property="og:description" content="OCR’s Ambry Genetics resolution: risk analysis, workforce termination, unique user IDs — practical this-week actions for SMB healthcare.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/compliance-blog/healthcare/ambry-genetics-ocr-phishing-sep-2026.html">
+<meta property="og:site_name" content="Compliance & Cybersecurity Blog">
+<!-- blog-control-meta
+title: OCR’s $700K Ambry Genetics Settlement: Phishing Lessons for SMB Healthcare
+author: Jim Venuto
+date: 2026-09-22
+category: Healthcare
+tags: HIPAA, OCR, phishing, risk analysis, ePHI, dental, telehealth, SMB, Hudson Valley
+read_time: 9 min
+description: OCR settled with Ambry Genetics for $700,000 after a phishing breach. Risk analysis, access termination, and unique user IDs for SMB healthcare.
+priority: P1
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #2d3748; background-color: #f7fafc; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.2em; max-width: 800px; margin: 0 auto 0.5rem; line-height: 1.3; }
+        .hero .subtitle { font-size: 1.1em; opacity: 0.9; max-width: 640px; margin: 0 auto; }
+        .byline { max-width: 800px; margin: 1.5rem auto; padding: 0 2rem; color: #718096; font-size: 0.95em; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; }
+        .content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h2 { color: #667eea; font-size: 1.6em; margin: 2.5em 0 1em; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; }
+        h3 { color: #4a5568; font-size: 1.3em; margin: 2em 0 0.8em; }
+        p { margin-bottom: 1.5em; }
+        ol, ul { margin: 0 0 1.5em 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .callout { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1.5em; margin: 2em 0; border-radius: 0 4px 4px 0; }
+        .callout strong { color: #667eea; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; margin: 3em 0; border-radius: 8px; text-align: center; }
+        .cta a { color: white; text-decoration: underline; }
+        .back-link { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
+        .back-link a { color: #667eea; text-decoration: none; }
+        .references { max-width: 800px; margin: 0 auto 3rem; padding: 0 2rem; }
+        .references h2 { font-size: 1.3em; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; margin-bottom: 1em; }
+        .references a { color: #667eea; }
+        .staging-note { background: #1a202c; color: #f6e05e; text-align: center; padding: 0.5rem; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="staging-note">STAGING DRAFT — noindex; Approve before promoting to compliance-blog/healthcare</div>
+    <div class="hero">
+        <h1>OCR’s $700K Ambry Genetics Settlement: Phishing Lessons for SMB Healthcare</h1>
+        <p class="subtitle">A January 2020 phishing email still taught the same Security Rule lesson in September 2026 — and it is not only for genetics labs.</p>
+    </div>
+    <div class="byline">By Jim Venuto | September 22, 2026</div>
+    <div class="content">
+
+        <p>If you run a dental, medical, behavioral-health, or telehealth practice — or you are a business associate that handles electronic protected health information (ePHI) — you do not need to be a national genetics company to care about OCR’s newest resolution.</p>
+
+        <p>On <strong>September 17, 2026</strong>, the HHS Office for Civil Rights (OCR) announced a resolution with Ambry Genetics Corporation: a <strong>$700,000</strong> payment and a two-year corrective action plan after a phishing compromise of an employee email account that may have exposed the protected health information of <strong>225,370</strong> individuals. The Resolution Agreement and Corrective Action Plan are public on HHS’s site.</p>
+
+        <p>I sit with Hudson Valley and regional practice owners when a phishing near-miss, an insurance questionnaire, or a vendor change forces the honest question: <em>would our access hygiene and risk analysis survive the same OCR review?</em> Ambry’s Covered Conduct is a blunt checklist — and it maps to work most small practices can start this week.</p>
+
+        <h2>What OCR Said Happened</h2>
+
+        <p>According to the Resolution Agreement, Ambry discovered on January 22, 2020 that an email account was compromised by a targeted phishing attack. OCR’s investigation indicated three Security Rule failures (the “Covered Conduct”):</p>
+
+        <div class="callout">
+            <strong>1. Risk analysis.</strong> Failure to assess potential risks and vulnerabilities to the confidentiality, integrity, and availability of ePHI (45 C.F.R. § 164.308(a)(1)(ii)(A)).
+        </div>
+        <div class="callout">
+            <strong>2. Termination procedures.</strong> Failure to implement procedures for terminating access to ePHI when employment ends or access is no longer appropriate (45 C.F.R. § 164.308(a)(3)(ii)(C)).
+        </div>
+        <div class="callout">
+            <strong>3. Unique user identification.</strong> Failure to assign a unique user name and/or number for identifying and tracking user identity in systems containing ePHI (45 C.F.R. § 164.312(a)(2)(i)).
+        </div>
+
+        <p>The Agreement is not an admission of liability by Ambry. It is OCR’s public statement of what it found worth fixing — and what the CAP will monitor for two years: a thorough risk analysis with an asset inventory, a risk management plan, written policies (including email/PHI use), unique user IDs, and workforce training with certifications.</p>
+
+        <h2>Why SMBs Should Care (Even If You Are Not Ambry)</h2>
+
+        <ul>
+            <li><strong>Phishing is still the boring door.</strong> Email remains how invoices, lab results, prior-auth threads, and “updated W-9” scams arrive. OCR keeps saying so.</li>
+            <li><strong>Risk analysis is still the foundation.</strong> Director-level remarks this year keep calling incomplete risk analysis a major concern. A stale PDF that ignores shared inboxes and departed contractors is a soft “no” for underwriters and investigators alike.</li>
+            <li><strong>Access leftovers create quiet breaches.</strong> Former employees, temp schedulers, and “the old front-desk login” are how ePHI walks out after the phishing story ends.</li>
+            <li><strong>Shared accounts break accountability.</strong> If two people share <code>frontdesk@</code> on the EHR, you cannot track who opened what — and OCR called that out explicitly.</li>
+        </ul>
+
+        <h2>What I Want You to Do This Week</h2>
+
+        <div class="callout">
+            <strong>This week’s action:</strong> Pick one EHR / Microsoft 365 / imaging / billing system. Export active users. Mark every shared or generic account. Confirm every terminated workforce member from the last 90 days is disabled. Put the dated export in your compliance folder.
+        </div>
+
+        <ol>
+            <li><strong>Inventory who can still open ePHI</strong> — clinic staff, contractors, billing vendors, and the MSP admin accounts. Name an owner for the list.</li>
+            <li><strong>Kill shared logins</strong> — replace “office” / “temp” / shared EHR IDs with unique identities. Document exceptions with an expiration date.</li>
+            <li><strong>Test termination</strong> — run a tabletop: HR notifies IT the same day; MFA tokens and mailbox access die same day; EHR rights die same day; evidence is a ticket screenshot.</li>
+            <li><strong>Refresh the risk analysis</strong> — if you have not used HHS’s free SRA Tool (now at 3.7) since your last major stack change, schedule the working session. Tie phishing, email, and remote access into the scope.</li>
+            <li><strong>Train on <em>your</em> policies</strong> — not a generic YouTube module. CAP language keeps stressing organization-specific Security Rule training with attestation.</li>
+        </ol>
+
+        <h2>Soft Next Step</h2>
+
+        <div class="cta">
+            <p>If you want a second set of eyes on access termination, unique IDs, and a living HIPAA risk analysis — without a binder that never matches the floor plan — <a href="https://securitymedic.com">Security Medic</a> and our <a href="https://securitymedic.com">Hudson Valley CISO</a> fractional support can help you close the gaps OCR keeps citing.</p>
+        </div>
+
+        <p>Phishing will not stop. Shared passwords and stale access can. That is the part you control this month.</p>
+    </div>
+
+    <div class="references">
+        <h2>References</h2>
+        <ol>
+            <li>HHS OCR, Resolution Agreement and Corrective Action Plan — Ambry Genetics Corporation: <a href="https://www.hhs.gov/sites/default/files/ocr-ra-cap-ambry-genetics-corporation.pdf">https://www.hhs.gov/sites/default/files/ocr-ra-cap-ambry-genetics-corporation.pdf</a></li>
+            <li>HIPAA Journal, “Ambry Genetics Pays $700,000 Penalty to Settle HIPAA Violations” (Sep 18, 2026): <a href="https://www.hipaajournal.com/ambry-genetics-hipaa-penalty/">https://www.hipaajournal.com/ambry-genetics-hipaa-penalty/</a></li>
+            <li>Nixon Peabody, “HIPAA settlement reminds organizations to focus on security” (Sep 21, 2026): <a href="https://www.nixonpeabody.com/insights/articles/2026/09/21/hipaa-settlement-reminds-organizations-to-focus-on-security">https://www.nixonpeabody.com/insights/articles/2026/09/21/hipaa-settlement-reminds-organizations-to-focus-on-security</a></li>
+            <li>HHS ONC/OCR, Security Risk Assessment Tool: <a href="https://www.healthit.gov/topic/privacy-security-and-hipaa/security-risk-assessment-tool">https://www.healthit.gov/topic/privacy-security-and-hipaa/security-risk-assessment-tool</a></li>
+        </ol>
+    </div>
+    <div class="back-link"><a href="README.html">&larr; Healthcare staging index</a></div>
+</body>
+</html>

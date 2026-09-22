@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ask for the Secure Configuration Guide: FedRAMP’s 2026 Lesson for SMB Cloud Customers | Jim Venuto</title>
+<meta name="description" content="FedRAMP’s Secure Configuration Guide rules require cloud providers to explain top-level admin settings and recommend secure defaults. How Hudson Valley SMBs can use the same checklist — even when they are not federal agencies.">
+<meta name="author" content="Jim Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-secure-configuration-guide-smb-sep-2026.html"/>
+<meta property="og:title" content="Ask for the Secure Configuration Guide: FedRAMP’s 2026 Lesson for SMB Cloud Customers">
+<meta property="og:description" content="Use FedRAMP Secure Configuration Guide expectations to demand secure defaults and admin-setting clarity from your CSPs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-secure-configuration-guide-smb-sep-2026.html">
+<meta property="og:site_name" content="Cloud Architecture Blog">
+<meta name="twitter:card" content="summary">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .content, .entry-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .content h2, .entry-content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .content h3, .entry-content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        .content p, .entry-content p {
+            margin-bottom: 15px;
+        }
+        .content ul, .content ol, .entry-content ul, .entry-content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        .content li, .entry-content li {
+            margin-bottom: 8px;
+        }
+        .content code, .entry-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .content pre, .entry-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        .content blockquote, .entry-content blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        .content img, .entry-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .source-link {
+            margin-top: 10px;
+        }
+        .source-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+        /* WordPress block classes */
+        .wp-block-heading {
+            display: block;
+        }
+        .wp-block-list {
+            display: block;
+            list-style-position: outside;
+        }
+        .wp-block-image {
+            display: block;
+        }
+        .wp-block-post-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div style="background:#1a202c;color:#f6e05e;text-align:center;padding:0.5rem;font-size:0.85em;">STAGING DRAFT — noindex; Approve before promoting to cloud-architecture-blog</div>
+<div class="container">
+<header>
+<p style="color:#666;font-size:0.85rem;margin-bottom:0.5rem;"><a href="../index.html" style="color:#667eea;text-decoration:none;">← Cloud Architecture</a> · security-and-compliance</p>
+<h1>Ask for the Secure Configuration Guide: FedRAMP’s 2026 Lesson for SMB Cloud Customers</h1>
+<div class="meta">By Jim Venuto | Published: September 22, 2026</div>
+</header>
+<div class="content">
+
+<p>Most small and mid-size businesses I work with will never chase a FedRAMP authorization. They still live inside cloud tenants someone else configured on a Friday afternoon in 2022.</p>
+
+<p>That is why FedRAMP’s <strong>Secure Configuration Guide</strong> rules in the Consolidated Rules for 2026 are useful even if you never sell to an agency. The idea is simple: providers must explain how to securely access, configure, operate, and decommission <strong>top-level administrative accounts</strong>, and they must explain the security implications of settings those admins control. Providers <em>should</em> ship <strong>secure defaults</strong>, let customers compare current settings to those defaults, and ideally offer machine-readable guidance.</p>
+
+<p>Effective dating in the public preview materials shows obtain/maintain obligations from <strong>2026-03-01</strong> with grace ending <strong>2026-07-01</strong> for the Consolidated Rules path. Enforcement mechanics matter for FedRAMP marketplace providers. For you as a <em>customer</em>, the transferable habit is: <strong>stop accepting “it’s in the cloud so it’s secure” without a settings conversation.</strong></p>
+
+<h2>What the Guide Is Supposed to Contain</h2>
+<p>Per FedRAMP’s Secure Configuration Guide reference (Consolidated Rules for 2026), providers MUST make available recommendations that include at least:</p>
+<ol>
+<li>Instructions on how to securely access, configure, operate, and decommission top-level administrative accounts that control enterprise access to the entire cloud service offering.</li>
+<li>Explanations of security-related settings operable only by those top-level admin accounts — and their security implications.</li>
+<li>(Recommended) The same for privileged accounts below top-level.</li>
+</ol>
+<p>Providers SHOULD set recommended secure defaults at initial provisioning, offer comparison of current settings vs. defaults, support export/API access to settings, and version the guidance over time.</p>
+
+<h2>The SMB Customer Checklist (Non-Federal)</h2>
+<ul>
+<li><strong>Microsoft 365 / Google Workspace / your IaaS:</strong> Where is the documented “secure baseline” for global admin / super admin settings? Who last compared live config to that baseline?</li>
+<li><strong>New SaaS onboarding:</strong> Before go-live, ask for the vendor’s secure configuration guide (whatever they call it) and the list of defaults that weaken security if flipped.</li>
+<li><strong>Break-glass and standing admin:</strong> How many standing global admins? Is PIM / just-in-time elevation used? Are recovery accounts monitored?</li>
+<li><strong>Drift:</strong> Can you export settings quarterly and diff them? If not, calendar a manual screenshot review for the ten settings that matter (MFA enforcement, external sharing, legacy auth, audit log retention).</li>
+<li><strong>MSP / CloudOps contract language:</strong> “Maintain secure defaults per vendor guide; document exceptions with owner and expiry.”</li>
+</ul>
+
+<div style="background:#f0f4f8;border-left:4px solid #2c3e50;padding:1.25rem;margin:1.5rem 0;">
+<strong>This week’s action:</strong> Pick your primary cloud identity tenant. Export or screenshot MFA enforcement, legacy authentication status, external sharing defaults, and global admin count. File it with today’s date. That is your first “compare to secure default” artifact.
+</div>
+
+<h2>How This Differs from a Landing Zone Project</h2>
+<p>Landing zones are about subscription topology, networking, and policy at scale. Secure configuration guides are about the <em>knobs inside the products you already bought</em>. Many SMBs need the knobs conversation before they need another management group.</p>
+
+<h2>Soft Next Step</h2>
+<p>If you want help turning FedRAMP-style configuration expectations into a right-sized baseline for Microsoft 365, Azure, or your SaaS stack, <a href="https://securitymedic.com">CyberIntelPro / Security Medic</a> can build the one-page comparison — without an enterprise program tax.</p>
+
+<h3>References</h3>
+<ol>
+<li>FedRAMP, Secure Configuration Guide — Consolidated Rules for 2026: <a href="https://preview.fedramp.gov/2026/reference/secure-configuration-guide/">preview.fedramp.gov/2026/reference/secure-configuration-guide/</a></li>
+<li>FedRAMP documentation hub: <a href="https://fedramp.gov/">fedramp.gov</a></li>
+</ol>
+</div>
+</div>
+</body>
+</html>
