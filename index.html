@@ -342,11 +342,16 @@
     const mu = document.getElementById('manifest-updated');
     if (mu) mu.textContent = 'Status source updated: ' + (data.updated || '—');
 
-    // Clear local decisions once server has caught up
+    // Clear local decisions once server has caught up (or draft was revised back to review)
     const store = readDecisions();
     let changed = false;
     DRAFTS.forEach(d => {
       if (!store[d.id]) return;
+      // Resubmit after Reject: server status=review again → clear stale local rejected so UI shows Awaiting
+      if (d.status === 'review' && store[d.id].decision === 'rejected') {
+        delete store[d.id]; changed = true;
+        return;
+      }
       if (d.status === 'promoted' || d.status === 'approved' || d.status === 'rejected') {
         if (store[d.id].decision === 'approved' && (d.status === 'approved' || d.status === 'promoted')) {
           delete store[d.id]; changed = true;

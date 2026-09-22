@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Identity Is the New Perimeter: Five Owner Questions After CISA/NIST IR 8587 — James Venuto</title>
-<meta name="description" content="CISA and NIST released IR 8587 on September 15, 2026 to harden SSO tokens and assertions. Five practical questions Hudson Valley SMB owners and boards should ask — without a 40-slide identity architecture deck.">
+<title>Your Logins Are the Front Door: Five Owner Questions After the New CISA/NIST Guidance — James Venuto</title>
+<meta name="description" content="Federal agencies and cloud vendors just raised the bar on login and session security (CISA/NIST IR 8587, Sep 15, 2026). Five plain-English questions every SMB owner should ask — whether or not you sell to government, and even if an MSP runs your IT.">
 <meta name="author" content="James Venuto">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://sm911.github.io/leadership-blog/identity-perimeter-ir-8587-sep-2026.html"/>
-<meta property="og:title" content="Identity Is the New Perimeter: Five Owner Questions After CISA/NIST IR 8587">
-<meta property="og:description" content="Five owner questions on SSO tokens, session risk, and IdP logging after CISA/NIST IR 8587 (Sep 15, 2026).">
+<meta property="og:title" content="Your Logins Are the Front Door: Five Owner Questions After the New CISA/NIST Guidance">
+<meta property="og:description" content="Five plain-English owner questions on stolen sign-ins, locked-out email/finance, and insurance questionnaires after CISA/NIST IR 8587 (Sep 15, 2026).">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://sm911.github.io/leadership-blog/identity-perimeter-ir-8587-sep-2026.html">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -39,7 +39,6 @@
     overflow-x: hidden;
   }
 
-  /* === HERO === */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -160,14 +159,12 @@
     50% { opacity: 0.2; }
   }
 
-  /* === ARTICLE BODY === */
   .article-body {
     max-width: 720px;
     margin: 0 auto;
     padding: 5rem 2rem 4rem;
   }
 
-  /* Drop cap on first paragraph */
   .article-body > p:first-of-type::first-letter {
     font-family: 'Playfair Display', serif;
     font-size: 4.2rem;
@@ -184,7 +181,6 @@
     color: #2d2d2d;
   }
 
-  /* === SECTION HEADERS === */
   .section-break {
     display: flex;
     align-items: center;
@@ -212,7 +208,6 @@
     padding-left: 1rem;
   }
 
-  /* === PULLQUOTES === */
   .pullquote {
     position: relative;
     margin: 3rem -1rem;
@@ -244,7 +239,6 @@
     line-height: 1;
   }
 
-  /* === INSIGHT CARDS === */
   .insight-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -291,7 +285,6 @@
     margin-bottom: 0 !important;
   }
 
-  /* === DIAGNOSTIC STRIP === */
   .diagnostic-strip {
     background: var(--ink);
     color: var(--cream);
@@ -345,7 +338,6 @@
     font-weight: 700;
   }
 
-  /* === SCENARIO BLOCK === */
   .scenario-block {
     background: white;
     border-radius: 12px;
@@ -380,7 +372,6 @@
     color: var(--ink);
   }
 
-  /* === METRIC TABLE === */
   .metric-table {
     width: 100%;
     border-collapse: collapse;
@@ -431,7 +422,6 @@
     white-space: nowrap;
   }
 
-  /* === CTA SECTION === */
   .cta-section {
     background: linear-gradient(135deg, var(--ink) 0%, #2d2020 100%);
     margin: 4rem -2rem -4rem;
@@ -512,7 +502,6 @@
     color: var(--sage-muted) !important;
   }
 
-  /* === FOOTER === */
   .article-footer {
     max-width: 720px;
     margin: 0 auto;
@@ -588,7 +577,6 @@
 
   .back-link:hover { color: var(--rust); }
 
-  /* === ANIMATIONS ON SCROLL === */
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -600,7 +588,6 @@
     transform: translateY(0);
   }
 
-  /* === RESPONSIVE === */
   @media (max-width: 768px) {
     .article-body { padding: 3rem 1.25rem 3rem; }
     .diagnostic-strip { margin: 2.5rem -1.25rem; padding: 2rem 1.5rem; }
@@ -618,63 +605,67 @@
 <section class="hero">
   <div class="hero-inner" style="position:relative;z-index:1;max-width:900px;padding:2rem;text-align:center;">
     <div class="hero-label" style="color:#e8a08c;letter-spacing:0.15em;text-transform:uppercase;font-size:0.8rem;margin-bottom:1rem;font-family:'JetBrains Mono',monospace;">Leadership · Identity Governance</div>
-    <h1 style="font-family:'Playfair Display',Georgia,serif;color:#f5f0e8;font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin-bottom:1rem;">Identity Is the New Perimeter: Five Owner Questions After CISA/NIST IR 8587</h1>
-    <p style="color:#d4cdc4;font-size:1.15rem;max-width:640px;margin:0 auto 1.5rem;">On September 15, 2026, CISA and NIST told federal agencies and cloud providers to harden the tokens behind SSO. Here is what SMB owners should ask this month — in plain English.</p>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;color:#f5f0e8;font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin-bottom:1rem;">Your Logins Are the Front Door: Five Owner Questions After the New CISA/NIST Guidance</h1>
+    <p style="color:#d4cdc4;font-size:1.15rem;max-width:640px;margin:0 auto 1.5rem;">Stolen sign-ins lock you out of email and finance. MFA that “was on” still gets abused. Here is what the September 2026 federal login/session guidance means for any SMB — government customer or not.</p>
     <div class="hero-meta" style="color:#a3b5a3;font-size:0.95rem;">James Venuto · Security Medic Consulting, LLC - AI Cyber Security and Privacy · September 22, 2026 · 8 min read</div>
   </div>
 </section>
 
 <main style="max-width:720px;margin:0 auto;padding:3rem 1.5rem 4rem;">
-<p>Most small and mid-size businesses I advise do not think they have a “federal cloud identity” problem. They have Microsoft 365. Or Google Workspace. Or a customer portal with “Sign in with…” and an MSP who swears MFA is on.</p>
+<p>If you run a small or mid-size business, your week already has enough risk without a federal acronym list. You worry about someone stealing a saved login, locking you out of email or payroll, ransomware that shows up after “we had MFA,” cyber-insurance questionnaires that ask who can open the doors to your apps, and customers who stop trusting you after a breach story hits the news.</p>
 
-<p>That is exactly why <strong>Interagency Report (IR) 8587</strong> matters outside the Beltway. On <strong>September 15, 2026</strong>, CISA and NIST published final guidance on protecting <em>tokens and assertions</em> — the short-lived credentials behind single sign-on (SSO), federation, and API access — from forgery, theft, and misuse. Adversaries increasingly steal or forge those tokens to move laterally and reach sensitive data <em>after</em> the password prompt looks fine.</p>
+<p>That is the business problem. The September 15, 2026 report from CISA and NIST — <strong>Interagency Report (IR) 8587</strong> — is the credible trigger, not the audience filter. Federal agencies and the big cloud vendors just raised the bar on how long someone stays signed in, how “Sign in with…” handoffs are protected, and how stolen sessions get shut down. You do not need to sell to government for those same risks to hit Microsoft 365, Google Workspace, or the SaaS tools your team uses every day.</p>
 
-<p>CISA’s Chris Butera put it plainly: identity is the new perimeter. You do not need a Security Decision Record committee to use the idea. You need five owner questions and answers in writing.</p>
+<p>Many owners I work with have an MSP who already maps things to NIST or other frameworks. That is fine. You still need answers in owner language — one sentence you can ask your MSP or IT lead, not a diagram of identity architecture.</p>
 
-<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">What IR 8587 Actually Covers</h2>
-<p>The final report builds on NIST SP 800-53 (Release 5.1.1) and control <strong>IA-13</strong>. It highlights architectural considerations for identity providers and authorization servers; better key management, token verification, and token life-cycle controls; guidance for securing SSO, federation, and API access that rely on digitally signed tokens; and principles for configurable, transparent, interoperable controls.</p>
-<p>It is written for agencies and cloud service providers. Cloud <em>consumers</em> — that is you — are explicitly urged to review and implement it. Nearly 250 public comments shaped the final, and major IdP and cloud vendors participated in the feedback loop.</p>
+<div style="background:linear-gradient(135deg,rgba(192,85,58,0.06),rgba(107,127,107,0.06));border-left:4px solid #c0553a;padding:1.5rem 1.75rem;margin:2rem 0;border-radius:0 8px 8px 0;">
+<p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:700;font-style:italic;line-height:1.45;color:#1a1a1a;margin:0;">Your logins are the front door. Passwords and MFA are the lock. The saved sign-in after that is whether the door stays propped open.</p>
+</div>
 
-<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">Five Questions for Owners and Boards</h2>
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">What the New Guidance Is Really Saying</h2>
+<p>In plain terms: attackers increasingly skip guessing passwords. They steal or reuse a <em>saved sign-in</em> — the digital hall pass that keeps you logged into email, finance, or a customer portal after the password screen looks fine. IR 8587 tells agencies and cloud providers how to harden those hall passes so they are harder to forge, steal, or misuse.</p>
+<p>You are not asked to become a federal control expert. You are asked to know who can open the doors to your apps, how long a thief stays in if a laptop is stolen, and whether login alerts go to a person who actually reads them. If an MSP handles the technical controls, your job is to ask clear questions and get answers in writing.</p>
+
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">Five Questions Every Owner Can Ask This Month</h2>
 
 <div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-<strong style="color:#c0553a;">1. Where do our SSO tokens live, and who can mint them?</strong>
-<p style="margin:0.5rem 0 0;">Ask for a one-page map: primary IdP (Entra ID, Okta, Google, etc.), apps that trust it, and any “shadow” SSO (legacy VPN portals, niche SaaS with their own identity). If the answer is “the MSP knows,” that is not an answer — that is a dependency.</p>
+<strong style="color:#c0553a;">1. Who can open the doors to our apps — and is that written down?</strong>
+<p style="margin:0.5rem 0 0;">Ask your MSP or IT lead for a one-page list: the main login system (Microsoft, Google, Okta, or similar), the top apps that trust it, and any leftover portals with their own passwords. If the answer is only “we handle it,” ask for the list anyway — insurance and customers increasingly expect you to know.</p>
 </div>
 
 <div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-<strong style="color:#c0553a;">2. How long can a stolen session stay alive?</strong>
-<p style="margin:0.5rem 0 0;">Session lifetime, refresh-token policy, and “keep me signed in” defaults decide how useful a stolen browser cookie or device token is. Ask for current settings on email, finance, EHR/portal, and remote access — and whether high-risk apps force re-auth.</p>
+<strong style="color:#c0553a;">2. If a laptop is stolen tomorrow, how long does that person stay signed in?</strong>
+<p style="margin:0.5rem 0 0;">Ask: for email, finance, and remote access, how long does a saved sign-in last, and do high-risk apps force a fresh login? “Keep me signed in” is convenient until it is not. You want a short answer in days or hours — not a settings screenshot dump.</p>
 </div>
 
 <div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-<strong style="color:#c0553a;">3. Is MFA phishing-resistant where it matters?</strong>
-<p style="margin:0.5rem 0 0;">OTP texts and push fatigue are better than nothing and weaker than FIDO2/passkeys or certificate-based options for admins and finance. Ask which roles still use SMS OTP, and the date you will move break-glass and privileged roles to phishing-resistant methods.</p>
+<strong style="color:#c0553a;">3. Is our second factor hard to trick for the people who can move money or reset everyone else?</strong>
+<p style="margin:0.5rem 0 0;">Text-message codes and tired “approve” taps are better than nothing. For owners, finance, and IT admins, ask when you will move to passkeys or a hardware key that phishing cannot easily steal. One sentence to your MSP: “Which of our privileged accounts still use SMS, and what is the date we change that?”</p>
 </div>
 
 <div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-<strong style="color:#c0553a;">4. Can we see token abuse in the logs we already pay for?</strong>
-<p style="margin:0.5rem 0 0;">IR 8587 stresses detection at scale. You need: IdP sign-in logs retained, alerts for impossible travel / token replay patterns your vendor supports, and a named person who opens those alerts. “We have Microsoft 365” is not the same as “someone reviews Entra sign-in risk weekly.”</p>
+<strong style="color:#c0553a;">4. Do login alerts go to a real person — every week?</strong>
+<p style="margin:0.5rem 0 0;">Paying for Microsoft 365 or Google Workspace is not the same as someone reviewing odd sign-ins. Ask who opens the alerts for impossible travel, new devices, or suspicious logins — and put a 15-minute weekly check on the calendar. If your MSP owns that, get the person’s name and the report you receive.</p>
 </div>
 
 <div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-<strong style="color:#c0553a;">5. What did our critical SaaS vendors say about token hardening?</strong>
-<p style="margin:0.5rem 0 0;">Send a short vendor question: Do you support shorter-lived access tokens, continuous access evaluation / session revocation, and documented guidance aligned with IR 8587 / modern token hygiene? File the answers next to your cyber-insurance application.</p>
+<strong style="color:#c0553a;">5. What did our critical vendors say about shutting down a stolen session fast?</strong>
+<p style="margin:0.5rem 0 0;">Send a short note to payroll, banking, EHR/portal, and your main SaaS tools: Can you revoke a compromised sign-in quickly, and do you publish simple guidance for customers? File the answers next to your cyber-insurance renewal packet. You do not need federal jargon — you need proof someone can lock the door.</p>
 </div>
 
 <h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">What “Good Enough” Looks Like This Month</h2>
 <ul>
-<li>One page: IdP + top 10 apps that trust it.</li>
-<li>Privileged roles on phishing-resistant MFA (or a dated plan).</li>
-<li>Session/lifetime settings documented for email and finance.</li>
-<li>Weekly 15-minute review of IdP risk or unfamiliar sign-ins — on the calendar, not the wish list.</li>
-<li>Break-glass accounts inventoried, monitored, and rarely used.</li>
+<li>One page: main login system + top 10 apps that trust it.</li>
+<li>Owners, finance, and admin accounts on a harder-to-phish second factor — or a dated plan.</li>
+<li>Saved-sign-in lifetimes written down for email and finance.</li>
+<li>A named person (you, staff, or MSP) who reviews odd logins weekly — on the calendar.</li>
+<li>Emergency “break glass” admin accounts listed, rarely used, and watched.</li>
 </ul>
 
-<p>This is leadership work, not a new product purchase. The federal report gives you permission to ask harder questions of the people who already bill you for “identity.”</p>
+<p>This is business stewardship, not a new product purchase. The federal report gives you permission to ask harder questions of the people who already bill you for keeping the doors locked — including an MSP who speaks NIST so you do not have to.</p>
 
 <div style="background:#1a1a1a;color:#f5f0e8;padding:2rem;border-radius:8px;margin:3rem 0;text-align:center;">
-<p style="margin-bottom:0.75rem;">If you want a fractional CISO to turn IR 8587 into a one-page owner packet for your stack, <a href="https://securitymedic.com" style="color:#e8a08c;">Hudson Valley CISO / Security Medic</a> can help — calmly, with evidence, not theater.</p>
+<p style="margin-bottom:0.75rem;">If you want a fractional CISO to turn this into a one-page owner packet for your stack — questions for your MSP included — <a href="https://securitymedic.com" style="color:#e8a08c;">Hudson Valley CISO / Security Medic</a> can help. Calmly, with evidence, not theater.</p>
 </div>
 
 <h3 style="margin-top:2rem;">References</h3>

@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-22T08:40:00-04:00",
+  "updated": "2026-09-22T17:05:00-04:00",
   "drafts": [
     {
       "id": "hipaa-sra-tool-3-7-sep-2026",
-      "title": "HIPAA Security Risk Assessment in 2026: What Changed in HHS’s Free SRA Tool 3.7",
+      "title": "HIPAA Security Risk Assessment in 2026: What Changed in HHS\u2019s Free SRA Tool 3.7",
       "path": "blogs/compliance-blog/healthcare/hipaa-sra-tool-3-7-sep-2026.html",
       "targetBlog": "compliance-blog",
       "category": "healthcare",
@@ -11,7 +11,7 @@
       "stagedAt": "2026-09-21",
       "decidedAt": null,
       "decision": null,
-      "summary": "HHS ONC/OCR shipped SRA Tool v3.7 on Sep 18, 2026 with new scope, telework, asset inventory, and logging questions — practical this-week actions for SMB healthcare practices.",
+      "summary": "HHS ONC/OCR shipped SRA Tool v3.7 on Sep 18, 2026 with new scope, telework, asset inventory, and logging questions \u2014 practical this-week actions for SMB healthcare practices.",
       "productionUrl": "https://sm911.github.io/compliance-blog/healthcare/hipaa-sra-tool-3-7-sep-2026.html",
       "rejectReason": null,
       "live": false
@@ -26,14 +26,14 @@
       "stagedAt": "2026-09-21",
       "decidedAt": null,
       "decision": null,
-      "summary": "NACD 2026 cyber-risk oversight handbook translated into a one-page SMB board packet: three numbers plus one decision — not a 40-slide IT status deck.",
+      "summary": "NACD 2026 cyber-risk oversight handbook translated into a one-page SMB board packet: three numbers plus one decision \u2014 not a 40-slide IT status deck.",
       "productionUrl": "https://sm911.github.io/leadership-blog/boards-ask-ciso-2026-sep-21.html",
       "rejectReason": null,
       "live": false
     },
     {
       "id": "brevo-cdn-supply-chain-sep-2026",
-      "title": "Third-Party Scripts Broke ~100K Sites: What Brevo’s Sep 2026 CDN Attack Means for SMB Defenders",
+      "title": "Third-Party Scripts Broke ~100K Sites: What Brevo\u2019s Sep 2026 CDN Attack Means for SMB Defenders",
       "path": "blogs/data-security-blog/software-security/brevo-cdn-supply-chain-sep-2026.html",
       "targetBlog": "data-security-blog",
       "category": "software-security",
@@ -41,14 +41,14 @@
       "stagedAt": "2026-09-21",
       "decidedAt": null,
       "decision": null,
-      "summary": "Brevo’s Sep 14, 2026 Cloudflare Worker/ClickFix injection shows why marketing embeds are SCRM — with this-week inventory, CSP/SRI, and CISA ICT SCRM follow-through.",
+      "summary": "Brevo\u2019s Sep 14, 2026 Cloudflare Worker/ClickFix injection shows why marketing embeds are SCRM \u2014 with this-week inventory, CSP/SRI, and CISA ICT SCRM follow-through.",
       "productionUrl": "https://sm911.github.io/data-security-blog/software-security/brevo-cdn-supply-chain-sep-2026.html",
       "rejectReason": null,
       "live": false
     },
     {
       "id": "ftc-personalized-pricing-smb-sep-2026",
-      "title": "Personalized Pricing and Your Customer Data: What the FTC’s Aug 2026 Policy Signal Means for SMBs",
+      "title": "Personalized Pricing and Your Customer Data: What the FTC\u2019s Aug 2026 Policy Signal Means for SMBs",
       "path": "blogs/data-privacy-blog/foundations-philosophy/ftc-personalized-pricing-smb-sep-2026.html",
       "targetBlog": "data-privacy-blog",
       "category": "foundations-philosophy",
@@ -71,7 +71,7 @@
       "stagedAt": "2026-09-21",
       "decidedAt": null,
       "decision": null,
-      "summary": "Right-sized Azure CAF landing-zone design areas for SMBs — identity, subscription topology, policy, logging, exposure — paired with CISA SMB cloud guidance and a brief Brevo secrets/CDN design lesson. Soft CTA to CyberIntelPro / Security Medic.",
+      "summary": "Right-sized Azure CAF landing-zone design areas for SMBs \u2014 identity, subscription topology, policy, logging, exposure \u2014 paired with CISA SMB cloud guidance and a brief Brevo secrets/CDN design lesson. Soft CTA to CyberIntelPro / Security Medic.",
       "productionUrl": "https://sm911.github.io/cloud-architecture-blog/cloud-architecture-and-design/smb-cloud-landing-zones-sep-2026.html",
       "rejectReason": null,
       "live": false
@@ -86,7 +86,7 @@
       "stagedAt": "2026-09-21",
       "decidedAt": null,
       "decision": null,
-      "summary": "Maps CISA BOD 26-04’s exposure × KEV × exploit automation × impact prioritization to CSF 2.0 GV.RM, Identify, and Protect, with a one-page SMB remediation SLA and optional NYDFS Frontier AI (May 2026) context. Soft CTA to CyberIntelPro + Hudson Valley CISO.",
+      "summary": "Maps CISA BOD 26-04\u2019s exposure \u00d7 KEV \u00d7 exploit automation \u00d7 impact prioritization to CSF 2.0 GV.RM, Identify, and Protect, with a one-page SMB remediation SLA and optional NYDFS Frontier AI (May 2026) context. Soft CTA to CyberIntelPro + Hudson Valley CISO.",
       "productionUrl": "https://sm911.github.io/CFS-2.0/govern/gv-rm/risk-based-patching-bod-26-04-sep-2026.html",
       "rejectReason": null,
       "live": false
@@ -123,7 +123,7 @@
     },
     {
       "id": "ambry-genetics-ocr-phishing-sep-2026",
-      "title": "OCR’s $700K Ambry Genetics Settlement: Phishing Lessons for SMB Healthcare",
+      "title": "OCR\u2019s $700K Ambry Genetics Settlement: Phishing Lessons for SMB Healthcare",
       "path": "blogs/compliance-blog/healthcare/ambry-genetics-ocr-phishing-sep-2026.html",
       "targetBlog": "compliance-blog",
       "category": "healthcare",
@@ -131,14 +131,14 @@
       "stagedAt": "2026-09-22",
       "decidedAt": null,
       "decision": null,
-      "summary": "OCR Sep 17, 2026 Ambry Genetics $700k resolution after phishing breach of 225,370 individuals — risk analysis, access termination, unique user IDs for SMB healthcare.",
+      "summary": "OCR Sep 17, 2026 Ambry Genetics $700k resolution after phishing breach of 225,370 individuals \u2014 risk analysis, access termination, unique user IDs for SMB healthcare.",
       "productionUrl": "https://sm911.github.io/compliance-blog/healthcare/ambry-genetics-ocr-phishing-sep-2026.html",
       "rejectReason": null,
       "live": false
     },
     {
       "id": "identity-perimeter-ir-8587-sep-2026",
-      "title": "Identity Is the New Perimeter: Five Owner Questions After CISA/NIST IR 8587",
+      "title": "Your Logins Are the Front Door: Five Owner Questions After the New CISA/NIST Guidance",
       "path": "blogs/leadership-blog/identity-perimeter-ir-8587-sep-2026.html",
       "targetBlog": "leadership-blog",
       "category": "identity-governance",
@@ -146,9 +146,9 @@
       "stagedAt": "2026-09-22",
       "decidedAt": null,
       "decision": null,
-      "summary": "CISA/NIST IR 8587 (Sep 15, 2026) translated into five SMB owner/board questions on SSO tokens, session risk, phishing-resistant MFA, IdP logging, and vendor claims.",
+      "summary": "Revised after staging Reject #6 \u2014 broader SMB / plain-language. CISA/NIST IR 8587 (Sep 15, 2026) as credible trigger; five owner questions on stolen sign-ins, session lifetime, MFA for money-movers, login alerts someone reads, and vendor session shutoff \u2014 MSP-friendly, no insider jargon.",
       "productionUrl": "https://sm911.github.io/leadership-blog/identity-perimeter-ir-8587-sep-2026.html",
-      "rejectReason": null,
+      "rejectReason": "This article may be too narrowly focused to SMBs would work with the Federal, or State government. Some who don't may use NIST controls managed by a MSP thus the owner may not understand. All articles should speak to a wide scope of SMBs likely knowledge. Address the business needs, without the insider security speak.",
       "live": false
     },
     {
@@ -161,14 +161,14 @@
       "stagedAt": "2026-09-22",
       "decidedAt": null,
       "decision": null,
-      "summary": "CISA KEV Sep 11 for ConnectWise ScreenConnect CVE-2026-84869 — version 26.6.5+, TransferFiles role review, agent reinstall; MSP-safe owner ticket.",
+      "summary": "CISA KEV Sep 11 for ConnectWise ScreenConnect CVE-2026-84869 \u2014 version 26.6.5+, TransferFiles role review, agent reinstall; MSP-safe owner ticket.",
       "productionUrl": "https://sm911.github.io/data-security-blog/cybersecurity/screenconnect-cve-2026-84869-sep-2026.html",
       "rejectReason": null,
       "live": false
     },
     {
       "id": "ftc-hbnr-policy-withdrawal-sep-2026",
-      "title": "The FTC Rescinded a Health-App Breach Memo — Not Your Breach Duties",
+      "title": "The FTC Rescinded a Health-App Breach Memo \u2014 Not Your Breach Duties",
       "path": "blogs/data-privacy-blog/foundations-philosophy/ftc-hbnr-policy-withdrawal-sep-2026.html",
       "targetBlog": "data-privacy-blog",
       "category": "foundations-philosophy",
@@ -176,14 +176,14 @@
       "stagedAt": "2026-09-22",
       "decidedAt": null,
       "decision": null,
-      "summary": "FTC Sep 9, 2026 withdrew 2021 health-apps breach policy statement as obsolete after 2024 HBNR update — clarify duties still apply for wellness/health-adjacent SMBs.",
+      "summary": "FTC Sep 9, 2026 withdrew 2021 health-apps breach policy statement as obsolete after 2024 HBNR update \u2014 clarify duties still apply for wellness/health-adjacent SMBs.",
       "productionUrl": "https://sm911.github.io/data-privacy-blog/foundations-philosophy/ftc-hbnr-policy-withdrawal-sep-2026.html",
       "rejectReason": null,
       "live": false
     },
     {
       "id": "fedramp-secure-configuration-guide-smb-sep-2026",
-      "title": "Ask for the Secure Configuration Guide: FedRAMP’s 2026 Lesson for SMB Cloud Customers",
+      "title": "Ask for the Secure Configuration Guide: FedRAMP\u2019s 2026 Lesson for SMB Cloud Customers",
       "path": "blogs/cloud-architecture-blog/security-and-compliance/fedramp-secure-configuration-guide-smb-sep-2026.html",
       "targetBlog": "cloud-architecture-blog",
       "category": "security-and-compliance",
