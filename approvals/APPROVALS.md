@@ -10,3 +10,9 @@
 ## Convention
 - **approve** — from staging UI / `[STAGING-APPROVE]` issue / chat “approve”
 - **reject** — from staging UI with reason / `[STAGING-REJECT]` issue — agent revises and resubmits
+
+## Byline & date on promote
+- Visible byline name/title must be **James Venuto** / **Security Medic Consulting, LLC - AI Cyber Security and Privacy** (never “Jim Venuto”, “Hudson Valley CISO”, or category in the byline).
+- **Event at** (Approve timestamp, America/New_York) is authoritative for the article publish date.
+- On promote, set visible byline date + any meta/`blog-control-meta` `date:` to the **Approve calendar day** (America/New_York), not the draft/`stagedAt` day.
+- Chat approval is not promote authority.

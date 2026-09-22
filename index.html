@@ -221,9 +221,11 @@
       '- **category:** ' + d.category,
       '',
       '### Agent instructions',
-      '1. Jim already APPROVED (dashboard should show Approved).',
-      '2. Publish to ' + d.targetBlog + ' main; set status=promoted and productionUrl.',
-      '3. Log approvals/APPROVALS.md; close this issue; tell Jim the live URL.',
+      '1. James already APPROVED (dashboard should show Approved). Chat is not promote authority.',
+      '2. BEFORE publish: set article date (visible byline + meta / blog-control-meta) to this Approve day (America/New_York). Use actions/scripts/set_approve_day_date.py. Draft/research date must not ship.',
+      '3. Confirm byline: James Venuto | Security Medic Consulting, LLC - AI Cyber Security and Privacy (no Jim Venuto, Hudson Valley CISO, or category in byline).',
+      '4. Publish to ' + d.targetBlog + ' main; set status=promoted and productionUrl.',
+      '5. Log approvals/APPROVALS.md; close this issue; tell James the live URL.',
       '',
       '_Submitted from staging UI_'
     ].join('\n');
