@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govern GV.RM: Plan the Assessment Before the Customer Does — Mapping NIST SP 1352 to CSF 2.0</title>
+    <meta name="description" content="Map NIST SP 1352 small-business assessment planning (Sep 16, 2026) to NIST CSF 2.0 Govern GV.RM — risk management strategy SMBs can staff before a customer audit.">
+    <meta name="keywords" content="NIST CSF 2.0, Govern GV.RM, SP 1352, SP 800-171Ar3, CUI assessment, SMB cybersecurity">
+    <meta name="author" content="James Venuto">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://sm911.github.io/CFS-2.0/govern/gv-rm/sp-1352-assessment-planning-gv-rm-sep-2026.html"/>
+    <meta property="og:title" content="Govern GV.RM: Plan the Assessment Before the Customer Does — Mapping NIST SP 1352 to CSF 2.0">
+    <meta property="og:description" content="SP 1352 assessment planning themes mapped to CSF 2.0 Govern GV.RM for Hudson Valley SMBs.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sm911.github.io/CFS-2.0/govern/gv-rm/sp-1352-assessment-planning-gv-rm-sep-2026.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.85;
+            color: #2d3436;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: white;
+            padding: 65px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+        }
+
+        /* Back Navigation */
+        .back-nav {
+            margin-bottom: 25px;
+        }
+
+        .back-nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .back-nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #1a1a2e;
+            font-size: 2.6em;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.35em;
+            color: #636e72;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .metadata {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .metadata .author {
+            font-weight: 600;
+            color: #0f3460;
+        }
+
+        .read-time {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        /* Key Takeaways Box */
+        .key-takeaways {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 30px 35px;
+            border-radius: 12px;
+            margin: 30px 0 40px 0;
+        }
+
+        .key-takeaways h3 {
+            color: #ffd700;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 18px 0;
+        }
+
+        .key-takeaways ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .key-takeaways li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .key-takeaways li:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-takeaways li::before {
+            content: "\2192";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .key-takeaways strong {
+            color: #ffd700;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: #f8f9fa;
+            padding: 30px 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #0f3460;
+            font-size: 1.15em;
+            margin: 0 0 18px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+            color: #0f3460;
+        }
+
+        h2 {
+            color: #0f3460;
+            font-size: 1.75em;
+            margin-top: 55px;
+            margin-bottom: 22px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e94560;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2d3436;
+            font-size: 1.35em;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 22px;
+            font-size: 1.1em;
+        }
+
+        .hook {
+            font-size: 1.35em;
+            color: #2d3436;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .hook-highlight {
+            background: linear-gradient(180deg, transparent 65%, #ffeaa7 65%);
+            padding: 0 3px;
+        }
+
+        strong {
+            color: #0f3460;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 14px;
+            line-height: 1.75;
+            font-size: 1.05em;
+        }
+
+        /* Hero Section */
+        .hero-scenario {
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 16px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scenario::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            border-radius: 0 0 0 100%;
+            opacity: 0.8;
+        }
+
+        .hero-scenario p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.15em;
+            margin-bottom: 18px;
+        }
+
+        .hero-scenario p:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-scenario strong {
+            color: #ffd700;
+        }
+
+        .hero-scenario .scenario-time {
+            font-family: 'Courier New', monospace;
+            color: #ffeaa7;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .stat-box .number {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #e94560;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            color: #636e72;
+            line-height: 1.4;
+        }
+
+        /* Insight Cards */
+        .insight-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            border-left: 5px solid #667eea;
+        }
+
+        .insight-card.danger {
+            border-left-color: #e94560;
+        }
+
+        .insight-card.warning {
+            border-left-color: #f39c12;
+        }
+
+        .insight-card.success {
+            border-left-color: #00b894;
+        }
+
+        .insight-card h4 {
+            font-size: 1.25em;
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .insight-card p {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .insight-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Quote Block */
+        .pullquote {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #0f3460;
+            text-align: center;
+            padding: 40px 50px;
+            margin: 45px 0;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .pullquote::before {
+            content: open-quote;
+            font-size: 4em;
+            color: #e94560;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        /* Then/Now Comparison */
+        .then-now {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .then-now .then, .then-now .now {
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .then-now .then {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+        }
+
+        .then-now .now {
+            background: linear-gradient(135deg, #ffe6e9 0%, #fff5f5 100%);
+            border: 2px solid #e94560;
+        }
+
+        .then-now h5 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .then-now .then h5 {
+            color: #636e72;
+        }
+
+        .then-now .now h5 {
+            color: #e94560;
+        }
+
+        .then-now p {
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        .then-now ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .then-now li {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .then-now li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Framework Grid */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .framework-item {
+            padding: 25px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .framework-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .framework-item .fw-icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+
+        .framework-item h4 {
+            color: #0f3460;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .framework-item p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+            color: #636e72;
+        }
+
+        /* OWASP / Data Table */
+        .owasp-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 35px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .owasp-table thead {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+        }
+
+        .owasp-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .owasp-table td {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1em;
+        }
+
+        .owasp-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .owasp-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .owasp-table .risk-name {
+            font-weight: 600;
+            color: #e94560;
+        }
+
+        /* CSF Badges */
+        .csf-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: white;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .csf-badge.gv { background: #667eea; }
+        .csf-badge.id { background: #0f3460; }
+        .csf-badge.pr { background: #16a085; }
+        .csf-badge.de { background: #e67e22; }
+        .csf-badge.rs { background: #e74c3c; }
+        .csf-badge.rc { background: #9b59b6; }
+
+        /* Self Assessment */
+        .assessment-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+        }
+
+        .assessment-box h3 {
+            margin-top: 0;
+            color: #0f3460;
+            margin-bottom: 25px;
+        }
+
+        .assessment-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .assessment-item:last-child {
+            border-bottom: none;
+        }
+
+        .assessment-item .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #0f3460;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .assessment-item p {
+            margin-bottom: 0;
+            font-size: 1.05em;
+        }
+
+        /* Series Navigation */
+        .series-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 50px 0 40px 0;
+            padding-top: 40px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .series-nav a {
+            display: block;
+            padding: 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .series-nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .series-nav .nav-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #636e72;
+            margin-bottom: 8px;
+        }
+
+        .series-nav .nav-title {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #0f3460;
+            line-height: 1.4;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 55px;
+            border-radius: 16px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.35);
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2em;
+            margin: 0 0 15px 0;
+            border: none;
+            padding: 0;
+        }
+
+        .cta-section .lead {
+            font-size: 1.25em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-offer {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            border: 2px solid rgba(255,255,255,0.25);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-offer .offer-badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #2d3436;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-offer h3 {
+            color: white;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .cta-offer p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            display: inline-block;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-buttons a.primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-buttons a.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-buttons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-tagline {
+            margin-top: 30px;
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 1.9em;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .then-now {
+                grid-template-columns: 1fr;
+            }
+
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .series-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .pullquote {
+                font-size: 1.2em;
+                padding: 30px 20px;
+            }
+
+            .cta-section {
+                padding: 35px 25px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Mobile table responsiveness */
+            .owasp-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .owasp-table th,
+            .owasp-table td {
+                padding: 15px 12px;
+                font-size: 0.95em;
+            }
+
+            .owasp-table th:first-child,
+            .owasp-table td:first-child {
+                min-width: 120px;
+            }
+
+            .owasp-table th:last-child,
+            .owasp-table td:last-child {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div style="background:#1a202c;color:#f6e05e;text-align:center;padding:0.5rem;font-size:0.85em;">STAGING DRAFT — noindex; Approve before promoting to CFS-2.0/govern/gv-rm</div>
+<div class="container">
+    <div class="back-nav">
+        <a href="../../index.html">&larr; CFS 2.0</a>
+    </div>
+
+    <h1>Govern GV.RM: Plan the Assessment Before the Customer Does — Mapping NIST SP 1352 to CSF 2.0</h1>
+    <p class="subtitle">NIST’s new small-business assessment primer is a Govern problem first: decide risk appetite, scope, and evidence ownership before Protect checklists take over.</p>
+
+    <div class="metadata">
+        <span class="author">James Venuto</span>
+        <span>Security Medic Consulting, LLC - AI Cyber Security and Privacy</span>
+        <span>September 23, 2026</span>
+        <span class="read-time">9 min read</span>
+    </div>
+
+    <div class="key-takeaways">
+        <h2 style="color:#fff;border:none;margin:0 0 1rem;font-size:1.3em;">Key Takeaways</h2>
+        <ul style="margin:0;padding-left:1.25rem;">
+            <li>NIST published SP 1352 on September 16, 2026 to help small businesses understand SP 800-171Ar3 assessment concepts and planning.</li>
+            <li>In NIST CSF 2.0, that planning lives naturally under <strong>Govern → GV.RM</strong> (Risk Management Strategy).</li>
+            <li>Staff four Govern outcomes: scope decision, risk prioritization, evidence ownership, and assessment cadence — before you drown in control worksheets.</li>
+            <li>Pair with Identify (assets/data) and Protect (controls) so Govern is not a slide deck.</li>
+        </ul>
+    </div>
+
+    <p>Most SMBs I meet try to “start with controls.” A customer questionnaire arrives; someone opens a spreadsheet; the team debates MFA screenshots while nobody has agreed what systems are in scope. That is a Governance gap wearing a Protect costume.</p>
+
+    <p>On <strong>September 16, 2026</strong>, NIST published <strong>SP 1352</strong>, the small-business primer for <em>assessing</em> SP 800-171Ar3 requirements for Controlled Unclassified Information. The primer targets leaders and staff who manage SP 800-171r3 — including self-assessment or prep for external assessors. If your cybersecurity program already uses <strong>NIST CSF 2.0</strong>, you do not need a new framework. You need a clearer Govern outcome.</p>
+
+    <h2>Where It Lands in CSF 2.0</h2>
+    <p><strong>Govern (GV)</strong> establishes and monitors the organization’s cybersecurity risk management strategy, expectations, and policy. Inside Govern, <strong>GV.RM — Risk Management Strategy</strong> is where leaders decide how risk is identified, assessed, responded to, and monitored. Assessment planning for customer CUI or supply-chain security asks belongs here: what is in scope, what “acceptable evidence” means, who owns residual risk when a control is partial, and how often you reassess.</p>
+
+    <p>Related CSF pieces to wire without boiling the ocean:</p>
+    <ul>
+        <li><strong>Identify (ID.AM / ID.RA)</strong> — inventory systems and data that could be CUI or customer-restricted; assess risk once scope is set.</li>
+        <li><strong>Protect (PR.*)</strong> — implement and operate the controls the assessment will examine.</li>
+        <li><strong>Govern (GV.OC / GV.SC)</strong> — organizational context and supply-chain risk expectations from customers and partners.</li>
+    </ul>
+
+    <h2>Four GV.RM Workstreams SMBs Can Staff</h2>
+
+    <h3>1. Scope decision</h3>
+    <p>Document which customers, data types, and systems are in assessment scope — and which are explicitly out. SP 1352’s value begins when leaders stop treating “everything we touch” as the default. Write the decision; date it; revisit when sales closes a new regulated logo.</p>
+
+    <h3>2. Risk prioritization</h3>
+    <p>Not every requirement family fails equally for your business. Rank assessment prep by customer deadline, data sensitivity, and control maturity. GV.RM is where “we accept this residual risk until Q1” becomes a recorded choice instead of an accident.</p>
+
+    <h3>3. Evidence ownership</h3>
+    <p>Assign named owners for policy, configuration, and operational evidence. If an MSP holds screenshots, the contract and ticket still need an internal accountable owner. Assessment planning without ownership is hope.</p>
+
+    <h3>4. Assessment cadence</h3>
+    <p>Decide self-assessment vs. external assessor paths early (SP 1352 speaks to both audiences). Put a recurring calendar block for evidence refresh — not only a panic week before the customer visit.</p>
+
+    <div class="callout" style="background:#f0f4ff;border-left:4px solid #667eea;padding:1.25rem;margin:1.5rem 0;">
+        <strong>This week’s GV.RM drill:</strong> (1) One-page scope note. (2) Named evidence owner. (3) Top five assessment gaps ranked by customer deadline. (4) Calendar invite titled “assessment evidence refresh.”
+    </div>
+
+    <h2>What “Done” Looks Like for an SMB</h2>
+    <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+        <tr style="background:#1a1a2e;color:#fff;"><th style="padding:0.75rem;text-align:left;">GV.RM outcome</th><th style="padding:0.75rem;text-align:left;">Evidence</th></tr>
+        <tr style="border-bottom:1px solid #eee;"><td style="padding:0.75rem;">Scope decided</td><td style="padding:0.75rem;">Dated systems/data/customer list</td></tr>
+        <tr style="border-bottom:1px solid #eee;"><td style="padding:0.75rem;">Risk ranked</td><td style="padding:0.75rem;">Top gaps with owners and due dates</td></tr>
+        <tr style="border-bottom:1px solid #eee;"><td style="padding:0.75rem;">Evidence owned</td><td style="padding:0.75rem;">Named internal owner (+ MSP contact if any)</td></tr>
+        <tr style="border-bottom:1px solid #eee;"><td style="padding:0.75rem;">Cadence set</td><td style="padding:0.75rem;">Self vs. external path + refresh calendar</td></tr>
+    </table>
+
+    <h2>Soft Next Step</h2>
+    <p>If you want CSF 2.0 Govern GV.RM translated into a living assessment-planning packet for your customer asks — without a binder nobody opens — <a href="https://securitymedic.com">CyberIntelPro</a> / <a href="https://securitymedic.com">Security Medic</a> can help you staff the four workstreams above.</p>
+
+    <h2>References</h2>
+    <ol>
+        <li>NIST SP 1352 publication (Sep 16, 2026): <a href="https://www.nist.gov/publications/assessing-security-requirements-cui-nist-sp-800-171ar3-small-business-primer">nist.gov/publications/...</a></li>
+        <li>NIST CSRC News, Small Business Primer for SP 800-171Ar3: <a href="https://csrc.nist.gov/News/2026/small-business-primer-for-sp-800-171ar3">csrc.nist.gov/News/2026/...</a></li>
+        <li>DOI: <a href="https://doi.org/10.6028/NIST.SP.1352">doi.org/10.6028/NIST.SP.1352</a></li>
+        <li>NIST Cybersecurity Framework 2.0: <a href="https://www.nist.gov/cyberframework">nist.gov/cyberframework</a></li>
+    </ol>
+</div>
+</body>
+</html>

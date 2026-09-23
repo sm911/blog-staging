@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Five Owner Questions Before a Customer Demands a Security Assessment — James Venuto</title>
+<meta name="description" content="Five plain-language owner questions before a customer security or CUI assessment — paired with NIST SP 1352 (Sep 16, 2026) for any SMB in a regulated supply chain.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/leadership-blog/owner-questions-before-cui-assessment-sep-2026.html"/>
+<meta property="og:title" content="Five Owner Questions Before a Customer Demands a Security Assessment">
+<meta property="og:description" content="Owner/board questions for assessment readiness after NIST SP 1352 — broad SMB framing, MSP-safe ask.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/leadership-blog/owner-questions-before-cui-assessment-sep-2026.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --cream: #f5f0e8;
+    --rust: #c0553a;
+    --rust-light: #e8a08c;
+    --sage: #6b7f6b;
+    --sage-muted: #a3b5a3;
+    --slate: #4a5568;
+    --warm-gray: #d4cdc4;
+    --highlight: #fde68a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Sans 3', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(192,85,58,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(107,127,107,0.12) 0%, transparent 50%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.015) 80px,
+        rgba(255,255,255,0.015) 81px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.015) 80px,
+        rgba(255,255,255,0.015) 81px
+      );
+    animation: subtleShift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes subtleShift {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rust-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--warm-gray);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.8s forwards;
+  }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--sage-muted);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 1.1s forwards;
+  }
+
+  .hero-meta span { color: var(--rust-light); }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--rust), transparent);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.6s forwards, pulse 2.5s ease-in-out 2.6s infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 0.6; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.2; }
+  }
+
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+  }
+
+  .article-body > p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.08em 0.12em 0 0;
+    color: var(--rust);
+  }
+
+  .article-body p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: #2d2d2d;
+  }
+
+  .section-break {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 4rem 0 2.5rem;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--rust);
+    opacity: 0.25;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .section-break h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    border-left: 3px solid var(--rust);
+    padding-left: 1rem;
+  }
+
+  .pullquote {
+    position: relative;
+    margin: 3rem -1rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    background: linear-gradient(135deg, rgba(192,85,58,0.06), rgba(107,127,107,0.06));
+    border-left: 4px solid var(--rust);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.15rem;
+    left: 0.6rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--rust);
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (min-width: 600px) {
+    .insight-grid { grid-template-columns: 1fr 1fr; }
+    .insight-grid.three-col { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  .insight-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--sage);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .insight-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  }
+
+  .insight-card.rust { border-top-color: var(--rust); }
+  .insight-card.sage { border-top-color: var(--sage); }
+  .insight-card.slate { border-top-color: var(--slate); }
+
+  .insight-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 0.6rem;
+  }
+
+  .insight-card p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .diagnostic-strip {
+    background: var(--ink);
+    color: var(--cream);
+    margin: 3.5rem -2rem;
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagnostic-strip::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(192,85,58,0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .diagnostic-strip h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--rust-light);
+  }
+
+  .diagnostic-strip p {
+    color: var(--warm-gray) !important;
+    font-size: 1rem !important;
+  }
+
+  .diagnostic-strip ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .diagnostic-strip li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--warm-gray);
+    font-size: 0.95rem;
+  }
+
+  .diagnostic-strip li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+    font-weight: 700;
+  }
+
+  .scenario-block {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .scenario-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+  }
+
+  .scenario-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-style: italic;
+    color: var(--slate);
+    font-size: 1rem;
+  }
+
+  .scenario-item:last-child { border-bottom: none; }
+
+  .scenario-item em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .metric-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2.5rem 0;
+    font-size: 0.95rem;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+
+  .metric-table thead {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .metric-table thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .metric-table tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.15s ease;
+  }
+
+  .metric-table tbody tr:last-child { border-bottom: none; }
+
+  .metric-table tbody tr:hover { background: rgba(192,85,58,0.03); }
+
+  .metric-table td {
+    padding: 0.85rem 1.25rem;
+    vertical-align: top;
+    line-height: 1.55;
+    color: #2d2d2d;
+  }
+
+  .metric-table td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--rust);
+    white-space: nowrap;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--ink) 0%, #2d2020 100%);
+    margin: 4rem -2rem -4rem;
+    padding: 4rem 2.5rem;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(192,85,58,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 25%, rgba(107,127,107,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cta-section > * { position: relative; z-index: 1; }
+
+  .cta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sage-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section h2 em {
+    font-style: italic;
+    color: var(--rust-light);
+  }
+
+  .cta-section p {
+    font-size: 1rem !important;
+    color: var(--warm-gray) !important;
+    max-width: 540px;
+    margin: 0 auto 2rem !important;
+    line-height: 1.65;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--rust);
+    color: white;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(192,85,58,0.35);
+  }
+
+  .cta-button:hover {
+    background: #a8432a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(192,85,58,0.45);
+  }
+
+  .cta-sub {
+    margin-top: 1.5rem !important;
+    font-size: 0.8rem !important;
+    color: var(--sage-muted) !important;
+  }
+
+  .article-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 2rem 5rem;
+    border-top: 1px solid var(--warm-gray);
+  }
+
+  .author-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+
+  .author-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rust), var(--sage));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .author-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .author-info p {
+    font-size: 0.85rem !important;
+    color: var(--slate);
+    line-height: 1.55;
+    margin-bottom: 0 !important;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(192,85,58,0.08);
+    color: var(--rust);
+    border: 1px solid rgba(192,85,58,0.15);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover { color: var(--rust); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .article-body { padding: 3rem 1.25rem 3rem; }
+    .diagnostic-strip { margin: 2.5rem -1.25rem; padding: 2rem 1.5rem; }
+    .cta-section { margin: 4rem -1.25rem -3rem; padding: 3rem 1.5rem; }
+    .section-number { font-size: 2.5rem; }
+    .section-break h2 { font-size: 1.4rem; }
+    .author-card { flex-direction: column; align-items: center; text-align: center; }
+    .metric-table { font-size: 0.85rem; }
+    .metric-table td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<div class="staging-banner" style="background:#1a202c;color:#f6e05e;text-align:center;padding:0.5rem;font-size:0.85em;">STAGING DRAFT — noindex; Approve before promoting to leadership-blog</div>
+<section class="hero">
+  <div class="hero-inner" style="position:relative;z-index:1;max-width:900px;padding:2rem;text-align:center;">
+    <div class="hero-label" style="color:#e8a08c;letter-spacing:0.15em;text-transform:uppercase;font-size:0.8rem;margin-bottom:1rem;font-family:'JetBrains Mono',monospace;">Leadership · Assessment Readiness</div>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;color:#f5f0e8;font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin-bottom:1rem;">Five Owner Questions Before a Customer Demands a Security Assessment</h1>
+    <p style="color:#d4cdc4;font-size:1.15rem;max-width:640px;margin:0 auto 1.5rem;">NIST just gave small businesses a primer on how assessments work. Here is what any owner should ask — in plain language — before the customer sets the calendar.</p>
+    <div class="hero-meta" style="color:#a3b5a3;font-size:0.95rem;">James Venuto · Security Medic Consulting, LLC - AI Cyber Security and Privacy · September 23, 2026 · 8 min read</div>
+  </div>
+</section>
+
+<main style="max-width:720px;margin:0 auto;padding:3rem 1.5rem 4rem;">
+<p>You do not need a federal contract to wake up to a customer security packet. Manufacturers ask suppliers. Hospitals ask vendors. Professional-services firms ask subcontractors. The email lands with a deadline, a spreadsheet, and the quiet threat that renewal depends on “evidence.”</p>
+
+<p>On September 16, 2026, NIST published <strong>SP 1352</strong>, a small-business primer for assessing SP 800-171Ar3 requirements around Controlled Unclassified Information (CUI). My compliance write-up covers the document itself. This piece is for owners and boards: five questions that keep you from outsourcing judgment — or panicking into theater.</p>
+
+<p>If an MSP already maps your stack to NIST language, good. You still need answers in owner words — one sentence you can ask, and a written reply you can file.</p>
+
+<div style="background:linear-gradient(135deg,rgba(192,85,58,0.06),rgba(107,127,107,0.06));border-left:4px solid #c0553a;padding:1.5rem 1.75rem;margin:2rem 0;border-radius:0 8px 8px 0;">
+<p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:700;font-style:italic;line-height:1.45;color:#1a1a1a;margin:0;">The assessment is a business deadline dressed as a technical project. Own the questions; let specialists own the screenshots.</p>
+</div>
+
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">Why This Is an Owner Problem</h2>
+<p>Assessments fail for business reasons more often than for exotic cryptography: unclear scope, shared logins, missing training records, and no one who can find last year’s evidence. Cyber-insurance questionnaires ask related questions. A customer security review rarely waits for your perfect roadmap. SP 1352’s value for leaders is permission to plan before someone else schedules you.</p>
+
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">Five Questions Every Owner Can Ask This Month</h2>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">1. What customer data could put us “in scope” — and who said so?</strong>
+<p style="margin:0.5rem 0 0;">Ask sales and operations for a one-page list of customers who mention CUI, restricted data, or security addenda. If nobody can name the data types, ask the customer in writing. Scope fights are cheaper before the audit week.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">2. Who owns the evidence folder — by name?</strong>
+<p style="margin:0.5rem 0 0;">Policies, config exports, tickets, and training attestations need an owner. “IT” or “the MSP” is not a name. Put one internal owner and, if needed, one MSP contact on a dated sheet.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">3. What is the one sentence I should send our MSP this week?</strong>
+<p style="margin:0.5rem 0 0;">Try: “Please confirm which systems might process customer restricted or CUI-like data, what assessment evidence we already have, and the top five gaps before our next customer security review — in writing by Friday.” That is an owner ticket, not an architecture debate.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">4. Will this also show up in cyber insurance or board reporting?</strong>
+<p style="margin:0.5rem 0 0;">Underwriters increasingly ask about access control, MFA, backups, and incident response — themes that overlap assessment readiness. Ask your broker what evidence they want this renewal cycle, then reuse the same folder for customer asks. Banks, credit unions, and CPA firms feel this acutely; so do clinics, manufacturers, and professional services.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">5. What does “good enough for this quarter” look like?</strong>
+<p style="margin:0.5rem 0 0;">Pick a finish line: scoped systems list, unique admin accounts, MFA on privileged users, backup restore test dated this quarter, and a training attestation. Perfect is the enemy of renewable contracts. Dated progress beats a glossy binder with no dates.</p>
+</div>
+
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">What “Good Enough” Looks Like This Month</h2>
+<ul>
+<li>One-page customer/data scope note with a date.</li>
+<li>Named evidence owner (internal) plus MSP contact if applicable.</li>
+<li>Written MSP reply to the one-sentence ticket above.</li>
+<li>Insurance and customer questionnaires feeding the same evidence folder.</li>
+<li>Calendar block titled “assessment prep” before the next customer deadline.</li>
+</ul>
+
+<p>This is stewardship. NIST’s primer helps your team understand assessment language; your questions keep the business from treating that language as someone else’s problem until it is too late.</p>
+
+<div style="background:#1a1a1a;color:#f5f0e8;padding:2rem;border-radius:8px;margin:3rem 0;text-align:center;">
+<p style="margin-bottom:0.75rem;">If you want a fractional CISO to turn these five questions into a one-page owner packet — MSP ticket included — <a href="https://securitymedic.com" style="color:#e8a08c;">Security Medic</a> can help. Calmly, with evidence, not theater.</p>
+</div>
+
+<h3 style="margin-top:2rem;">References</h3>
+<ol style="font-size:0.95rem;color:#4a5568;">
+<li>NIST SP 1352 publication page (Sep 16, 2026): <a href="https://www.nist.gov/publications/assessing-security-requirements-cui-nist-sp-800-171ar3-small-business-primer">nist.gov/publications/...</a></li>
+<li>NIST CSRC News, Small Business Primer for SP 800-171Ar3: <a href="https://csrc.nist.gov/News/2026/small-business-primer-for-sp-800-171ar3">csrc.nist.gov/News/2026/...</a></li>
+<li>DOI: <a href="https://doi.org/10.6028/NIST.SP.1352">doi.org/10.6028/NIST.SP.1352</a></li>
+</ol>
+</main>
+</body>
+</html>

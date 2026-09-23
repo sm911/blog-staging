@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FedRAMP Authorization Is Not Your Homework Done: Shared Responsibility for SMB AI and Cloud | James Venuto</title>
+<meta name="description" content="FedRAMP authorization and in-scope AI services like Amazon Bedrock do not finish the customer's security work. Shared responsibility lessons for SMB cloud and AI buyers.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-shared-responsibility-ai-cloud-sep-2026.html"/>
+<meta property="og:title" content="FedRAMP Authorization Is Not Your Homework Done: Shared Responsibility for SMB AI and Cloud">
+<meta property="og:description" content="Use AWS shared responsibility and FedRAMP-authorized AI examples to clarify what SMBs still own in the cloud.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-shared-responsibility-ai-cloud-sep-2026.html">
+<meta property="og:site_name" content="Cloud Architecture Blog">
+<meta name="twitter:card" content="summary">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .content, .entry-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .content h2, .entry-content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .content h3, .entry-content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        .content p, .entry-content p {
+            margin-bottom: 15px;
+        }
+        .content ul, .content ol, .entry-content ul, .entry-content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        .content li, .entry-content li {
+            margin-bottom: 8px;
+        }
+        .content code, .entry-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .content pre, .entry-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        .content blockquote, .entry-content blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        .content img, .entry-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .source-link {
+            margin-top: 10px;
+        }
+        .source-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+        /* WordPress block classes */
+        .wp-block-heading {
+            display: block;
+        }
+        .wp-block-list {
+            display: block;
+            list-style-position: outside;
+        }
+        .wp-block-image {
+            display: block;
+        }
+        .wp-block-post-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div style="background:#1a202c;color:#f6e05e;text-align:center;padding:0.5rem;font-size:0.85em;">STAGING DRAFT — noindex; Approve before promoting to cloud-architecture-blog</div>
+<div class="container">
+<header>
+<p style="color:#666;font-size:0.85rem;margin-bottom:0.5rem;"><a href="../index.html" style="color:#667eea;text-decoration:none;">← Cloud Architecture</a> · security-and-compliance</p>
+<h1>FedRAMP Authorization Is Not Your Homework Done: Shared Responsibility for SMB AI and Cloud</h1>
+<div class="meta">By James Venuto | Security Medic Consulting, LLC - AI Cyber Security and Privacy | Published: September 23, 2026</div>
+</header>
+<div class="content">
+
+<p>Sales decks love a badge. “FedRAMP Authorized.” “In scope.” “Government-ready AI.” Those labels matter — and they are easy to misunderstand. For small and mid-size businesses buying cloud or generative AI, the badge answers what the <em>provider</em> secured in the platform. It does not answer whether <em>your</em> tenant, prompts, identities, and data paths are under control.</p>
+
+<p>AWS states the point plainly in its Shared Responsibility Model: security and compliance are shared. AWS protects security <strong>of</strong> the cloud (infrastructure). Customers remain responsible for security <strong>in</strong> the cloud — including data, identity and access management (IAM), guest configuration where applicable, and how services are integrated into the business.</p>
+
+<p>As AI services show up on FedRAMP services-in-scope lists — Amazon Bedrock model families, for example, with Class C (formerly Moderate) in U.S. East/West and Class D (formerly High) in GovCloud on AWS’s model status page last updated <strong>September 18, 2026</strong> — the confusion scales. A regulated or enterprise customer may require an authorized AI path. Your team still owns prompts, retrieval data, keys, logging, and who can call the API.</p>
+
+<h2>What Shared Responsibility Means in Practice</h2>
+<ul>
+<li><strong>Inherited:</strong> Physical and environmental controls at the provider facility — you do not rebuild the data center.</li>
+<li><strong>Shared:</strong> Patching and configuration — provider patches infrastructure; you patch what you run and configure what you own.</li>
+<li><strong>Customer-specific:</strong> Your applications, data classification, encryption choices, IAM policies, and network zoning decisions.</li>
+</ul>
+<p>The more abstracted the service (object storage, managed AI APIs), the less OS work you do — and the more your remaining work concentrates on identity, data, and application design. That is not “less security.” It is a different checklist.</p>
+
+<h2>The SMB Buyer Checklist (Non-Federal)</h2>
+<ul>
+<li><strong>Badge vs. tenant:</strong> Ask vendors which authorization covers the exact region and service you will use — then ask what <em>you</em> must still configure on day one.</li>
+<li><strong>Identity:</strong> Who can invoke the AI/cloud admin APIs? Are standing admin roles minimized? Is MFA enforced on those accounts?</li>
+<li><strong>Data path:</strong> Where do prompts, embeddings, and customer files live? Who can export them? What retention did you choose?</li>
+<li><strong>Logging:</strong> Are API and admin logs enabled and retained somewhere a human reviews? Authorization does not read your logs for you.</li>
+<li><strong>Contracts:</strong> If an MSP or integrator builds the AI stack, require a written shared-responsibility matrix — provider / integrator / your company.</li>
+</ul>
+
+<div style="background:#f0f4f8;border-left:4px solid #2c3e50;padding:1.25rem;margin:1.5rem 0;">
+<strong>This week’s action:</strong> Pick one cloud or AI service you rely on. Write a half-page: what the provider secures, what your team (or MSP) secures, and the three settings that would hurt most if misconfigured. Date it. That is your shared-responsibility starter artifact.
+</div>
+
+<h2>How This Differs from Asking for a Secure Configuration Guide</h2>
+<p>Secure configuration guides explain knobs and defaults inside a product. Shared responsibility explains <em>whose job</em> the knobs are. You need both conversations. A FedRAMP badge without an ownership map is how “we thought the cloud was secure” becomes an incident postmortem.</p>
+
+<h2>Soft Next Step</h2>
+<p>If you want help drafting a right-sized shared-responsibility matrix for Microsoft 365, AWS, or an AI pilot — without an enterprise program tax — <a href="https://securitymedic.com">CyberIntelPro / Security Medic</a> can build the one-pager with your MSP or internal team.</p>
+
+<h3>References</h3>
+<ol>
+<li>AWS, Shared Responsibility Model: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/">aws.amazon.com/compliance/shared-responsibility-model/</a></li>
+<li>AWS, Amazon Bedrock models — FedRAMP and DoD CSP SRG certification status (updated Sep 18, 2026): <a href="https://aws.amazon.com/compliance/services-in-scope/FedRAMP/amazon-bedrock-models/">aws.amazon.com/.../amazon-bedrock-models/</a></li>
+<li>AWS, FedRAMP Services in Scope: <a href="https://aws.amazon.com/compliance/services-in-scope/FedRAMP/">aws.amazon.com/compliance/services-in-scope/FedRAMP/</a></li>
+</ol>
+</div>
+</div>
+</body>
+</html>

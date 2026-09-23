@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before the Customer Audit: NIST’s Small Business Primer for Assessing CUI Controls (SP 1352) | James Venuto</title>
+<meta name="description" content="NIST published SP 1352 on September 16, 2026 — a small-business primer for assessing SP 800-171Ar3. Practical planning for any SMB that handles customer Controlled Unclassified Information or faces a security assessment ask.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/compliance-blog/nist/nist-sp-1352-cui-assessment-primer-sep-2026.html"/>
+<meta property="og:title" content="Before the Customer Audit: NIST’s Small Business Primer for Assessing CUI Controls (SP 1352)">
+<meta property="og:description" content="NIST SP 1352 (Sep 16, 2026) helps small businesses plan SP 800-171Ar3 assessments — supply-chain and customer CUI asks, not only defense primes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/compliance-blog/nist/nist-sp-1352-cui-assessment-primer-sep-2026.html">
+<meta property="og:site_name" content="Compliance & Cybersecurity Blog">
+<!-- blog-control-meta
+title: Before the Customer Audit: NIST’s Small Business Primer for Assessing CUI Controls (SP 1352)
+author: James Venuto
+date: 2026-09-23
+category: NIST
+tags: NIST SP 1352, SP 800-171Ar3, CUI, assessment, small business, supply chain, SMB, Hudson Valley
+read_time: 10 min
+description: NIST SP 1352 primer for assessing SP 800-171Ar3 — planning strategies for SMBs facing customer CUI and security assessment asks.
+priority: P1
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #2d3748; background-color: #f7fafc; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.2em; max-width: 800px; margin: 0 auto 0.5rem; line-height: 1.3; }
+        .hero .subtitle { font-size: 1.1em; opacity: 0.9; max-width: 640px; margin: 0 auto; }
+        .byline { max-width: 800px; margin: 1.5rem auto; padding: 0 2rem; color: #718096; font-size: 0.95em; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; }
+        .content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h2 { color: #667eea; font-size: 1.6em; margin: 2.5em 0 1em; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; }
+        h3 { color: #4a5568; font-size: 1.3em; margin: 2em 0 0.8em; }
+        p { margin-bottom: 1.5em; }
+        ol, ul { margin: 0 0 1.5em 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .callout { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1.5em; margin: 2em 0; border-radius: 0 4px 4px 0; }
+        .callout strong { color: #667eea; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; margin: 3em 0; border-radius: 8px; text-align: center; }
+        .cta a { color: white; text-decoration: underline; }
+        .back-link { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
+        .back-link a { color: #667eea; text-decoration: none; }
+        .references { max-width: 800px; margin: 0 auto 3rem; padding: 0 2rem; }
+        .references h2 { font-size: 1.3em; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; margin-bottom: 1em; }
+        .references a { color: #667eea; }
+        .staging-note { background: #1a202c; color: #f6e05e; text-align: center; padding: 0.5rem; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="staging-note">STAGING DRAFT — noindex; Approve before promoting to compliance-blog/nist</div>
+    <div class="hero">
+        <h1>Before the Customer Audit: NIST’s Small Business Primer for Assessing CUI Controls (SP 1352)</h1>
+        <p class="subtitle">A September 16, 2026 NIST guide for small businesses that must assess SP 800-171Ar3 — useful whether your customer is a prime contractor, a manufacturer, or any buyer who asks about Controlled Unclassified Information.</p>
+    </div>
+    <div class="byline">By James Venuto | September 23, 2026 | Security Medic Consulting, LLC - AI Cyber Security and Privacy</div>
+    <div class="content">
+
+        <p>If a big customer just emailed you a security questionnaire — or mentioned “CUI,” “800-171,” or “we need evidence before renewal” — you are not alone. Small and mid-size businesses across professional services, manufacturing, healthcare vendors, and IT providers increasingly sit in someone else’s regulated supply chain even when they never bid on a federal contract themselves.</p>
+
+        <p>On <strong>September 16, 2026</strong>, NIST published Special Publication <strong>SP 1352</strong>, <em>Assessing Security Requirements for Controlled Unclassified Information (CUI): NIST SP 800-171Ar3 Small Business Primer</em>, authored by Daniel Eliot and Victoria Pillitteri. The primer gives owners and operators a high-level overview of <strong>SP 800-171A Revision 3</strong> — the assessment companion to the SP 800-171r3 protection requirements — plus basic strategies for planning an assessment.</p>
+
+        <p>I work with Hudson Valley and regional SMBs who feel assessment language before they feel ready. SP 1352 will not do the assessment for you. It does something more useful first: it lowers the intimidation tax so you can plan the work instead of freezing.</p>
+
+        <h2>What SP 1352 Is (and Is Not)</h2>
+
+        <div class="callout">
+            <strong>What it is:</strong> A small-business primer for <em>assessing</em> security requirements for CUI under SP 800-171Ar3 — foundational assessment concepts and planning strategies for leaders and staff who manage SP 800-171r3, including self-assessments or prep for external assessors.
+        </div>
+        <div class="callout">
+            <strong>What it is not:</strong> A replacement for SP 800-171r3 itself, or for NIST’s earlier small-business <em>implementation</em> primer (SP 1318) on protecting CUI. Implementation and assessment are related; they are not the same document.
+        </div>
+
+        <p>NIST’s CSRC announcement is explicit about audience: business leaders or employees tasked with managing SP 800-171r3 implementation, including self-assessments or preparing to work with external assessors. That includes plenty of firms that never wear a “defense contractor” label — anyone handling customer CUI or answering supply-chain security asks.</p>
+
+        <h2>Why Every SMB in a Regulated Supply Chain Should Care</h2>
+
+        <ul>
+            <li><strong>Customer contracts travel.</strong> Flow-downs, BAAs, and vendor security addenda often import assessment expectations even when you are two layers away from the original buyer.</li>
+            <li><strong>Assessment is a project, not a PDF.</strong> Knowing <em>how</em> evidence will be examined changes how you store screenshots, tickets, and policies <em>before</em> the deadline.</li>
+            <li><strong>Self-assessment still needs a method.</strong> Guessing “implemented” without a procedure is how questionnaires fail underwriter and customer review alike.</li>
+            <li><strong>Limited staff is the design constraint.</strong> NIST wrote SP 1352 because small businesses juggle time, budget, and thin IT benches — the primer meets you there.</li>
+        </ul>
+
+        <h2>A Practical Planning Sequence I Recommend</h2>
+
+        <ol>
+            <li><strong>Confirm whether CUI (or equivalent customer-sensitive data) is actually in scope.</strong> If the customer cannot name the data types, ask them to. Scope fights are cheaper before the assessment calendar starts.</li>
+            <li><strong>Separate “protect” from “assess.”</strong> Use SP 800-171r3 / SP 1318 themes for building controls; use SP 800-171Ar3 / SP 1352 themes for how you will prove them.</li>
+            <li><strong>Name an evidence owner per family of requirements.</strong> “IT will handle it” is not a name. Pick people for access control evidence, logging evidence, and media/disposal evidence.</li>
+            <li><strong>Decide self-assessment vs. third-party help early.</strong> SP 1352 is written for both paths. Budget and calendar change if an external assessor is coming.</li>
+            <li><strong>Build a living evidence folder now.</strong> Policy PDFs, config exports, ticket samples, and training attestations with dates beat a scramble the week of the customer visit.</li>
+        </ol>
+
+        <div class="callout">
+            <strong>This week’s action:</strong> Download SP 1352 from NIST. Skim the planning sections. Write a one-page scope note: which systems might process customer CUI, who owns evidence, and the next customer deadline. Put the dated note in your compliance folder.
+        </div>
+
+        <h2>If an MSP Runs Your Stack</h2>
+
+        <p>Many owners I meet already have a managed service provider. Fine. Ask them in one sentence: <em>“Please confirm which of our systems could process customer Controlled Unclassified Information or equivalent restricted data, what evidence we already have for an SP 800-171-style assessment, and what is still missing before our next customer security review.”</em> You want a written answer — not a hallway shrug.</p>
+
+        <h2>Soft Next Step</h2>
+
+        <div class="cta">
+            <p>If you want help turning SP 1352’s assessment concepts into a scoped evidence plan for your customer asks — without a binder that never matches the floor — <a href="https://securitymedic.com">Security Medic</a> can walk the planning with you.</p>
+        </div>
+
+        <p>Customers will keep asking. Planning the assessment before they do is how small businesses stay in the deal.</p>
+    </div>
+
+    <div class="references">
+        <h2>References</h2>
+        <ol>
+            <li>NIST, Assessing Security Requirements for CUI: NIST SP 800-171Ar3 Small Business Primer (SP 1352), published September 16, 2026: <a href="https://www.nist.gov/publications/assessing-security-requirements-cui-nist-sp-800-171ar3-small-business-primer">nist.gov/publications/...</a></li>
+            <li>NIST CSRC News, “Small Business Primer for SP 800-171Ar3” (Sep 16, 2026): <a href="https://csrc.nist.gov/News/2026/small-business-primer-for-sp-800-171ar3">csrc.nist.gov/News/2026/...</a></li>
+            <li>DOI: <a href="https://doi.org/10.6028/NIST.SP.1352">doi.org/10.6028/NIST.SP.1352</a></li>
+            <li>NIST SP 800-171 / CUI resources (related suite): <a href="https://csrc.nist.gov/pubs/sp/800/171/r3/final">csrc.nist.gov SP 800-171r3</a></li>
+        </ol>
+    </div>
+    <div class="back-link"><a href="../index.html">&larr; Compliance Blog</a></div>
+</body>
+</html>
