@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Building Systems Are Computers Too: NIST’s Draft OT Security Guide (SP 800-82r4) | James Venuto</title>
+<meta name="description" content="NIST released the initial public draft of SP 800-82r4 on September 21, 2026 — Guide to OT Security. Practical takeaways for SMBs with HVAC, badge access, plant floors, and other operational technology.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/compliance-blog/nist/nist-sp-800-82r4-ot-security-draft-sep-2026.html"/>
+<meta property="og:title" content="Your Building Systems Are Computers Too: NIST’s Draft OT Security Guide (SP 800-82r4)">
+<meta property="og:description" content="SP 800-82r4 initial public draft (Sep 21, 2026) — OT security for SMBs beyond factories: building automation, access control, and CSF 2.0 alignment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/compliance-blog/nist/nist-sp-800-82r4-ot-security-draft-sep-2026.html">
+<meta property="og:site_name" content="Compliance & Cybersecurity Blog">
+<!-- blog-control-meta
+title: Your Building Systems Are Computers Too: NIST’s Draft OT Security Guide (SP 800-82r4)
+author: James Venuto
+date: 2026-09-24
+category: NIST
+tags: NIST SP 800-82r4, OT security, ICS, building automation, CSF 2.0, SMB, Hudson Valley
+read_time: 10 min
+description: NIST SP 800-82r4 initial public draft — OT security primer for SMBs with building systems, plant floors, and physical-process tech.
+priority: P1
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #2d3748; background-color: #f7fafc; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.2em; max-width: 800px; margin: 0 auto 0.5rem; line-height: 1.3; }
+        .hero .subtitle { font-size: 1.1em; opacity: 0.9; max-width: 640px; margin: 0 auto; }
+        .byline { max-width: 800px; margin: 1.5rem auto; padding: 0 2rem; color: #718096; font-size: 0.95em; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; }
+        .content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h2 { color: #667eea; font-size: 1.6em; margin: 2.5em 0 1em; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; }
+        h3 { color: #4a5568; font-size: 1.3em; margin: 2em 0 0.8em; }
+        p { margin-bottom: 1.5em; }
+        ol, ul { margin: 0 0 1.5em 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .callout { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1.5em; margin: 2em 0; border-radius: 0 4px 4px 0; }
+        .callout strong { color: #667eea; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; margin: 3em 0; border-radius: 8px; text-align: center; }
+        .cta a { color: white; text-decoration: underline; }
+        .back-link { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
+        .back-link a { color: #667eea; text-decoration: none; }
+        .references { max-width: 800px; margin: 0 auto 3rem; padding: 0 2rem; }
+        .references h2 { font-size: 1.3em; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; margin-bottom: 1em; }
+        .references a { color: #667eea; }
+        .staging-note { background: #1a202c; color: #f6e05e; text-align: center; padding: 0.5rem; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="staging-note">STAGING DRAFT — noindex; Approve before promoting to compliance-blog/nist</div>
+    <div class="hero">
+        <h1>Your Building Systems Are Computers Too: NIST’s Draft OT Security Guide (SP 800-82r4)</h1>
+        <p class="subtitle">On September 21, 2026 NIST released the initial public draft of SP 800-82 Revision 4 — a Guide to Operational Technology security that finally speaks to HVAC, badge readers, plant floors, and other “not the laptop” systems small businesses already run.</p>
+    </div>
+    <div class="byline">By James Venuto | September 24, 2026 | Security Medic Consulting, LLC - AI Cyber Security and Privacy</div>
+    <div class="content">
+
+        <p>Most owners I meet think cybersecurity means email, laptops, and the cloud. Fair. Then something in the building — a thermostat network, a door controller, a packaging line, a cold-storage monitor — gets mentioned in a vendor questionnaire or an insurance form, and the room goes quiet.</p>
+
+        <p>That quiet is <strong>operational technology (OT)</strong>: programmable systems that interact with the physical world. On <strong>September 21, 2026</strong>, NIST published the initial public draft of Special Publication <strong>SP 800-82 Revision 4</strong>, <em>Guide to Operational Technology (OT) Security</em>. Comments are open through <strong>November 30, 2026</strong>.</p>
+
+        <p>You do not need to be a defense plant or a federal agency to care. If you have building automation, physical access control, industrial or warehouse equipment, or Internet-connected sensors that move air, water, doors, or product, this draft is written for organizations like yours — not only traditional factories.</p>
+
+        <h2>What Changed in Revision 4 (Owner-Readable)</h2>
+        <ul>
+            <li><strong>Broader OT map.</strong> NIST expands sector examples to include Building Automation and Control Systems (BACS), water and wastewater, food and agriculture, freight rail, maritime vessels, and Industrial Internet of Things (IIoT) with cloud convergence — not only classic ICS.</li>
+            <li><strong>Structured around CSF 2.0.</strong> The draft reorganizes around the NIST Cybersecurity Framework 2.0, including a stronger focus on the <em>Govern</em> function for OT risk.</li>
+            <li><strong>Enterprise risk, not a silo.</strong> It discusses aligning OT risk management with broader enterprise risk (NIST IR 8286r1) and points to Risk Management Framework adoption in an appendix.</li>
+            <li><strong>Practical controls emphasis.</strong> Expanded guidance on asset management, network monitoring and detection, protecting system management functions, and applying zero-trust principles where they fit OT constraints.</li>
+        </ul>
+
+        <div class="callout">
+            <strong>What it is:</strong> A draft <em>guide</em> — overview of OT topologies, threats, typical vulnerabilities, and recommended safeguards while respecting performance, reliability, and safety constraints unique to physical processes.
+        </div>
+        <div class="callout">
+            <strong>What it is not:</strong> A finished mandatory checklist, a CMMC substitute, or a reason to rip out every controller this week. Drafts invite comment; they also give you a shared vocabulary with vendors and insurers <em>now</em>.
+        </div>
+
+        <h2>Why SMBs Outside “Industry” Still Need This</h2>
+        <ul>
+            <li><strong>Your landlord or facilities vendor may own the risk path.</strong> Shared HVAC or badge systems still touch your people and sometimes your network.</li>
+            <li><strong>Customer and insurer questions are catching up.</strong> “Do you have OT / ICS / building systems on the corporate network?” is showing up more often than owners expect.</li>
+            <li><strong>IT patches and OT uptime collide.</strong> You cannot treat a production controller like a laptop. SP 800-82r4 exists because safety and availability constrain how you change things.</li>
+            <li><strong>Asset blindness is the usual failure.</strong> You cannot protect what you have never listed. The draft’s asset-management emphasis is the right first habit.</li>
+        </ul>
+
+        <h2>A Practical Sequence I Recommend</h2>
+        <ol>
+            <li><strong>Name the OT you actually have.</strong> HVAC panels, badge/door controllers, warehouse scanners, packaging equipment, cold-chain monitors, camera NVRs that control doors — write the list.</li>
+            <li><strong>Ask how each connects.</strong> Standalone? Vendor VPN? Same Wi-Fi as laptops? Flat network with the file server? Draw one ugly diagram.</li>
+            <li><strong>Separate “who can change settings” from “who can read data.”</strong> System management functions deserve extra protection — the draft calls that out for a reason.</li>
+            <li><strong>Pick one monitoring gap.</strong> Even a simple alert when a building controller becomes reachable from the internet is progress.</li>
+            <li><strong>Skim the draft or the NIST news summary.</strong> Bring one page of notes to your next MSP or facilities meeting. Comment to NIST if a sector example is missing your reality — deadline November 30, 2026.</li>
+        </ol>
+
+        <div class="callout">
+            <strong>This week’s action:</strong> Create a one-page OT inventory: system name, physical location, vendor, network path (isolated / shared / unknown), and who can administer it. Date the page. That artifact beats another year of “we don’t have OT.”
+        </div>
+
+        <h2>If an MSP or Facilities Vendor Runs the Gear</h2>
+        <p>Ask in one sentence: <em>“Please list every building, plant, or physical-process system you support for us (HVAC, access control, cameras that control doors, industrial or warehouse controllers), how each connects to our network or the internet, and what monitoring or segmentation is in place today.”</em> You want a written list — not a hallway shrug.</p>
+
+        <h2>Soft Next Step</h2>
+        <div class="cta">
+            <p>If you want help turning SP 800-82r4’s OT ideas into a right-sized inventory and segmentation conversation for your building or plant — without an enterprise ICS program tax — <a href="https://securitymedic.com">Security Medic</a> can walk it with you and your MSP.</p>
+        </div>
+
+        <p>Laptops will keep getting patches. The quiet systems that move air, doors, and product need a name on the map first.</p>
+    </div>
+
+    <div class="references">
+        <h2>References</h2>
+        <ol>
+            <li>NIST CSRC News, “Guide to Operational Technology (OT) Security: NIST Requests Comments on Draft SP 800-82r4” (Sep 21, 2026): <a href="https://csrc.nist.gov/news/2026/draft-guide-to-ot-security">csrc.nist.gov/news/2026/draft-guide-to-ot-security</a></li>
+            <li>NIST SP 800-82 Rev. 4 (initial public draft) publication details: <a href="https://csrc.nist.gov/pubs/sp/800/82/r4/ipd">csrc.nist.gov/pubs/sp/800/82/r4/ipd</a></li>
+            <li>Draft PDF: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r4.ipd.pdf">NIST.SP.800-82r4.ipd.pdf</a> · DOI <a href="https://doi.org/10.6028/NIST.SP.800-82r4.ipd">doi.org/10.6028/NIST.SP.800-82r4.ipd</a></li>
+        </ol>
+    </div>
+    <div class="back-link"><a href="../index.html">&larr; Compliance Blog</a></div>
+</body>
+</html>

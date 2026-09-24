@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ask for Outcomes, Not Binders: FedRAMP Key Security Indicators for SMB Cloud Buyers | James Venuto</title>
+<meta name="description" content="FedRAMP 20x Key Security Indicators emphasize continuous, measurable security outcomes. What SMB cloud buyers should ask providers for beyond a one-time compliance binder.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-ksi-outcomes-smb-sep-2026.html"/>
+<meta property="og:title" content="Ask for Outcomes, Not Binders: FedRAMP Key Security Indicators for SMB Cloud Buyers">
+<meta property="og:description" content="FedRAMP KSIs — continuous evidence, drift detection, and buyer questions for SMB cloud customers.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-ksi-outcomes-smb-sep-2026.html">
+<meta property="og:site_name" content="Cloud Architecture Blog">
+<meta name="twitter:card" content="summary">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .content, .entry-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .content h2, .entry-content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .content h3, .entry-content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        .content p, .entry-content p {
+            margin-bottom: 15px;
+        }
+        .content ul, .content ol, .entry-content ul, .entry-content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        .content li, .entry-content li {
+            margin-bottom: 8px;
+        }
+        .content code, .entry-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .content pre, .entry-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        .content blockquote, .entry-content blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        .content img, .entry-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .source-link {
+            margin-top: 10px;
+        }
+        .source-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+        /* WordPress block classes */
+        .wp-block-heading {
+            display: block;
+        }
+        .wp-block-list {
+            display: block;
+            list-style-position: outside;
+        }
+        .wp-block-image {
+            display: block;
+        }
+        .wp-block-post-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div style="background:#1a202c;color:#f6e05e;text-align:center;padding:0.5rem;font-size:0.85em;">STAGING DRAFT — noindex; Approve before promoting to cloud-architecture-blog</div>
+<div class="container">
+<header>
+<p style="color:#666;font-size:0.85rem;margin-bottom:0.5rem;"><a href="../index.html" style="color:#667eea;text-decoration:none;">← Cloud Architecture</a> · security-and-compliance</p>
+<h1>Ask for Outcomes, Not Binders: FedRAMP Key Security Indicators for SMB Cloud Buyers</h1>
+<div class="meta">By James Venuto | Security Medic Consulting, LLC - AI Cyber Security and Privacy | Published: September 24, 2026</div>
+</header>
+<div class="content">
+
+<p>Cloud sales conversations still love a thick PDF: policies, control matrices, last year’s assessment letter. Those artifacts have a place. They do not tell you whether the service is <em>still</em> configured the way the binder claims after last week’s deploy.</p>
+
+<p>FedRAMP’s <strong>20x</strong> model pushes providers toward <strong>Key Security Indicators (KSIs)</strong> — measurable validation that security capabilities work in the live environment, not only that a control was documented once. FedRAMP’s Consolidated Rules for 2026 describe KSIs as a way to demonstrate desired security outcomes continuously: collect evidence, detect configuration drift, monitor control effectiveness, alert on deviations from baselines, and show trends.</p>
+
+<p>You may never chase a FedRAMP Authorization yourself. If you buy SaaS or cloud platforms that sell into government — or that market “FedRAMP-ready / 20x” maturity — KSIs are a useful buyer language: <em>show me the living metrics, not only the binder.</em></p>
+
+<h2>What KSIs Emphasize (Plain English)</h2>
+<ul>
+<li><strong>Outcomes over checklists.</strong> Security controls define required protections; KSIs measure whether those protections are functioning in production.</li>
+<li><strong>Continuous, not annual theater.</strong> Cloud changes constantly — so should evidence of security decisions.</li>
+<li><strong>Engineering-led.</strong> FedRAMP warns against approaching KSIs as traditional GRC paperwork; successful pilots were led by engineering and product teams treating certification like a product.</li>
+<li><strong>Documented in a Security Decision Record.</strong> Minimum artifacts per indicator live with the decisions that produced them — not in a forgotten SharePoint folder.</li>
+</ul>
+
+<h2>The SMB Buyer Questions I Recommend</h2>
+<ul>
+<li><strong>Drift:</strong> How do you detect when a security-critical setting changes from the recommended baseline?</li>
+<li><strong>Evidence freshness:</strong> How old is the newest metric you would show a customer about authentication failures, privileged access, or encryption coverage?</li>
+<li><strong>Ownership:</strong> Which team owns each KSI-style outcome — security, platform, or product — and who pages when it breaks?</li>
+<li><strong>Your tenant vs. theirs:</strong> Which measurements are about the shared platform, and which still depend on how <em>you</em> configure identity, logging, and data paths?</li>
+<li><strong>Transparency:</strong> Can we see a summary trust/metrics view, or only a static letter?</li>
+</ul>
+
+<div style="background:#f0f4f8;border-left:4px solid #2c3e50;padding:1.25rem;margin:1.5rem 0;">
+<strong>This week’s action:</strong> Pick one critical cloud or SaaS vendor. Ask for one page: three security outcomes they measure continuously, how often those metrics refresh, and what you still own in your tenant. Date the reply. That is a better artifact than another unread SOC report excerpt.
+</div>
+
+<h2>How This Differs from Shared Responsibility and Secure Configuration Guides</h2>
+<p>Shared responsibility answers <em>whose job</em> a control is. Secure configuration guides explain <em>which knobs</em> to set. KSIs ask whether the outcomes those jobs and knobs produce are <em>still true this month</em>. You need all three conversations — especially if last year’s binder is the only comfort you have.</p>
+
+<h2>Soft Next Step</h2>
+<p>If you want help turning vendor trust packages into a short, outcome-based scorecard for Microsoft 365, AWS, or a SaaS suite — without an enterprise GRC tax — <a href="https://securitymedic.com">Security Medic</a> / <a href="https://cyberintelpro.com">CyberIntelPro</a> can build the one-pager with your team or MSP.</p>
+
+<h3>References</h3>
+<ol>
+<li>FedRAMP, Key Security Indicators — Consolidated Rules for 2026: <a href="https://fedramp.gov/2026/providers/20x/key-security-indicators/">fedramp.gov/2026/providers/20x/key-security-indicators/</a></li>
+<li>FedRAMP 20x program overview: <a href="https://www.fedramp.gov/20x/">fedramp.gov/20x/</a></li>
+</ol>
+</div>
+</div>
+</body>
+</html>
