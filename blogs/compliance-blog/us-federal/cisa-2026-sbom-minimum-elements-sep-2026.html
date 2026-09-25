@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask for the Ingredients List: CISA’s 2026 SBOM Minimum Elements for SMB Buyers | James Venuto</title>
+<meta name="description" content="CISA, NSA, FBI and partners released the 2026 Minimum Elements for a Software Bill of Materials on July 29, 2026. Practical takeaways for SMBs buying software — not only federal primes.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/compliance-blog/us-federal/cisa-2026-sbom-minimum-elements-sep-2026.html"/>
+<meta property="og:title" content="Ask for the Ingredients List: CISA’s 2026 SBOM Minimum Elements for SMB Buyers">
+<meta property="og:description" content="2026 SBOM Minimum Elements (Jul 29, 2026) — what every SMB software buyer should ask vendors for, in plain language.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/compliance-blog/us-federal/cisa-2026-sbom-minimum-elements-sep-2026.html">
+<meta property="og:site_name" content="Compliance & Cybersecurity Blog">
+<!-- blog-control-meta
+title: Ask for the Ingredients List: CISA’s 2026 SBOM Minimum Elements for SMB Buyers
+author: James Venuto
+date: 2026-09-25
+category: US Federal
+tags: SBOM, CISA, software supply chain, procurement, SMB, Hudson Valley
+read_time: 9 min
+description: CISA 2026 SBOM Minimum Elements — practical procurement questions for SMBs buying software and SaaS.
+priority: P1
+-->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #2d3748; background-color: #f7fafc; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.2em; max-width: 800px; margin: 0 auto 0.5rem; line-height: 1.3; }
+        .hero .subtitle { font-size: 1.1em; opacity: 0.9; max-width: 640px; margin: 0 auto; }
+        .byline { max-width: 800px; margin: 1.5rem auto; padding: 0 2rem; color: #718096; font-size: 0.95em; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; }
+        .content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h2 { color: #667eea; font-size: 1.6em; margin: 2.5em 0 1em; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; }
+        h3 { color: #4a5568; font-size: 1.3em; margin: 2em 0 0.8em; }
+        p { margin-bottom: 1.5em; }
+        ol, ul { margin: 0 0 1.5em 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .callout { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1.5em; margin: 2em 0; border-radius: 0 4px 4px 0; }
+        .callout strong { color: #667eea; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; margin: 3em 0; border-radius: 8px; text-align: center; }
+        .cta a { color: white; text-decoration: underline; }
+        .back-link { max-width: 800px; margin: 2rem auto; padding: 0 2rem; }
+        .back-link a { color: #667eea; text-decoration: none; }
+        .references { max-width: 800px; margin: 0 auto 3rem; padding: 0 2rem; }
+        .references h2 { font-size: 1.3em; color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 0.3em; margin-bottom: 1em; }
+        .references a { color: #667eea; }
+        .staging-note { background: #1a202c; color: #f6e05e; text-align: center; padding: 0.5rem; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="staging-note">STAGING DRAFT — noindex; Approve before promoting to compliance-blog/us-federal</div>
+    <div class="hero">
+        <h1>Ask for the Ingredients List: CISA’s 2026 SBOM Minimum Elements for SMB Buyers</h1>
+        <p class="subtitle">On July 29, 2026, CISA and partners refreshed what a useful Software Bill of Materials should contain. You do not need a federal contract to ask vendors for transparency.</p>
+    </div>
+    <div class="byline">By James Venuto | September 25, 2026 | Security Medic Consulting, LLC - AI Cyber Security and Privacy</div>
+    <div class="content">
+
+        <p>Most small and mid-size businesses buy software the way they buy office chairs: feature list, price, and a promise it will “just work.” Then a critical vulnerability lands in a library nobody on your team has ever heard of — and the vendor shrugs because the component was buried three layers deep.</p>
+
+        <p>On <strong>July 29, 2026</strong>, CISA, the National Security Agency, the FBI, and international partners released <strong>2026 Minimum Elements for a Software Bill of Materials (SBOM)</strong>. It updates and replaces the 2021 NTIA minimum-elements document after a 2025 public comment period. An SBOM is the industry’s short name for an ingredients list: which components, from whom, at what versions, make up the product you just licensed.</p>
+
+        <p>I work with Hudson Valley and regional SMBs who rarely see “SBOM” in a sales deck. That silence is the point. If you never ask, you rarely get the list — and next year’s supply-chain scare starts with a blank inventory.</p>
+
+        <h2>What the 2026 Guidance Actually Says</h2>
+
+        <div class="callout">
+            <strong>What it is:</strong> Joint guidance defining the <em>baseline</em> technologies and practices an SBOM should include so buyers can understand software makeup and make risk-informed decisions. It preserves core NTIA principles while reflecting current tools and needs.
+        </div>
+        <div class="callout">
+            <strong>What it is not:</strong> A mandate that every Main Street retailer must generate an SBOM tomorrow. It is a shared definition of “good enough transparency” — useful whether you sell to government or simply buy SaaS and line-of-business apps.
+        </div>
+
+        <p>CISA is explicit that the minimum elements apply to <strong>all software</strong>. Some types — including AI systems and software-as-a-service in cloud environments — may need additional elements later. The guidance still says transparency efforts should <em>start</em> with these minimums rather than waiting for a perfect, sector-specific format.</p>
+
+        <h2>Why Everyday SMB Buyers Should Care</h2>
+
+        <ul>
+            <li><strong>Your risk travels with dependencies.</strong> The next Magento, library, or plugin CVE may live in someone else’s code. Without an ingredients list, triage is guesswork.</li>
+            <li><strong>Customers and insurers ask better questions now.</strong> “Which third-party components do you depend on?” is showing up in renewals and vendor reviews even outside defense.</li>
+            <li><strong>MSPs cannot magically invent provenance.</strong> If the manufacturer will not provide an SBOM (or equivalent component inventory), your MSP is flying blind too.</li>
+            <li><strong>AI and SaaS are not exemptions.</strong> The 2026 update flags them as needing more detail later — which is another reason to demand the baseline now.</li>
+        </ul>
+
+        <h2>What to Ask Before You Sign (or Renew)</h2>
+
+        <ol>
+            <li><strong>Do you provide a machine-readable SBOM</strong> (or equivalent component inventory) for the product we are buying, aligned with CISA’s 2026 minimum elements?</li>
+            <li><strong>Does it cover transitive dependencies</strong> — not only the libraries you wrote yourselves?</li>
+            <li><strong>How do we receive updates</strong> when you ship a security release that changes the bill of materials?</li>
+            <li><strong>Where is your vulnerability disclosure policy</strong>, and do you publish accurate CVE records for your own products?</li>
+            <li><strong>If you cannot provide an SBOM yet,</strong> what is the dated roadmap — and what interim artifact (dependency list, attestation) will you give us this quarter?</li>
+        </ol>
+
+        <div class="callout">
+            <strong>One-sentence MSP ask:</strong> “Please obtain from each of our top five software vendors either a current machine-readable SBOM meeting CISA’s 2026 Minimum Elements or a dated written statement of when they will provide one, and file the replies in our vendor folder.”
+        </div>
+
+        <h2>How This Fits a Practical Compliance Week</h2>
+
+        <p>Pair SBOM asks with CISA’s companion <em>Secure by Demand</em> procurement questions (SSO, MFA defaults, logging, Secure by Design Pledge). You do not need a GRC platform to start. You need a short email template, a dated folder, and the discipline to refuse “trust us” as the only answer.</p>
+
+        <div class="cta">
+            <p>Want help turning SBOM and Secure-by-Demand questions into a one-page vendor checklist your MSP can run? <a href="https://securitymedic.com">Security Medic</a> / <a href="https://cyberintelpro.com">CyberIntelPro</a> works with Hudson Valley SMBs and their partners without the enterprise binder tax.</p>
+        </div>
+    </div>
+
+    <div class="references">
+        <h2>References</h2>
+        <ol>
+            <li>CISA, “2026 Minimum Elements for a Software Bill of Materials (SBOM)” (Jul 29, 2026): <a href="https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom">cisa.gov/.../2026-minimum-elements-software-bill-materials-sbom</a></li>
+            <li>PDF: <a href="https://www.cisa.gov/sites/default/files/2026-07/2026_cisa_sbom_minimum_elements_508c.pdf">2026_cisa_sbom_minimum_elements_508c.pdf</a></li>
+            <li>CISA, Secure by Demand Guide (companion procurement questions): <a href="https://www.cisa.gov/resources-tools/resources/secure-demand-guide">cisa.gov/.../secure-demand-guide</a></li>
+        </ol>
+    </div>
+</body>
+</html>

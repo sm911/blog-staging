@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demand Security When You Buy Software: Five Owner Questions from CISA’s Secure by Demand Guide — James Venuto</title>
+<meta name="description" content="CISA’s Secure by Demand Guide helps software customers ask for product security — SSO, MFA defaults, logs, SBOMs — not only a vendor SOC report. Five owner questions for SMBs.">
+<meta name="author" content="James Venuto">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sm911.github.io/leadership-blog/cmmc-phase2-pause-owner-questions-sep-2026.html"/>
+<meta property="og:title" content="Pause Is Not a Vacation: Five Owner Questions After the CMMC Phase 2 Suspension">
+<meta property="og:description" content="Owner questions after CMMC Phase 2 pause — self-assessment and 800-171 still matter for SMBs in the supply chain.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sm911.github.io/leadership-blog/cmmc-phase2-pause-owner-questions-sep-2026.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --cream: #f5f0e8;
+    --rust: #c0553a;
+    --rust-light: #e8a08c;
+    --sage: #6b7f6b;
+    --sage-muted: #a3b5a3;
+    --slate: #4a5568;
+    --warm-gray: #d4cdc4;
+    --highlight: #fde68a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Sans 3', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4rem 0 2rem;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(192,85,58,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(107,127,107,0.12) 0%, transparent 50%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.015) 80px,
+        rgba(255,255,255,0.015) 81px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.015) 80px,
+        rgba(255,255,255,0.015) 81px
+      );
+    animation: subtleShift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes subtleShift {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rust-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--warm-gray);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.8s forwards;
+  }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--sage-muted);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 1.1s forwards;
+  }
+
+  .hero-meta span { color: var(--rust-light); }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--rust), transparent);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.6s forwards, pulse 2.5s ease-in-out 2.6s infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 0.6; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.2; }
+  }
+
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+  }
+
+  .article-body > p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.08em 0.12em 0 0;
+    color: var(--rust);
+  }
+
+  .article-body p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: #2d2d2d;
+  }
+
+  .section-break {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 4rem 0 2.5rem;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--rust);
+    opacity: 0.25;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .section-break h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    border-left: 3px solid var(--rust);
+    padding-left: 1rem;
+  }
+
+  .pullquote {
+    position: relative;
+    margin: 3rem -1rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    background: linear-gradient(135deg, rgba(192,85,58,0.06), rgba(107,127,107,0.06));
+    border-left: 4px solid var(--rust);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.15rem;
+    left: 0.6rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--rust);
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (min-width: 600px) {
+    .insight-grid { grid-template-columns: 1fr 1fr; }
+    .insight-grid.three-col { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  .insight-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--sage);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .insight-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  }
+
+  .insight-card.rust { border-top-color: var(--rust); }
+  .insight-card.sage { border-top-color: var(--sage); }
+  .insight-card.slate { border-top-color: var(--slate); }
+
+  .insight-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 0.6rem;
+  }
+
+  .insight-card p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .diagnostic-strip {
+    background: var(--ink);
+    color: var(--cream);
+    margin: 3.5rem -2rem;
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagnostic-strip::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(192,85,58,0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .diagnostic-strip h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--rust-light);
+  }
+
+  .diagnostic-strip p {
+    color: var(--warm-gray) !important;
+    font-size: 1rem !important;
+  }
+
+  .diagnostic-strip ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .diagnostic-strip li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--warm-gray);
+    font-size: 0.95rem;
+  }
+
+  .diagnostic-strip li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+    font-weight: 700;
+  }
+
+  .scenario-block {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .scenario-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+  }
+
+  .scenario-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-style: italic;
+    color: var(--slate);
+    font-size: 1rem;
+  }
+
+  .scenario-item:last-child { border-bottom: none; }
+
+  .scenario-item em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .metric-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2.5rem 0;
+    font-size: 0.95rem;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+
+  .metric-table thead {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .metric-table thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .metric-table tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.15s ease;
+  }
+
+  .metric-table tbody tr:last-child { border-bottom: none; }
+
+  .metric-table tbody tr:hover { background: rgba(192,85,58,0.03); }
+
+  .metric-table td {
+    padding: 0.85rem 1.25rem;
+    vertical-align: top;
+    line-height: 1.55;
+    color: #2d2d2d;
+  }
+
+  .metric-table td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--rust);
+    white-space: nowrap;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--ink) 0%, #2d2020 100%);
+    margin: 4rem -2rem -4rem;
+    padding: 4rem 2.5rem;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(192,85,58,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 25%, rgba(107,127,107,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cta-section > * { position: relative; z-index: 1; }
+
+  .cta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sage-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section h2 em {
+    font-style: italic;
+    color: var(--rust-light);
+  }
+
+  .cta-section p {
+    font-size: 1rem !important;
+    color: var(--warm-gray) !important;
+    max-width: 540px;
+    margin: 0 auto 2rem !important;
+    line-height: 1.65;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--rust);
+    color: white;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(192,85,58,0.35);
+  }
+
+  .cta-button:hover {
+    background: #a8432a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(192,85,58,0.45);
+  }
+
+  .cta-sub {
+    margin-top: 1.5rem !important;
+    font-size: 0.8rem !important;
+    color: var(--sage-muted) !important;
+  }
+
+  .article-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 2rem 5rem;
+    border-top: 1px solid var(--warm-gray);
+  }
+
+  .author-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+
+  .author-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rust), var(--sage));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .author-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .author-info p {
+    font-size: 0.85rem !important;
+    color: var(--slate);
+    line-height: 1.55;
+    margin-bottom: 0 !important;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(192,85,58,0.08);
+    color: var(--rust);
+    border: 1px solid rgba(192,85,58,0.15);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover { color: var(--rust); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .article-body { padding: 3rem 1.25rem 3rem; }
+    .diagnostic-strip { margin: 2.5rem -1.25rem; padding: 2rem 1.5rem; }
+    .cta-section { margin: 4rem -1.25rem -3rem; padding: 3rem 1.5rem; }
+    .section-number { font-size: 2.5rem; }
+    .section-break h2 { font-size: 1.4rem; }
+    .author-card { flex-direction: column; align-items: center; text-align: center; }
+    .metric-table { font-size: 0.85rem; }
+    .metric-table td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+
+<body>
+<div class="staging-banner" style="background:#1a202c;color:#f6e05e;text-align:center;padding:0.5rem;font-size:0.85em;">STAGING DRAFT — noindex; Approve before promoting to leadership-blog</div>
+<section class="hero">
+  <div class="hero-inner" style="position:relative;z-index:1;max-width:900px;padding:2rem;text-align:center;">
+    <div class="hero-label" style="color:#e8a08c;letter-spacing:0.15em;text-transform:uppercase;font-size:0.8rem;margin-bottom:1rem;font-family:'JetBrains Mono',monospace;">Leadership · Procurement</div>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;color:#f5f0e8;font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin-bottom:1rem;">Demand Security When You Buy Software: Five Owner Questions from CISA’s Secure by Demand Guide</h1>
+    <p style="color:#d4cdc4;font-size:1.15rem;max-width:640px;margin:0 auto 1.5rem;">Vendors ship what customers ask for. CISA’s buyer guide shows how any SMB — not only federal agencies — can ask for product security before the next breach becomes your problem.</p>
+    <div class="hero-meta" style="color:#a3b5a3;font-size:0.95rem;">James Venuto · Security Medic Consulting, LLC - AI Cyber Security and Privacy · September 25, 2026 · 8 min read</div>
+  </div>
+</section>
+
+<main style="max-width:720px;margin:0 auto;padding:3rem 1.5rem 4rem;">
+<p>Most software diligence still looks like this: price, features, a SOC report about the vendor’s own offices, and a handshake. That packet tells you little about whether the <em>product</em> was built so attackers cannot walk in through default passwords, missing logs, or silent third-party libraries.</p>
+
+<p>CISA’s <strong>Secure by Demand Guide</strong> is the customer counterpart to its Secure by Design work for manufacturers. It tells buyers — including small and mid-size firms — how to put product security into procurement before, during, and after the contract. The manufacturer principles it mirrors are simple: take ownership of customer security outcomes; embrace radical transparency and accountability; and build leadership that actually funds those goals.</p>
+
+<p>I work with Hudson Valley and regional owners who feel outgunned in vendor calls. You do not need a federal acquisition shop. You need five questions and the discipline to write down the answers.</p>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">1. Will you give us secure authentication without a premium SKU?</strong>
+<p style="margin:0.5rem 0 0;">Ask whether standards-based single sign-on (SSO) and multi-factor authentication (MFA) — preferably phishing-resistant options like passkeys — are available in the baseline product at no extra charge, and whether default passwords have been eliminated. CISA flags default passwords as an ongoing enabler of real attacks.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #6b7f6b;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#6b7f6b;">2. Do we get security logs we can actually use?</strong>
+<p style="margin:0.5rem 0 0;">For cloud and SaaS, CISA asks manufacturers to retain and make available security logs for <strong>at least six months at no additional charge</strong>, covering configuration changes, identity/token events, and business-data access. If logging is an expensive add-on, that is a product-security signal — not a “nice to have.”</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #4a5568;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#4a5568;">3. Will you share an ingredients list?</strong>
+<p style="margin:0.5rem 0 0;">Ask for a machine-readable Software Bill of Materials (SBOM) covering third-party and open-source components, aligned with CISA’s 2026 Minimum Elements. Without it, the next library CVE becomes a scavenger hunt.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">4. How transparent are you when something breaks?</strong>
+<p style="margin:0.5rem 0 0;">Look for a public vulnerability disclosure policy, timely and accurate CVE records (with correct CWE/CPE fields), and whether the manufacturer has taken CISA’s Secure by Design Pledge with published progress. Enterprise security theater is not the same as product honesty.</p>
+</div>
+
+<div style="background:#fff;border-left:4px solid #c0553a;padding:1.25rem 1.5rem;margin:1.5rem 0;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+<strong style="color:#c0553a;">5. What is our one-sentence ask to the MSP?</strong>
+<p style="margin:0.5rem 0 0;"><em>“Before we renew or buy [product], please get written answers on SSO/MFA defaults, six-month security log access, SBOM availability, and the vendor’s vulnerability disclosure / Secure by Design Pledge status — and put the replies in our vendor folder with today’s date.”</em></p>
+</div>
+
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">Why This Is an Owner Job, Not Just an IT Ticket</h2>
+<ul>
+<li>Feature roadmaps bend toward whatever buyers demand in writing.</li>
+<li>Insurers and large customers increasingly ask how you select vendors — not only how you patch laptops.</li>
+<li>MSPs execute; owners set the bar. If “security add-on” is acceptable forever, it stays an add-on.</li>
+</ul>
+
+<h2 style="font-family:'Playfair Display',Georgia,serif;margin:2.5rem 0 1rem;color:#1a1a1a;">What “Good Enough” Looks Like This Month</h2>
+<ul>
+<li>Top five software renewals listed with owners and dates.</li>
+<li>Secure-by-Demand question sheet attached to each renewal packet.</li>
+<li>Dated vendor replies (or explicit “declined / roadmap”) filed.</li>
+<li>No silent acceptance of “logging costs extra” without a compensating control note.</li>
+</ul>
+
+<p>This is stewardship. You are not asking vendors to be perfect. You are refusing to buy blindness as a default feature.</p>
+
+<div style="background:#1a1a1a;color:#f5f0e8;padding:2rem;border-radius:8px;margin:3rem 0;text-align:center;">
+<p style="margin-bottom:0.75rem;">If you want these five questions turned into a one-page owner procurement packet your MSP can run — <a href="https://securitymedic.com" style="color:#e8a08c;">Security Medic</a> / <a href="https://cyberintelpro.com" style="color:#e8a08c;">CyberIntelPro</a> can help. Calmly, with evidence, not theater.</p>
+</div>
+
+<h3 style="margin-top:2rem;">References</h3>
+<ol style="font-size:0.95rem;color:#4a5568;">
+<li>CISA, Secure by Demand Guide: How Software Customers Can Drive a Secure Technology Ecosystem: <a href="https://www.cisa.gov/resources-tools/resources/secure-demand-guide">cisa.gov/.../secure-demand-guide</a></li>
+<li>CISA, 2026 Minimum Elements for a Software Bill of Materials (SBOM) (Jul 29, 2026): <a href="https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom">cisa.gov/.../2026-minimum-elements-software-bill-materials-sbom</a></li>
+</ol>
+</main>
+</body>
+</html>

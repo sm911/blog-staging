@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24T08:39:56-04:00",
+  "updated": "2026-09-25T08:50:00-04:00",
   "drafts": [
     {
       "id": "nist-sp-800-82r4-ot-security-draft-sep-2026",
@@ -390,6 +390,96 @@
       "productionUrl": "https://sm911.github.io/compliance-blog/us-state/nydfs-risk-assessment-guidance-sep-2026.html",
       "rejectReason": null,
       "live": true
+    },
+    {
+      "id": "cisa-2026-sbom-minimum-elements-sep-2026",
+      "title": "Ask for the Ingredients List: CISA\u2019s 2026 SBOM Minimum Elements for SMB Buyers",
+      "path": "blogs/compliance-blog/us-federal/cisa-2026-sbom-minimum-elements-sep-2026.html",
+      "targetBlog": "compliance-blog",
+      "category": "US Federal",
+      "status": "review",
+      "stagedAt": "2026-09-25",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "CISA 2026 SBOM Minimum Elements (Jul 29, 2026) \u2014 practical procurement questions for SMB software buyers; not only federal primes.",
+      "productionUrl": "https://sm911.github.io/compliance-blog/us-federal/cisa-2026-sbom-minimum-elements-sep-2026.html",
+      "rejectReason": null,
+      "live": false
+    },
+    {
+      "id": "secure-by-demand-owner-questions-sep-2026",
+      "title": "Demand Security When You Buy Software: Five Owner Questions from CISA\u2019s Secure by Demand Guide",
+      "path": "blogs/leadership-blog/secure-by-demand-owner-questions-sep-2026.html",
+      "targetBlog": "leadership-blog",
+      "category": "Procurement Leadership",
+      "status": "review",
+      "stagedAt": "2026-09-25",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "CISA Secure by Demand \u2014 five owner questions on SSO/MFA, logs, SBOM, disclosure; MSP-safe one-sentence ticket.",
+      "productionUrl": "https://sm911.github.io/leadership-blog/secure-by-demand-owner-questions-sep-2026.html",
+      "rejectReason": null,
+      "live": false
+    },
+    {
+      "id": "magento-cve-2026-71362-kev-sep-2026",
+      "title": "Online Storefronts on the KEV List: Magento CVE-2026-71362 and What to Ask Your MSP",
+      "path": "blogs/data-security-blog/cybersecurity/magento-cve-2026-71362-kev-sep-2026.html",
+      "targetBlog": "data-security-blog",
+      "category": "Cybersecurity",
+      "status": "review",
+      "stagedAt": "2026-09-25",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "CISA KEV Sep 24 for Adobe Commerce/Magento CVE-2026-71362 \u2014 APSB26-92 Aug builds, unauthenticated privilege escalation, MSP ticket.",
+      "productionUrl": "https://sm911.github.io/data-security-blog/cybersecurity/magento-cve-2026-71362-kev-sep-2026.html",
+      "rejectReason": null,
+      "live": false
+    },
+    {
+      "id": "ftc-bcp-rule-guidance-program-sep-2026",
+      "title": "When the Rule Is Fuzzy: FTC\u2019s New BCP Rule Guidance Program for SMBs",
+      "path": "blogs/data-privacy-blog/foundations-philosophy/ftc-bcp-rule-guidance-program-sep-2026.html",
+      "targetBlog": "data-privacy-blog",
+      "category": "foundations-philosophy",
+      "status": "review",
+      "stagedAt": "2026-09-25",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "FTC BCP Rule Guidance Program (Sep 10, 2026) \u2014 when SMBs can flag genuine rule ambiguities; what staff will not answer.",
+      "productionUrl": "https://sm911.github.io/data-privacy-blog/foundations-philosophy/ftc-bcp-rule-guidance-program-sep-2026.html",
+      "rejectReason": null,
+      "live": false
+    },
+    {
+      "id": "fedramp-vdr-dec-2026-smb-sep-2026",
+      "title": "Beyond Monthly Scans: FedRAMP\u2019s Dec 2026 VDR Deadline for SMB Cloud Buyers",
+      "path": "blogs/cloud-architecture-blog/security-and-compliance/fedramp-vdr-dec-2026-smb-sep-2026.html",
+      "targetBlog": "cloud-architecture-blog",
+      "category": "security-and-compliance",
+      "status": "review",
+      "stagedAt": "2026-09-25",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "FedRAMP VDR/VER mandatory Dec 7, 2026 (NTC-0014) aligning with BOD 26-04 \u2014 SMB buyer questions beyond monthly scan binders.",
+      "productionUrl": "https://sm911.github.io/cloud-architecture-blog/security-and-compliance/fedramp-vdr-dec-2026-smb-sep-2026.html",
+      "rejectReason": null,
+      "live": false
+    },
+    {
+      "id": "magento-kev-exposure-monitoring-de-cm-sep-2026",
+      "title": "Detect DE.CM: Watch What Is Exposed \u2014 Magento KEV and Exposure-Based Monitoring",
+      "path": "blogs/CFS-2.0/detect/de-cm/magento-kev-exposure-monitoring-de-cm-sep-2026.html",
+      "targetBlog": "CFS-2.0",
+      "category": "detect/de-cm",
+      "status": "review",
+      "stagedAt": "2026-09-25",
+      "decidedAt": null,
+      "decision": null,
+      "summary": "Maps Magento KEV + exposure-based detection to CSF 2.0 Detect DE.CM with four staffable continuous-monitoring workstreams.",
+      "productionUrl": "https://sm911.github.io/CFS-2.0/detect/de-cm/magento-kev-exposure-monitoring-de-cm-sep-2026.html",
+      "rejectReason": null,
+      "live": false
     }
   ]
 }
